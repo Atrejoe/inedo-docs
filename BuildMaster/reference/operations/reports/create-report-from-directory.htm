@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Reports - Create Report from Directory</title>
+  <meta name="keywords" content="buildmaster, operations, reports" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Create Report from Directory</h2>
+  <p>Captures all files from a directory and stores them in a release package report.</p>
+  <h4>Script usage:</h4><pre>Report-FromDirectory(
+	[FromDirectory: &lt;text&gt;],
+	Index: &lt;text&gt;,
+	Name: &lt;text&gt;
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Reports::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>From directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>FromDirectory</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>HTML index page</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Index</pre>
+      </td>
+      <td>
+        <span>The HTML index page is the first page that is viewed when the report is opened and should contain links to other pages captured in the report.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Report name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# create a report from the files in the working directory
+Report-FromDirectory(
+    Name: Files In Working Directory,
+    Index: index.html
+);
+</pre>
+</div>
+</body>
+</html>

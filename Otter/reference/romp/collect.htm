@@ -1,0 +1,37 @@
+﻿<html>
+<head>
+    <title>Romp Collect</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,romp" />
+</head>
+<body>
+	<p>
+		The <b>collect</b> command runs a configuration plan and writes the
+		collection results to the console.
+	</p>
+
+	<h2>Usage</h2>
+	<code>romp collect &lt;collectPlan.otter&gt;</code>
+	<p>
+		The <b>collectPlan.otter</b> argument specifies the file name of an OtterScript
+		configuration plan.
+	</p>
+
+	<h2>Behavior</h2>
+	<p>
+		Romp will perform the collection against the local machine, display the
+		results on the console, and exit.
+	</p>
+
+	<h2>Examples</h2>
+	<p>
+		Perform a collection using the plan contained in <code>c:\plans\ensureWebsites.otter</code>:
+	</p>
+	<code>romp collect c:\plans\ensureWebsites.otter</code>
+	<p>
+		Perform a collection using the plan contained in <code>c:\plans\ensureWebsites.otter</code>,
+		and load templates from <code>c:\templates</code>:
+	</p>
+	<code>romp --lib=c:\templates collect c:\plans\ensureWebsites.otter</code>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Files - Generate Release Notes</title>
+  <meta name="keywords" content="buildmaster, operations, files" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Generate Release Notes</h2>
+  <p>Generates an HTML file containing the BuildMaster release notes and/or issues from the application&#39;s issue tracking provider.</p>
+  <h4>Script usage:</h4><pre>Generate-ReleaseNotes(
+	Name: &lt;text&gt;,
+	[IncludeReleaseNotes: &lt;true/false&gt;],
+	[IncludeIssueSummary: &lt;true/false&gt;],
+	[IncludeIssueDescriptions: &lt;true/false&gt;],
+	[ClosedIssuesOnly: &lt;true/false&gt;],
+	[CustomCss: &lt;text&gt;],
+	[Overwrite: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Core::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>File name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Include release notes</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>IncludeReleaseNotes</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Include issue summary</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>IncludeIssueSummary</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Include issue descriptions</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>IncludeIssueDescriptions</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Closed issues only</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>ClosedIssuesOnly</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Custom CSS</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>CustomCss</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Overwrite</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Overwrite</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# generates an HTML file containing this application&#39;s issues with descriptions along with release notes
+Generate-ReleaseNotes(
+    Name: notes.html
+);
+</pre>
+</div>
+</body>
+</html>

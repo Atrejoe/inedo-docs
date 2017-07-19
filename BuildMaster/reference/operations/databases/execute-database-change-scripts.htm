@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Databases - Execute Database Change Scripts</title>
+  <meta name="keywords" content="buildmaster, operations, databases,change-scripts" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Execute Database Change Scripts</h2>
+  <p>Executes change scripts associated with the current release and any change scripts from prior releases that have not been run against the database to date.</p>
+  <h4>Script usage:</h4><pre>Execute-ChangeScripts(
+	Connection: &lt;text&gt;,
+	[InitializeDatabase: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Core::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Database connection</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Connection</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Initialize database</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>InitializeDatabase</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <p class="info">
+    <b>Note: </b>When initialize database is true, the database will be initialized (i.e. a metadata table will be created too track change scripts) if it is required.</p>
+</div>
+</body>
+</html>

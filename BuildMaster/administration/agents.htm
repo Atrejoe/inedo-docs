@@ -1,0 +1,69 @@
+﻿<html>
+<head>
+    <title>Managing Agents and Servers</title>
+    <meta name="subtitle" content="Agents and Servers" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster,servers,agents" />
+</head>
+<body>
+    <p>
+        In order to orchestrate and deploy to servers, BuildMaster needs to be able to communicate with those servers in an
+        fast and secure manner.
+    </p>
+
+
+    <h2 id="windows">Windows Servers</h2>
+    <p>
+        Communication with Windows servers is generally accomplished using a lightweight agent that's installed on the remote server.
+        This agent uses a highly-optimized and resilient protocol built solely for this purpose, and is
+        <a href="../installation/agent-installation-guide">quite easy to install</a>.
+    </p>
+    <h3>Agentless Windows Servers</h3>
+    <p>
+        Alternatively, BuildMaster can use PowerShell Remoting to communicate with Windows servers; however, this is generally slower and
+        less resilient than the Inedo Agent protocol. You can connect using integrated authentication (i.e. whatever account the service is running under), or
+        with a username &amp; password <a href="../global-components/resource-credentials">resource credential</a>. See <a href="https://technet.microsoft.com/en-us/library/hh849694.aspx" target="_blank">Enable-PSRemoting</a>
+        to configures a server to receive remote commands.
+    </p>
+
+    <h2 id="linux">Linux Servers</h2>
+    <p>
+        To communicate with Linux servers, BuildMaster uses the lightweight, highly-optimized, and resilient protocol already
+        enabled on nearly every Linux box: SSH and SFTP. You can connect with a private key or username &amp; password
+        <a href="../global-components/resource-credentials">resource credential</a>.
+    </p>
+
+
+    <h2 id="local">Local Agents</h2>
+    <p>
+        If you're using BuildMaster to interact with the server it's installed on, you can just set it up using a local agent.
+        This uses the same process/identity that the <a href="service">service</a> is hosted as, and doesn't have very many privileges
+        by default.
+    </p>
+
+    <h2 id="legacy">Legacy Agents</h2>
+    <p>
+        In BuildMaster 5.0 and earlier, a different agent model was used; to learn more about these, see <a href="/support/kb/1039">KB#1039: The Inedo Agent and Legacy BuildMaster Agents</a>.
+    </p>
+    <h2>
+        Servers
+    </h2>
+    <p>
+        Server are the core of your infrastructure and being able to easily manage configuration and orchestration is key to modern, scalable environments. A server represent a physical ("bare metal"), virtual server, a container, or even a yet to be provision server.
+    </p>
+    <p>
+        BuildMaster gives you the ability to see at-a-glance the status and environment of each server.
+    </p>
+    <img class="screenshot" src="/resources/documentation/buildmaster/server-status.png" alt="BuildMaster Servers" />
+
+    <h2 id="server-roles">Server Roles</h2>
+    <p>
+        Server roles in BuildMaster allow you to targets a group of servers in a pipeline stage, or iterate over them in deployment plans.        
+    </p>
+
+    <h3 id="server-groups">Legacy Server Groups</h3>
+    <p>
+        In Legacy Plans, the Server Groups feature enabled actions or action groups to target of multiple servers. They are hidden from the UI unless you have any Legacy Plans configured.
+    </p>
+</body>
+</html>

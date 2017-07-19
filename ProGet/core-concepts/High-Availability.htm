@@ -1,0 +1,43 @@
+﻿<html>
+  <head>
+    <title>High Availability</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta name="sequence" content="300" />
+	<meta name="keywords" content="load balanced, automatic failover" />
+	<meta name="subtitle" content="High Availability in ProGet" />
+  </head>
+<body>
+	<p>
+        Having access to your central repository is vital to your development process,
+		so it is critical to make sure that it is always running. With ProGet Enterprise, you are
+		able to ensure that you have access to your packages whenever you need them.
+	</p>
+	<p>
+		ProGet Enterprise is a High Availability instance that supports configuration of multiple server nodes.
+		The multi-node structure of ProGet High Availability provides a reliable network with automatic failover.
+		If a ProGet nodes goes down, the system will continue to be operational, decreasing downtime and preserving productivity.
+	</p>
+	<p>
+		ProGet High Availability provides stability even at heavy load time, keeping performance
+		standards high and maintaining usability at the enterprise level.
+	</p>
+	<p>
+		You have flexibility in choosing a load balancer, as ProGet does <strong>not</strong> require session affinity.
+		ProGet High Availability easily integrates with the existing tool chain of any size organization,
+		enabling collaboration and communication between teams.
+	</p>
+
+	<h2 id="architecture">Architecture</h2>
+	<p>
+		A ProGet High Availability instance requires five main components:
+	</p>
+	<ul>
+		<li><b>Load Balancer - </b> This will direct traffic bound for the ProGet interface, evenly distributing traffic during heavy load times.</li>
+		<li><b>Web Nodes - </b> These run the ProGet web site and API endpoints, and receive load-balancer traffic.</li>
+		<li><b>Shared Storage - </b>A shared file system is needed for your important assets and must be available to all nodes.</li>
+		<li><b>Database - </b>An external database (SQL Server) used by all web and indexing nodes.</li>
+		<li><b>Indexing Nodes - </b>Performs package verification, connector indexing, package retention, and other periodic tasks.</li>
+	</ul>
+    <div><img class="screenshot" alt="Package" src="/proget/high-image.png" /></div>
+</body>
+</html>

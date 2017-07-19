@@ -1,0 +1,78 @@
+﻿<html>
+  <head>
+    <title>Database Changes</title>
+      <meta name="subtitle" content="Database Changes" />
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+      <meta name="keywords" content="buildmaster, database" />
+      <meta name="sequence" content="100" />
+  </head>
+  <body>
+    
+      <p>
+          In BuildMaster, database changes help ensure security needs are met.  BuildMaster allows you to associate a connection string with an <a href="/support/documentation/buildmaster/core-concepts/environments">environment</a> so that only users with the appropriate <a href="/support/documentation/buildmaster/administration/security">privileges</a> have access. 
+          Through privileges, you're able to ensure sensitive information in connection strings are protected. 
+         
+      </p>
+      <h2 id="database-connections">
+          Database Connections 
+      </h2>
+      <p>
+          Databases are associated with an environment, allowing all of the application's database instances to be registered. 
+          Once registered, <a href="/support/documentation/buildmaster/reference/operations">operations</a> that work with databases (Execute Statement) may be run against the database. 
+          If change scripts are to be executed, the database must be initialized.
+      </p>
+      <p>
+          Each database engine, although slightly different, shares similar functionality: 
+          an engine-specific connection string that defines the server, catalog, credentials, and other details which are required to access the database engine and the ability to execute a text-based query. 
+      </p>
+      <p>
+          Generally, applications have at least one database associated with each instance of the application.
+          For example, if an application is deployed to Integration, Testing, and Production, there is generally an Integration, Testing, and Production database.
+      </p>
+      <p> <img class="screenshot" src="/resources/documentation/buildmaster/database-connection.png" alt="Setting up a Database Connection" /> </p>
+      <h2 id="operations">
+          Operations
+      </h2>
+      <p>
+          BuildMaster has built-in database operations that may be called in any deployment plan:
+           Backup Database, Execute database change scripts, Execute Database Scripts on Disk, Execute Database Statement, Build Database Updater Executable and Restore Database. 
+          These operations can be easily added to any deployment plan via visual editor or text mode. 
+      </p>
+      <h2 id="change-scripts">
+          Change Scripts
+      </h2>
+      <p>
+          Database change scripts are a special type of file that is run against a database to make changes to the data structures (tables) and the data.
+           As a result of the fundamental nature of data and databases, a change script is irrevocable.
+      </p>
+      <p>
+          BuildMaster tracks the execution of database change scripts and ensures that:
+      </p>
+      <ol>
+          <li>Scripts can be run once and only once</li>
+          <li>Scripts cannot be undone</li>
+      </ol>
+      <p>
+          These executions are tracked through a lightweight table which is created after a database provider has been initialized within BuildMaster. 
+          Virtually any relational database engine is supported through the use of database providers. 
+      </p>
+      <h2 id="packager">
+          Packager
+      </h2>
+      <p>
+          In addition to running change scripts from within BuildMaster, sometimes it is necessary to deploy change scripts to a system not associated with the installation. 
+          BuildMaster is able to generate a simple command-line executable that has no dependencies (other than .NET 4.5) and 
+          may be used to execute change scripts against any arbitrary database, just as if this were done from within BuildMaster.
+      </p>
+      <h3>
+          Using the Change Script Package
+      </h3>
+      <p>
+          The executable generated for running change scripts is not designed to be user-friendly. 
+          It is a simple command-line utility meant to be used by developers or wrapped by some type of installer. 
+          The tool may be run interactively, or arguments may be specified using the command-line.
+      </p>
+     
+   
+  </body>
+</html>

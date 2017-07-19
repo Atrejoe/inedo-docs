@@ -1,0 +1,53 @@
+﻿<html>
+  <head>
+    <title>Environments</title>
+      <meta name="subtitle" content="Environments " />
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+      <meta name="keywords" content="buildmaster, pipelines" />
+      <meta name="sequence" content="400" />
+  </head>
+  <body>
+    
+    <p>
+        Environments are where you deploy an application to. 
+        Environments help you manage and structure your applications as your organization requires. 
+        You can assign restrictions, privileges, and approvals to individual environments as warranted for enterprise security and compliance needs.
+    
+    </p>
+      <h2 id="environment-structure">Environment Structure</h2>
+      <p>
+          An environment is a logical grouping of servers, and generally describes one stage of the development process (development, testing, QA, etc.).
+          In BuildMaster, there is no strict enforcement of how environments are set-up and defined. 
+          Deployment Plans are associated with zero or more environments, and are where you deploy an application to.
+      </p>
+      <p>
+          BuildMaster comes with three, built-in environments that represent a very simple pipeline: Integration, Testing, and Production. 
+          You can create, rename, and delete environments as needed.
+      </p>
+      <p>
+          Environments generally serve two key purposes:
+      </p>
+      <ol>
+          <li>
+              <b>Pipeline definition</b>
+              - Where you target a deployment plan, ie. sequence of environments that changes must be tested in prior to productions.
+          </li>
+          <li>
+              <b>Security</b>
+              - privileges may be defined by environment. As such, access to things that are tied to a specific environment (production configuration files, deployment plans, etc), may be revoked. 
+          </li>
+      </ol>
+     
+    
+      <h2 id="multiple-environments">
+          Multiple Environments per Server
+      </h2>
+      <p>
+          You can associate a server with more than one environment, though it's generally not recommended because it may create unexpected behaviors for other users in your organization.
+      </p>
+      <p>
+          Also, both sets of grants and restrictions will be applied, and if they overlap (one environment grants some things, while the other denies other things), then that will yield unpredictable and ambiguous behavior.
+      </p>
+      
+  </body>
+</html>

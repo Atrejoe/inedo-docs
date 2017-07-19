@@ -1,0 +1,304 @@
+﻿<html>
+<head>
+    <title>Universal Package Registry</title>
+    <meta name="subtitle" content="Universal Package Registry" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget,universal packages" />
+</head>
+<body>
+    <p>
+        <a href="/support/documentation/proget/feed-types/universal">Universal Feeds and Packages</a> are "lightweight" and, on their own, have very few built-in features. This design has allowed them to be utilized for all sorts of packaging problems such as application delivery, Inedo's product extensions, and even private Bower packages.
+    </p>
+    <p>
+        When developing a package-based solution, one question that often comes up is "what packages are installed or used in this particular context?" That's where the Universal Package Registry comes in; it's a local package registry designed specifically for Universal Packages.
+    </p>
+
+    <h2 id="background">Background: Other Local Package Registries</h2>
+	<p>
+        All packages universal format or otherwise, are essentially zip files with content (i.e. the actual files you want packaged) and a metadata file that describe the content. Once the contents of a package are extracted and “installed” to a directory, there’s no easy way to know which package those contents came from, or if they came from a package at all. This is where a local package registry comes in.
+	</p>
+    <p>
+        Different package managers use different mechanisms to represent a local registry. Some store the entire package, others store only metadata about the package, and each approach has its advantages and disadvantages.
+    </p>
+    <p>
+        For example:
+        <ul>
+            <li>
+                The local registry for MSI (Microsoft Installer) is comprised of an installation cache directory (containing the MSI files installed) as well as various entries in the Windows registry
+            </li>
+            <li>
+                The NuGet local registry is comprised of various package cache directories and a packages.config file stored in the root of a project file that describe which packages are used
+            </li>
+            <li>
+                Apt maintains a directory of package-related files in /var/lib/dpkg/info, including MD5sums of each of various installed files and the executable scripts that would be run before and after installation.
+            </li>
+        </ul>
+    </p>
+    <p>
+        However, in all cases, the “packages registered” vs “packages installed” are not enforced by the package manager or operating system. You can munge the data in the local registry if you really want, or delete files that were originally installed by the package manager.
+    </p>
+    <h2 id="design">Designing the Universal Package Registry</h2>
+    <p>
+        The Universal Package Registry was designed with the realities of other local package registries in mind.
+        <ul>
+            <li>
+                Well-defined specification; this allows a variety of tools (not just an API or CLI) to read or write data.
+            </li>
+            <li>
+                Data only; there is no attempt to automatically reconcile “registered” vs “installed” packages.
+            </li>
+            <li>
+                Compliance-driven metadata; provide a common mechanism for which tool installed a package and for which reason
+            </li>
+            <li>
+                Any additional metadata; for compliance or other reasons, you can add additional package metadata.
+            </li>
+        </ul>
+    </p>
+    <p>
+        A Universal Package Registry may also contain a package cache. There are three common uses cases for this:
+        <ul>
+            <li>
+                <strong>Auditing</strong>; to verify or compare the original contents of the package registered versus the files installed on disk
+            </li>
+            <li>
+                <strong>Repairing installation</strong>; in the event an installed package was “corrupted” (a file in the install location was modified or deleted), the package could be reinstalled without needing to connect to a universal feed
+            </li>
+            <li>
+                <strong>Staging packages</strong>; packages files could be copied to the cache ahead of installation to allow for rapid deployment of newer versions
+            </li>
+        </ul>
+    </p>
+    <h2 id="specification">Universal Package Registry Specification</h2>
+    <p>
+        A Universal Package Registry has three components: a registry file, an ephemeral lock file, and optional package cache. It’s layout on disk is as follows:
+    </p>
+
+    <p><code>
+        &lsaquo;registry-root&rsaquo;\
+            .lock
+            installedPackages.json
+            packageCache\
+               &lsaquo;group$packageName&rsaquo;\
+                    &lsaquo;packageName.version&rsaquo;.upack
+    </code>
+</p>
+    <p>
+        Like <a href="/support/documentation/proget/reference/universal-feed-api-and-package-format#package">with universal packages</a>, you can add any number of files or directories outside of these minimal requirements. However, we strongly recommend that you prefix these files and folders with an underscore (_) as not to clash with files or folders that are added in a future version of the specification.
+    </p>
+    <h3 id="#interacting">Interacting with a Universal Package Registry and the Lock File</h3>
+    <p>
+        The lack of a registry root directory or installedPackages.json file is not an error condition, but implies that no packages are registered (i.e. have been installed). An invalid installedPackages.json file (i.e. not readable as JSON or invalid data) is an error condition and should not be automatically remediated. 
+    </p>
+    <p>
+        The .lock file is used to indicate that another process is currently interacting with the registry. It should only be used when atomic reading/writing of the metadata file; modifying the package cache should not cause the repository to be locked.
+    </p>
+    <p>
+        When a .lock file exists, its modification date should be checked against the current system time. If the difference is greater than ten seconds, the other process is assumed to have crashed and the lock file should be deleted. Otherwise, the file should be rechecked in this manner until the lock is freed.
+    </p>
+    <p>
+        When no .lock file exists, a process should create a lock file with two lines (\r or \r\n): a human-readable description of the lock (generally the process name), and a lock token (generally a GUID). If, at the completion of the operation, the lock token matches, then file should be deleted. 
+    </p>
+    <p>
+        No operation should take more than a second (let alone ten), and the user should be notified of all exceptions (locked registry, mismatched token).
+    </p>
+    <h3 id="file-specification"></h3>
+    <p>
+        The registry file (installedPackages.json) is a JSON-based array of objects with the following properties.
+    </p>
+
+
+
+
+    
+    <table>
+        <thead>
+            <tr>
+                <th> </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>group</strong></td>
+                <td>
+                    <i>see <a href="/support/documentation/proget/feed-types/universal">package metadata specs</a></i>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>name</strong></td>
+                <td>
+                    <i>""</i>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>version</strong></td>
+                <td>
+                    <i>""</i>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>path</strong></td>
+                <td>
+                    A string of the absolute path on disk where the package was installed to.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                     
+                </td>
+            </tr>
+            <tr>
+                <td>feedUrl</td>
+                <td>
+                    A string of an absolute url of the universal feed where the package was installed from.
+                </td>
+            </tr>
+            <tr>
+                <td>installationDate</td>
+                <td>
+                    A string representing the UTC date when the package was installed, in ISO 8601 format (yyyy-MM-ddThh:mm:ss).
+                </td>
+            </tr>
+            <tr>
+                <td>installationReason</td>
+                <td>
+                    A string describing the reason or purpose of the installation.
+                    <br/><br/>
+                    <i>For example, BuildMaster uses “{Application Name} v{Release Number} #{Package Number} (ID{Execution-Number})”</i>
+                </td>
+            </tr>
+            <tr>
+                <td>installationUsing</td>
+                <td>
+                    A string describing the mechanism the package was installed; there are no format restrictions, but we recommend treating it like a User Agent string and including the tool name and version.
+                    <br /><br />
+                    <i>For example, BuildMaster uses “BuildMaster/5.6.11”</i>
+                </td>
+            </tr>
+            <tr>
+                <td>installationBy</td>
+                <td>
+                    A string describing the person or service that performed the installation.
+                    <br /><br />
+                    <i>For example, BuildMaster uses the user who triggered the deployment or SYSTEM if it was a triggered/scheduled deployment.</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        An R denotes a required property, and the object may contain additional properties as needed. We strongly recommended that you prefix these properties with an underscore (_) as to not clash with property names that may be added to the specification later.
+    </p>
+    <h3 id="uniqueness">Package Uniqueness and Data Constraints </h3>
+    <p>
+        Only one version of a package may be registered at a time. Uniqueness is determined by a combination of the group (or lack of a group) and package name. A future version of this specification may allow for multiple versions of a package, but that will be an “opt-in” setting likely defined in a (to be specified) registry configuration file.
+    </p>
+    <h3 id="package-cache">Package Cache</h3>
+    <p>
+        The package cache is simply a directory containing package files that may currently be installed. It must be named “packageCache”, and contain package files (packageName.version.upack) stored in subdirectories comprised of the group name (with $ replacing the /), a $, and the package name. For example:
+    </p>
+    <p>
+        <code>
+            &lsaquo;registry-root&rsaquo;\
+               packageCache\
+                  $hdars\
+                      hdars.1.2.3.upack
+                      hdars.1.2.4.upack
+                      hdars.2.0.0.upack
+                  accounting$apps$accounts\
+                      accounts.1.0.2-beta.upack
+        </code>
+    </p>
+
+    <p>
+        We strongly recommend that cache usage to be explicitly opt-in (both when downloading and installing packages). Default package caching generally causes more problems than it helps.
+    </p>
+    <h2 id="registry-types">Registry Types and Locations</h2>
+    <p>
+        There are three different types of registries (Machine, User, Custom). Each machine can any number of User and Custom registries:
+    </p>
+    <p>
+        <ul>
+            <li>
+                Machine-level; a registry with a well-known location that is queryable by anyone and, by default, requires administrative privileges to install/change
+                <ul>
+                    <li>
+                        Windows: %ProgramData%\upack
+                    </li>
+                    <li>
+                        Linux: /var/lib/upack
+                    </li>
+                </ul>
+            </li>
+            <li>
+                User-level; a registry with a well-known location based on the current username that can be changed by the current user and administrators
+                <ul>
+                    <li>
+                        Windows: %USER%\.upack
+                    </li>
+                    <li>
+                        Linux: ~/.upack
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Custom registry; a location with a different location and potentially different privileges
+            </li>
+        </ul>
+    </p>
+    <h2 id="implementation-upack">Implementation: upack.exe</h2>
+    <p>
+        The upack tool (upack.exe on windows) will interact with a server’s machine-level Universal Package Registry in two ways.
+    </p>
+    <p>
+        The upack “install” command writes to the machine’s package registry, unless the --unregistered flag is specified; the user can specify a reason with the --comment option, or choose the user’s registry with the --user option.
+    </p>
+    <p>
+        The upack “list” command displays the currently registered package names and version numbers in the machine’s package registry. If the --user option is specified, the user registry is queried instead.
+    </p>
+    <h2 id="implementaion-otter">Implementation: Otter</h2>
+    <p>
+        Otter has three different operations that interact with a server’s machine-level Universal Package Registry. These describe the default behavior, and new behaviors may be added based on demand (such as utilizing package caching):
+        <ul>
+            <li>
+                Collect-InstalledPackages – queries the machine package registry to report on the installed packages
+            </li>
+            <li>
+                Get-Package – this will download a universal package from a universal feed and install it to the specified directory; the package registry’s metadata will then be updated
+            </li>
+            <li>
+                Ensure-Package – this will compare the files on disk with the contents of a universal package in a universal feed and, if they are different, perform the steps that a Get-Package operation will do
+            </li>
+        </ul>
+    </p>
+    <h2 id="implementation-buildmaster">Implementation: BuildMaster</h2>
+    <p>
+        BuildMaster has the same Ensure-Package and Get-Package operations as Otter. 
+    </p>
+    <h2 id="example">Example installedPackages.json Specification</h2>
+    <p>
+        <code>
+            [
+                {
+                    "name": "full/package/name",
+                    "version": "1.0.0",
+                    "path": "C:\\hdars"
+                },
+                {
+                    "name": "hdars1000",
+                    "version": "1.0.1",
+                    "path": "C:\\hdars1000"
+                }
+            ]
+
+        </code>
+    </p>
+
+
+
+
+
+
+</body>
+</html>

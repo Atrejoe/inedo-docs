@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Issue Tracking - Add Comment to Issues</title>
+  <meta name="keywords" content="buildmaster, operations, issue-tracking" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Add Comment to Issues</h2>
+  <p>Writes a comment to all issues of the current release, optionally filtering by issue status.</p>
+  <h4>Script usage:</h4><pre>Add-Issue-Comment(
+	Text: &lt;text&gt;,
+	[InStatus: &lt;text&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Issues::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Comment text</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Text</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Status filter</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>InStatus</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# adds a comment containing the deployed version number to closed issues
+Add-Issue-Comment(
+    Text: Deployed with BuildMaster, version: $ReleaseNumber.$PackageNumber,
+    Status: Closed
+);
+</pre>
+</div>
+</body>
+</html>

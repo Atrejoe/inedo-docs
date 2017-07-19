@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Files - Create Zip File</title>
+  <meta name="keywords" content="buildmaster, operations, files" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Create Zip File</h2>
+  <p>Creates a zip file on a server.</p>
+  <h4>Script usage:</h4><pre>Create-ZipFile(
+	Name: &lt;text&gt;,
+	Directory: &lt;text&gt;,
+	[Overwrite: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Files::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Zip file name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Source directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Directory</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Overwrite</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Overwrite</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <div class="see-also">
+    <h4>See also:</h4>
+    <ul>
+      <li>
+        <a href="../files/extract-zip-file">Extract Zip File</a>
+      </li>
+    </ul>
+  </div>
+  <h4>Example:</h4><pre>
+# zip all log files and place them in the backup directory
+Create-ZipFile(
+    Name: E:\backup\logs.$Date(&quot;yyyyMMdd-hhmmss&quot;).zip,
+    Directory: E:\site\logs
+);
+</pre>
+</div>
+</body>
+</html>

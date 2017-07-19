@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Windows - XDT Transform</title>
+  <meta name="keywords" content="buildmaster, operations, windows" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>XDT Transform</h2>
+  <p>Performs an XDT transform on a configuration file.</p>
+  <h4>Script usage:</h4><pre>XDT-Transform(
+	SourceFile: &lt;text&gt;,
+	TransformFile: &lt;text&gt;,
+	[DestinationFile: &lt;text&gt;],
+	[PreserveWhitespace: &lt;true/false&gt;],
+	[Verbose: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Windows::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Source file</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>SourceFile</pre>
+      </td>
+      <td>
+        <span>The source file the transform is applied to.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Transform file</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>TransformFile</pre>
+      </td>
+      <td>
+        <span>The XDT file used to transform the configuration file.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Destination file</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>DestinationFile</pre>
+      </td>
+      <td>
+        <span>The file path for the result of the transform. If not specified, the source file will be used.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Preserve whitespace</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>PreserveWhitespace</pre>
+      </td>
+      <td>
+        <span>Indicates whether whitespace should be preserved in the destination file.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Verbose</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Verbose</pre>
+      </td>
+      <td>
+        <span>When set to true, the operation will write to the logs more aggressively than normal. The default is false.</span>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

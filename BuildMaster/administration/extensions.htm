@@ -1,0 +1,66 @@
+﻿<html>
+  <head>
+    <title>Extensions</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster" />
+      <meta name="subtitle" content="BuildMaster Extensions" />
+  </head>
+  <body>
+      <p>
+          Although you can already do <em>anything</em> in BuildMaster with <a href="../global-components/powershell-and-shell">scripts</a>
+          and the other tightly-integrated <a href="../global-components/powershell-and-shell">Powershell/shell features</a>, you can also
+          build a <em>BuildMaster Extension</em> to add additional components and functionality into your BuildMaster Installation.
+      </p>
+
+      <p>
+          A lot of BuildMaster's functionality is delivered through built-in extensions, and you can add several types of
+          components by simply <a href="/support/tutorials/writing-a-simple-operation-using-the-buildmaster-sdk">creating an extension</a>
+          that's built against the <a href="/support/sdk-reference/buildmaster">BuildMaster SDK</a>. Here's what you can extend:
+      </p>
+
+      <ul>
+          <li><b>Operations</b> - used in plans to perform tasks against a server</li>
+          <li><b>Variable Functions</b> - used in plans to provide or manipulate values</li>
+          <li><b>User Directories</b> - authentication and privileges</li>
+          <li><b>Source Control Provider</b> - interface to an external SCM system like Git, SVN, TFS, etc</li>
+          <li><b>Issue Tracking Connection</b> - interface to an external issue tracking system like JIRA</li>
+          <li><b>Database Connection</b> - interface to an external database such as SQL Server, Oracle</li>
+          <li><b>Event Listener</b> - code triggered in response to a certain event, such as deployment complete</li>
+          <li><b>Promotion Requirement</b> - an automated approval on a gate</li>
+      </ul>
+
+
+      <h2 id="installation">Installing an Extension</h2>
+      <p>
+          If your installation of BuildMaster can access inedo.com, simply navigate to Admin &gt; Extensions, and
+          install or update extensions from the gallery. 
+      </p>
+      <h3>Installing an Extension Manually</h3>
+      <p>Custom extensions, or extensions manually downloaded from inedo.com can be installed as follows:</p>
+      <ol>
+          <li>
+              Copy the extension file (for example, <strong>Subversion.bmx</strong>) to
+              the Extension Library path (by default, this is
+              <strong>C:\BuildMaster\Extensions</strong>).
+          </li>
+          <li>
+              Restart the BuildMaster Service (Admin &gt; Service).
+          </li>
+          <li>
+              Restart the BuildMaster Web Application (Admin &gt; All Settings &gt; Save).
+          </li>
+          <li>
+              Verify that the new extension has been loaded (Admin &gt; Extensions)
+          </li>
+      </ol>
+
+      <h2 id="configurers">Legacy Extension Configurers</h2>
+      <p>
+          Legacy plan actions utilize an extension's <i>configuration profiles</i>; most extensions do not require any additional configuration, and
+          most extensions that do require configuration use sensible defaults for their configuration settings, some extensions simply cannot (i.e. they require credentials to interface with a third-party tool). 
+      </p>
+      <p>
+          Operations do not use configuration profiles, but instead have variables that can be overridden at any level.
+      </p>
+    </body>
+</html>

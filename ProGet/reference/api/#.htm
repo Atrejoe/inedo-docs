@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ProGet API Endpoints &amp; Methods</title>
+    <meta name="subtitle" content="ProGet API Reference" />
+    <meta name="keywords" content="proget,api" />
+    <style type="text/css">
+        th {
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        As a Universal Package Manager, ProGet offers APIs for all of the different feed types. But there are also API endpoints that help you 
+        automate and ProGet itself.
+    </p>
+    
+
+    <h2 id="feed-specific">Feed-specific APIs</h2>
+    <p>
+        With the exception of the <a href="universal-feed-api-and-package-format">Universal Feed API</a>, the documentation for feed-specific APIs
+        (such as NuGet, npm, etc) is generally found within that product's documentation. We attempt to implement their API as documented and -- more often than not--
+        as undocumented.
+    </p>
+
+    <div>
+        <h2 id="management-apis">ProGet Management APIs</h2>
+        <p>
+            As we are with the <a href="/support/documentation/otter/reference/api">Otter APIs</a> and <a href="/support/documentation/buildmaster/reference/api">BuildMaster APIs</a>,
+            we will continue to add simpler endpoints to ProGet that will be easier to consume than the Native API.
+        </p>
+        <ul>
+            <li><a href="api/package-promotion"><b>Package Promotion</b></a> - query promotions and promote packages between feeds</li>
+            <li class="upcoming"><b>Security Management</b> - users, groups, directories, and permissions</li>
+            <li class="upcoming"><b>Feed Configuration</b> - create and configure feeds</li>
+        </ul>
+        <p>
+            If you have any interest in these or ideas for others, please <a href="/contact">let us know</a>.
+        </p>
+    </div>
+
+    <h2 id="native-api">ProGet Native API</h2>
+    <p>
+        The ProGet Native API is a lower-level API that's designed to automate installation and management of a ProGet instance. It's not terribly intuitive,
+        but its documented here: <a href="api/native">ProGet Native API Reference</a>
+    </p>
+
+</body>
+</html>

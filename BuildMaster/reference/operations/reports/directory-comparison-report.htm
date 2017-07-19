@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Reports - Directory Comparison Report</title>
+  <meta name="keywords" content="buildmaster, operations, reports" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Directory Comparison Report</h2>
+  <p>Compares the contents of two directories and generates a diff report.</p>
+  <h4>Script usage:</h4><pre>Compare-Directories(
+	From: &lt;text&gt;,
+	To: &lt;text&gt;,
+	[IncludeUnchanged: &lt;true/false&gt;],
+	Name: &lt;text&gt;
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Reports::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Previous directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>From</pre>
+      </td>
+      <td>
+        <span>The "reference" or "from" directory containing the initial state of the files and subdirectories.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Current directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>To</pre>
+      </td>
+      <td>
+        <span>The "to" directory containing the final state of the files and subdirectories.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Include unchanged</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>IncludeUnchanged</pre>
+      </td>
+      <td>
+        <span>Whether to include unchanged files and directories in report.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Report name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

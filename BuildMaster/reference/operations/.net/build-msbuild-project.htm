@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>.net - Build MSBuild Project</title>
+  <meta name="keywords" content="buildmaster, operations, .net" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Build MSBuild Project</h2>
+  <p>Builds a project or solution using MSBuild.</p>
+  <h4>Script usage:</h4><pre>MSBuild::Build-Project(
+	ProjectFile: &lt;text&gt;,
+	[Configuration: &lt;text&gt;],
+	[Platform: &lt;text&gt;],
+	[MSBuildProperties: &lt;@(text)&gt;],
+	[Arguments: &lt;text&gt;],
+	[MSBuildToolsPath: &lt;text&gt;],
+	[To: &lt;text&gt;]
+);
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Project file</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ProjectFile</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Configuration</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Configuration</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Target platform</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Platform</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>MSBuild properties</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>MSBuildProperties</pre>
+      </td>
+      <td>
+        <span>Additional properties to pass to MSBuild, formatted as key=value pairs.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Additional arguments</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Arguments</pre>
+      </td>
+      <td>
+        <span>Raw command line arguments to pass to MSBuild.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>MSBuild tools path</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>MSBuildToolsPath</pre>
+      </td>
+      <td>
+        <span>Full path of the directory containing the MSBuild tools to use. This is usually similar to C:\Program Files (x86)\MSBuild\14.0\Bin.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Target directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>To</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

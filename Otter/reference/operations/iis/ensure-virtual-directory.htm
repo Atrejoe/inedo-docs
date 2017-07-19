@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>iis - Ensure Virtual Directory</title>
+  <meta name="keywords" content="otter, operations, iis,sites" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Ensure Virtual Directory</h2>
+  <p>Ensures the existence of a virtual directory within an IIS site.</p>
+  <h4>Operation type:</h4>
+  <p>Ensuring - this operation will ensure a specified configuration exists on a remote server after comparing its current state to the desired state.</p>
+  <h4>Script usage:</h4><pre>IIS::Ensure-VirtualDirectory(
+	Site: &lt;text&gt;,
+	Path: &lt;text&gt;,
+	[PhysicalPath: &lt;text&gt;],
+	[LogonMethod: &lt;integer&gt;],
+	[Credentials: &lt;text&gt;],
+	[UserName: &lt;text&gt;],
+	[Password: &lt;text&gt;],
+	[Exists: &lt;true/false&gt;]
+);
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>&#128273; </span>
+        <span>☆ </span>
+        <span>Site name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Site</pre>
+      </td>
+      <td>
+        <span>The name of this site where the virtual directory would exist</span>
+        <span> This argument is the unique key for this operation, which means it must uniquely identify the target of the operation.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>&#128273; </span>
+        <span>☆ </span>
+        <span>Virtual path</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Path</pre>
+      </td>
+      <td>
+        <span>The relative URL of the path, such as /hdars</span>
+        <span> This argument is the unique key for this operation, which means it must uniquely identify the target of the operation.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Physical path</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>PhysicalPath</pre>
+      </td>
+      <td>
+        <span>Physical path to the content for the virtual directory, such as c:\hdars.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Logon method</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>LogonMethod</pre>
+      </td>
+      <td>
+        <span>Specifies the type of the logon operation to perform when calling LogonUser to acquire the user token impersonated to access the physical path for the virtual directory.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Otter credentials</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Credentials</pre>
+      </td>
+      <td>
+        <span>The Otter credential name to be impersonated when accessing the physical path for the virtual directory. If a credential name is specified, the username and password fields will be ignored.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>User name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>UserName</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Password</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Password</pre>
+      </td>
+      <td>
+        <span>Physical path to the content for the virtual directory, such as c:\hdars.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exists</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Exists</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <div class="see-also">
+    <h4>See also:</h4>
+    <ul>
+      <li>
+        <a href="../iis/ensure-site">Ensure Site</a>
+      </li>
+    </ul>
+  </div>
+  <h4>Example:</h4><pre>
+# ensures that the hdars virtual directory pool is present on the web server
+IIS::Ensure-VirtualDirectory(
+    Site: Hdars,
+    Path: /hdars,
+    PhysicalPath: C:\hdars
+);
+</pre>
+</div>
+</body>
+</html>

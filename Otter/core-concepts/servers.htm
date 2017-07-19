@@ -1,0 +1,136 @@
+﻿<html>
+<head>
+    <title>Servers</title>
+    <meta name="subtitle" content="Servers in Otter" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,servers" />
+    <meta name="sequence" content="100" />
+</head>
+<body>
+	<p>
+		Servers are the core of your infrastructure, and managing configuration and orchestration is key in modern, scalable environments. 
+        Otter's powerful <a href="/support/documentation/otter/execution-engine/overview">Execution Engine</a> enables easy automation of the 
+        complexities of modern infrastructure. The intuitive User Interface in Otter provides widespread visibility without compromising 
+        enterprise security.
+	</p>
+    
+    <p>
+        A server in Otter can represent a physical (bare metal), virtual server, a container, or even a nonexistant server 
+        (one that you will provision later).
+    </p>
+    <p>
+        Otter communicates with Windows servers using the <a href="/support/documentation/otter/administration/agents">Otter Agent</a>, and Linux/*nix
+        servers using <a href="/support/documentation/otter/administration/agents">Optimized SSH Connections</a>.
+    </p>
+	<p>
+		Otter also has the built in capability to spin up thousands of virtual servers quickly, easily, and reliably, giving teams and enterprises the 
+        ability to scale when needed or demand requires it.
+	</p>
+    <h2 id="manage-configuration">Managing Configuration</h2>
+	<p>
+		Generally speaking configuration describes the packages, settings, files, or anything thing else that is on a server. With Otter, you
+        create <a href="/support/documentation/otter/core-concepts/plans">Configuration Plans</a> to describe the desired state of configuration and/or 
+        the specific steps needed to ensure that state. 
+	</p>
+	<p>
+        For example, you would use <a href="/support/documentation/otter/reference/operations/iis/ensure-app-pool">Ensure-AppPool</a> to describe
+        and provision an Application Pool in IIS, along with any number of the three dozen settings application pools can have.
+	</p>
+	<p>
+		<img  class="screenshot" src="/resources/documentation/otter/servers-iis.png" alt="IIS App Pool Settings" />
+	</p>
+	
+	<p>
+		Configuration plans can be defined on an individual server, or may be shared among any number of servers using a
+        <a href="/support/documentation/otter/modeling-infrastructure/server-roles">Server Role</a>.
+	</p>
+	
+	<h2 id="drift">Configuration Drift</h2>
+	
+    <p>
+        When a server's actual configuration is different than the  <a href="/support/documentation/otter/core-concepts/plans">Planned Configuration</a>, 
+        then it's considered in drift. Sometimes this is expected because you changed the plan, and sometimes it's not, for example if someone manually made a change on the server.
+	</p>
+
+    <p>
+        <img class="screenshot" src="/resources/documentation/otter/servers-drift.png" alt="Servers in Drift" />
+    </p>	
+	<p>
+		Otter continuously monitors your servers for configuration drift and can either:
+    </p>
+    <ul>
+        <li>Only Report Drift: noting specifically which items differ from the desired state; or</li>
+        <li>Automatically Remediate Drift: by bringing the server to the desired configuration state</li>
+    </ul>
+    <p>This option is configurable per server, and monitoring can be set at specific intervals, determined by your infrastructure priority.</p>
+    <p>
+        <img  class="screenshot" src="/resources/documentation/otter/servers-iis-drift.png" alt="IIS App Pool Settings drifted" />
+    </p>
+	
+	<p>
+		When report only is configured, you can schedule a <a href="jobs">Configuration Job</a> to run immediately or for some time in the future. 
+	</p>
+	<p>
+		You can even run a configuration job as a simulation, so that no changes are made to the drifted server, but a log is created with changes that 
+        <em>would</em> have been made. This is often a must-have for complex, or multi-role configurations to assist in testing.
+	</p>
+    <h2 id="server-packages"> Server Packages</h2>
+    <p>
+        Beginning with Otter 1.6, users can now utilize the Server Packages feature. With Server Packages, Otter can be configured to collect information about the Chocolatey, PowerShell, and Universal Packages that are installed on any given server. This way users can avoid the error prone manual process of logging into servers to view configurations and installed packages.
+    </p>
+   
+    <p>
+        Navigating to the <em>Packages Tab</em>, users will be prompted to configure server package collection. 
+    </p>
+    <img class="screenshot" src="/resources/documentation/otter/collect-configure.png" alt="Configure server package collection" />
+  <p>
+      When configured, Otter will regularly collect information about what is installed and display it in an easy-to-read report. 
+
+      </p>
+    <img class="screenshot" src="/resources/documentation/otter/server-packages.png" alt="Server packages report" />
+     
+    <p>
+        Server Packages is an extensible feature and can be customized to collect information such as:
+
+        <ul>
+    <li>MSIs installed on a Windows server</li>
+    <li>Packages installed on a Linux server</li>
+    <li>Docker containers present on a server</li>
+    <li>Almost any additional server info you might need</li>
+</ul>
+    </p>
+	
+<!-- Moing to Admin/servers	
+    <h2>Identifying Servers</h2>
+    <p>
+        Servers are uniquely identified by both their <b>name</b> and their <b>server id</b>. The
+        <b>name</b> should be used in plans whenever possible, and the <b>server id</b> should be 
+        used only when interacting with the Otter API.
+        The name can be changed at any time, and the server id is automatically assigned when a 
+        server is added to Otter, and it cannot be changed.
+    </p>
+    <p>
+        A server's name is used only for display and identification purposes, and doesn't necessarily
+        need to be the same as the DNS hostname. 
+    </p>
+    <h2>Server Status</h2>
+    <p>
+        Otter periodically checks the status of <b>Active</b> servers. 
+    </p>
+    <ul>
+        <li class="upcoming"><b>Offline</b> - the virtualization host indicated the server is turned off or otherwise
+        unavailable</li>
+        <li><b>Error</b> - Otter is unable to communicate with the server, or an error occured during
+        communication </li>
+        <li><b>Agent Outdated</b> - the installed agent and/or extensions need to be updated; this 
+        update will typically will happen automatically</li>
+        <li><b>Configuration Drifted</b> - the configuration defined for the server (whether directly, or through its roles) is different than the actual configuration</li>
+        <li><b>Ready</b> - the server is up to date</li>
+    </ul>
+    <p class="upcoming">
+        You can set a server to be <b>Inactive</b>, and disable this checking.
+    </p>
+	
+-->
+</body>
+</html>

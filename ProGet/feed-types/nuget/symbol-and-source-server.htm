@@ -1,0 +1,45 @@
+﻿<html>
+  <head>
+    <title>Symbol and Source Server</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, feeds, packages, symbols, source" />
+    <meta name="sequence" content="30" />
+  </head>
+  <body>
+    <h2>Symbol and Source Server</h2>
+    <p>
+		A ProGet Feed may be configured as a Symbol/Source server compatible with
+		debuggers such as Visual Studio and WinDbg.
+	</p>
+
+    <h3 id="access">Accessing Symbols</h3>
+    <p>
+		When the Symbol Server is enabled, any symbols files stored in local
+		Feed packages will be accessible via the symbol server URL:<br />
+		<blockquote><strong>http://proget/symbols/&lt;Feed&gt;</strong></blockquote>
+	</p>
+
+	<h3 id="packages">Symbol Packages</h3>
+	<p>
+		ProGet supports using NuGet symbol packages built with the <b>-Symbols</b>
+		argument. These symbol packages are nothing more than a standard NuGet package
+		with .pdb files and possibly source files included, and they have a
+		<i>.symbols.nupkg</i> file extension by convention. NuGet produces two packages
+		(one with symbols and one without) because one is intended to be pushed to
+		NuGet.org, while the other is intended to be pushed to a symbol feed.
+	</p>
+	<p>
+		Because ProGet integrates symbols in all of its NuGet feeds, having two packages
+		is not necessary and can actually be counterproductive. Symbol packages only
+		differ from "normal" packages by convention, so attempting to push both to a
+		ProGet feed will result in a race condition - whichever package is pushed
+		"last" will overwrite the original one.
+	</p>
+	<p>
+		To summarize, <b>push only the symbol package to your ProGet feed if you
+		intend to use the symbol server</b>. To prevent symbols from being downloaded
+		with the NuGet package, see the <i>Automatically Strip PDB files</i> option
+		on the NuGet feed configuration page.
+	</p>
+  </body>
+</html>

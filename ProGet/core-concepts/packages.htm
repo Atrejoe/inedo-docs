@@ -1,0 +1,51 @@
+﻿<html>
+  <head>
+	<title>Packages</title>
+	<meta name="subtitle" content="Packages in ProGet" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta name="sequence" content="100" />
+	<meta name="keywords" content="proget,packages" />
+  </head>
+  <body>
+	<p>
+		A <em>package</em> is a uniquely-indentified container that is
+		stored in and organized by a <em>feed</em>. ProGet manages packages from
+		many different types of feeds; at a minimum, all packages have a unique name,
+		and most also have versions.
+	</p>
+	<p>
+		There are many benefits to hosting packages in ProGet in your organization:
+	</p>
+	<ul>
+		<li>Regulate and standardize how packages are used.</li>
+		<li>Cache packages from external repositories to increase productivity and reduce downtime.</li>
+		<li>Simplify backup and deployment by keeping important assets in one place.</li>
+	</ul>
+	<div><img class="screenshot" alt="Package" src="/proget/4.0/progetpackages.png" /></div>
+
+	<p>
+		With ProGet, you can easily vet your external third party packages to ensure that they meet
+		enterprise security standards, making them available right alongside your in-house packages.
+		Using <a href="/support/documentation/proget/core-concepts/connectors">connectors</a>, you can
+		transparently connect to (or cache) external repositories, and optionally filter packages.
+	</p>
+
+	<h2 id="package-promotion">Package Promotion</h2>
+	<p>
+		Packages can be <em>promoted</em> from one feed to another. This is useful for maintaining
+		feeds with separate levels of quality (such as Development, Production, etc), and also to
+		easily curate selected packaged from an external source to an approved repository.
+		Check out our <a href="https://www.youtube.com/watch?v=0uVDUt0wMjM">Promote Packages with ProGet</a>
+		video for a quick look at some of the ways to use Package Promotion.
+	</p>
+	<div><img class="screenshot" alt="Promoted Package" src="/resources/documentation/proget/package-promotion.png"/></div>
+
+	<h2 id="deployment-records">Deployment Records</h2>
+	<p>
+		When a package is deployed from a feed using a tool (such as <a href="/buildmaster">BuildMaster</a>),
+		ProGet records information about that deployment, such as the target and the user that
+		performed the deployment.
+	</p>
+	<div><img class="screenshot" alt="Deployment Records" src="/resources/documentation/proget/deployment-record.png" /></div>
+  </body>
+</html>

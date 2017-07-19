@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Artifacts - Create Artifact</title>
+  <meta name="keywords" content="buildmaster, operations, artifacts" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Create Artifact</h2>
+  <p>Collects all of the files in a directory, compresses them in a zip file, and saves it to the artifact library.</p>
+  <h4>Script usage:</h4><pre>Create-Artifact(
+	Name: &lt;text&gt;,
+	[From: &lt;text&gt;],
+	[Include: &lt;@(text)&gt;],
+	[Exclude: &lt;@(text)&gt;],
+	[Deployable: &lt;text&gt;],
+	[Verbose: &lt;true/false&gt;],
+	[IgnoreEmptyArtifact: &lt;true/false&gt;],
+	[Overwrite: &lt;true/false&gt;],
+	[UseLegacyStoragePath: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Core::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Artifact name</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>From directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>From</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Include files</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Include</pre>
+      </td>
+      <td>
+        <span>See <a href="http://inedo.com/support/kb/1119" target="_blank">KB#1119</a> to learn more about masking syntax.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exclude files</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Exclude</pre>
+      </td>
+      <td>
+        <span>See <a href="http://inedo.com/support/kb/1119" target="_blank">KB#1119</a> to learn more about masking syntax.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Deployable name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Deployable</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Verbose logging</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Verbose</pre>
+      </td>
+      <td>
+        <span>Log each file captured</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Ignore empty artifact</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>IgnoreEmptyArtifact</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Overwrite</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Overwrite</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Use legacy storage path</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>UseLegacyStoragePath</pre>
+      </td>
+      <td>
+        <span>See <a href="inedo.com/support/kb/1133#legacy-storage-paths">KB#1133</a> for information about legacy paths.</span>
+      </td>
+    </tr>
+  </table>
+  <p class="info">
+    <b>Note: </b>When a deployable name is specified, the created artifact will be associated with that deployable; this is particularly useful when using imported deployables, or if you need to use the same artifact name or multiple deployables.</p>
+</div>
+</body>
+</html>

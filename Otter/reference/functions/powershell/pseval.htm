@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>PowerShell - PSEval</title>
+  <meta name="keywords" content="otter, functions, powershell" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>PSEval</h2>
+  <p>Returns the result of a PowerShell script.</p>
+  <h4>Script usage:</h4>
+  <pre>PSEval(ScriptText)</pre>
+  <h4>Parameters:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>ScriptText</span>
+      </td>
+      <td>
+        <span>The PowerShell script to execute. This should be an expression.</span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# set the $NextYear variable to the value of... next year
+set $PowershellScript = &gt;&gt;
+(Get-Date).year + 1
+&gt;&gt;;
+
+set $NextYear = $PSEval($PowershellScript);
+
+Log-Information $NextYear;
+</pre>
+</div>
+</body>
+</html>

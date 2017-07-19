@@ -1,0 +1,68 @@
+﻿<html>
+  <head>
+	<title>Feeds</title>
+	<meta name="subtitle" content="Feeds in ProGet" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta name="sequence" content="150" />
+	<meta name="keywords" content="proget,feeds" />
+  </head>
+  <body>
+	<p>
+		A <em>feed</em> is a uniquely-named repository in ProGet that contains
+		<a href="/support/documentation/proget/core-concepts/packages">packages</a>.
+		Each feed in ProGet is its own isolated repository, and can have its own
+		configuration and scoped security privileges.
+	</p>
+
+	<h2 id="feed-type">Feed Type</h2>
+	<p>
+		The <em>type</em> of a feed defines the type of package that it will contain.
+		A NuGet feed, for example, will only ever store NuGet packages, and an npm feed
+		will only ever store npm packages.
+	</p>
+	<p>
+		Each feed type will have its own API and endpoint URL for native clients to connect
+		to. Since package management systems vary, each feed type will generally also have
+		its own rules about naming and versioning.
+	</p>
+	<p>
+		See the specific feed type documentation for more information about how ProGet
+		implements certain types of feeds.
+	</p>
+
+	<h2 id="feed-dashboard">Feed Dashboard</h2>
+	<p>
+		The feed management page shows a small dashboard with all current feed configuration,
+		and a few graphs showing largest packages and package cache usage. These can be useful
+		for setting up <a href="/support/documentation/proget/storage/retention-policies">retention policies</a>.
+	</p>
+
+	<h2 id="feed-settings">Feed Settings</h2>
+	<p>
+		Most feed types share some common configuration settings:
+	</p>
+	<ul>
+		<li><strong>Name -</strong> Uniquely identifies the feed within ProGet. It is strongly encouraged to keep this name URL-friendly to make configuration with third-party clients easier.</li>
+		<li><strong>Description -</strong> User-provided text that is displayed within the ProGet software when browsing the feed.</li>
+		<li><strong>Caching -</strong> Determines whether <a href="/support/documentation/proget/core-concepts/connectors#connector-caching">connector package caching</a> is enabled.</li>
+		<li><strong>Disk Path -</strong> Specifies the physical disk path where packages are stored (when using the default package store).</li>
+		<li><strong>Package Store -</strong> Specifies the storage mechanism for packages. The default store uses a disk path; S3 and Azure stores are included as extensions.</li>
+		<li><strong>Drop Path -</strong> A file system directory that ProGet will periodically scan for packages, and move them to the feed if they are valid.</li>
+	</ul>
+
+	<h2 id="feed-deactivation">Deleting a Feed</h2>
+	<p>
+		A feed can either be deactivated or deleted. Deactivating a feed will make it invisible
+		from most of the user interface, and inaccessible from API endpoints.
+	</p>
+	<p>
+		Deleting a feed will remove it entirely from the software. All package data indexed in the
+		database will be deleted, as well as metadata not stored in the package itself, such as
+		publish dates and download counts for each package.
+	</p>
+	<p>
+		Packages themselves are <em>not</em> deleted when deleting a feed. If you would like to delete
+		them, make note of the feed disk path and delete them manually after deleting the feed.
+	</p>
+  </body>
+</html>

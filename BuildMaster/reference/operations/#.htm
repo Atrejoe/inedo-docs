@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Built-in Operations</title>
+  <meta name="display-child-topics" content="false" />
+  <meta name="keywords" content="buildmaster, operations" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div class="extensible-items-container">
+  <h2 id=".net">.net</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/.net/build-msbuild-project" title="Build MSBuild Project">Build MSBuild Project</a>
+       - 
+      <span>Builds a project or solution using MSBuild.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/.net/write-assembly-versions" title="Write Assembly Versions">Write Assembly Versions</a>
+       - 
+      <span>Updates AssemblyVersion, AssemblyFileVersion, and AssemblyInformationalVersion Attributes (in AssemblyInfo source files).</span>
+    </li>
+  </ul>
+  <h2 id="Artifacts">Artifacts</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/artifacts/create-artifact" title="Create Artifact">Create Artifact</a>
+       - 
+      <span>Collects all of the files in a directory, compresses them in a zip file, and saves it to the artifact library.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/artifacts/deploy-artifact" title="Deploy Artifact">Deploy Artifact</a>
+       - 
+      <span>Retrieves the specified artifact from the artifact library and deploys it to a directory.</span>
+    </li>
+  </ul>
+  <h2 id="BuildMaster">BuildMaster</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/buildmaster/create-release" title="Create Release">Create Release</a>
+       - 
+      <span>Creates a release in another application.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/buildmaster/create-release-note" title="Create Release Note">Create Release Note</a>
+       - 
+      <span>Attaches a release note to the current release.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/buildmaster/create-release-package" title="Create Release Package">Create Release Package</a>
+       - 
+      <span>Creates a new release package in BuildMaster of an application, and optionally waits for it to complete.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/buildmaster/deploy-release-package" title="Deploy Release Package">Deploy Release Package</a>
+       - 
+      <span>Deploys a package in BuildMaster of an application, and optionally waits for it to complete.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/buildmaster/manual-operation" title="Manual Operation">Manual Operation</a>
+       - 
+      <span>Halts the execution until an individual or group completes a specified task.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/buildmaster/set-release-package-number" title="Set Release Package Number">Set Release Package Number</a>
+       - 
+      <span>Sets the release package number of the currently executing release package.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/buildmaster/set-release-variable" title="Set Release Variable">Set Release Variable</a>
+       - 
+      <span>Creates or updates a variable on a release or package.</span>
+    </li>
+  </ul>
+  <h2 id="Configuration Files">Configuration Files</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/configuration-files/deploy-configuration-file" title="Deploy Configuration File">Deploy Configuration File</a>
+       - 
+      <span>Deploys an instance of a configuration file to disk after applying an optional template.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/configuration-files/export-configuration-file" title="Export Configuration File">Export Configuration File</a>
+       - 
+      <span>Exports a configuration file instance or template to disk without recording a deployment or replacing variables.</span>
+    </li>
+  </ul>
+  <h2 id="Databases">Databases</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/databases/backup-database" title="Backup Database">Backup Database</a>
+       - 
+      <span>Uses a Database Connection to back up a database to a file on disk.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/databases/build-database-updater-executable" title="Build Database Updater Executable">Build Database Updater Executable</a>
+       - 
+      <span>Generates an executable file that can act as a self-installing package of database change scripts.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/databases/execute-database-change-scripts" title="Execute Database Change Scripts">Execute Database Change Scripts</a>
+       - 
+      <span>Executes change scripts associated with the current release and any change scripts from prior releases that have not been run against the database to date.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/databases/execute-database-scripts-on-disk" title="Execute Database Scripts on Disk">Execute Database Scripts on Disk</a>
+       - 
+      <span>Finds files matching a search mask and executes those scripts against a database connection.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/databases/execute-database-statement" title="Execute Database Statement">Execute Database Statement</a>
+       - 
+      <span>Executes a statement against a database.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/databases/restore-database" title="Restore Database">Restore Database</a>
+       - 
+      <span>Uses a Database Connection to restore a database from a file on disk.</span>
+    </li>
+  </ul>
+  <h2 id="Email">Email</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/email/send-email" title="Send Email">Send Email</a>
+       - 
+      <span>Sends an email message.</span>
+    </li>
+  </ul>
+  <h2 id="Files">Files</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/files/concatenate-files" title="Concatenate Files">Concatenate Files</a>
+       - 
+      <span>Concatenates files on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/copy-files" title="Copy Files">Copy Files</a>
+       - 
+      <span>Copies files on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/create-file" title="Create File">Create File</a>
+       - 
+      <span>Creates a file on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/create-zip-file" title="Create Zip File">Create Zip File</a>
+       - 
+      <span>Creates a zip file on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/delete-files" title="Delete Files">Delete Files</a>
+       - 
+      <span>Deletes files on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/ensure-directory" title="Ensure Directory">Ensure Directory</a>
+       - 
+      <span>Ensures the existence of a directory on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/ensure-file" title="Ensure File">Ensure File</a>
+       - 
+      <span>Ensures the existence of a file on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/extract-zip-file" title="Extract Zip File">Extract Zip File</a>
+       - 
+      <span>Extracts a zip file on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/generate-release-notes" title="Generate Release Notes">Generate Release Notes</a>
+       - 
+      <span>Generates an HTML file containing the BuildMaster release notes and/or issues from the application&#39;s issue tracking provider.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/rename-file" title="Rename File">Rename File</a>
+       - 
+      <span>Renames a file on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/search/replace-file-contents" title="Search/Replace File Contents">Search/Replace File Contents</a>
+       - 
+      <span>Searches a text file for a specified string and replaces it.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/set-file-attributes" title="Set File Attributes">Set File Attributes</a>
+       - 
+      <span>Sets or clears attributes on matching files.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/files/transfer-files" title="Transfer Files">Transfer Files</a>
+       - 
+      <span>Copies files from a directory on a source server to a directory on a target server.</span>
+    </li>
+  </ul>
+  <h2 id="General">General</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/general/execute-process" title="Execute Process">Execute Process</a>
+       - 
+      <span>Executes a process, logs its output, and waits until it exits.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/general/execute-shell-script" title="Execute Shell Script">Execute Shell Script</a>
+       - 
+      <span>Executes a specified shell script.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/general/shcall" title="SHCall">SHCall</a>
+       - 
+      <span>Calls a shell script that is stored as an asset.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/general/sleep" title="Sleep">Sleep</a>
+       - 
+      <span>Halts the execution of operations for the specified number of seconds.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/general/upload-file-to-url" title="Upload File to URL">Upload File to URL</a>
+       - 
+      <span>Uploads a file to a specified URL using an HTTP POST.</span>
+    </li>
+  </ul>
+  <h2 id="HTTP">HTTP</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/http/http-get-request" title="HTTP GET Request">HTTP GET Request</a>
+       - 
+      <span>Executes an HTTP GET, DELETE, or HEAD request against a URL, typically used for RESTful operations.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/http/http-post-to-url" title="HTTP POST to URL">HTTP POST to URL</a>
+       - 
+      <span>Executes an HTTP POST/PUT/PATCH request to a URL, typically used for RESTful operations.</span>
+    </li>
+  </ul>
+  <h2 id="Iis">Iis</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/iis/ensure-app-pool" title="Ensure App Pool">Ensure App Pool</a>
+       - 
+      <span>Ensures the existence of a file on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/iis/ensure-application" title="Ensure Application">Ensure Application</a>
+       - 
+      <span>Ensures the existence of an application within an IIS site.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/iis/ensure-site" title="Ensure Site">Ensure Site</a>
+       - 
+      <span>Ensures the existence of a site on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/iis/ensure-virtual-directory" title="Ensure Virtual Directory">Ensure Virtual Directory</a>
+       - 
+      <span>Ensures the existence of a virtual directory within an IIS site.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/iis/recycle-app-pool" title="Recycle App Pool">Recycle App Pool</a>
+       - 
+      <span>Recycles an application pool.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/iis/start-app-pool" title="Start App Pool">Start App Pool</a>
+       - 
+      <span>Starts an application pool.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/iis/start-site" title="Start Site">Start Site</a>
+       - 
+      <span>Starts an IIS Site.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/iis/stop-app-pool" title="Stop App Pool">Stop App Pool</a>
+       - 
+      <span>Stops an application pool.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/iis/stop-site" title="Stop Site">Stop Site</a>
+       - 
+      <span>Stops an IIS Site.</span>
+    </li>
+  </ul>
+  <h2 id="Issue Tracking">Issue Tracking</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/issue-tracking/add-comment-to-issues" title="Add Comment to Issues">Add Comment to Issues</a>
+       - 
+      <span>Writes a comment to all issues of the current release, optionally filtering by issue status.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/issue-tracking/close-issues" title="Close Issues">Close Issues</a>
+       - 
+      <span>Closes all open issues associated with the current release.</span>
+    </li>
+  </ul>
+  <h2 id="Network">Network</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/network/ensure-hosts-entry" title="Ensure Hosts Entry">Ensure Hosts Entry</a>
+       - 
+      <span>Ensures an entry in the hosts file on a server.</span>
+    </li>
+  </ul>
+  <h2 id="Otter">Otter</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/otter/remediate-drift" title="Remediate Drift">Remediate Drift</a>
+       - 
+      <span>Checks configuration status and if drifted, triggers a remediation job in Otter.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/otter/set-variable-value-in-otter" title="Set Variable Value in Otter">Set Variable Value in Otter</a>
+       - 
+      <span>Creates or assigns a configuration variable in Otter.</span>
+    </li>
+  </ul>
+  <h2 id="Powershell">Powershell</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/powershell/pscall" title="PSCall">PSCall</a>
+       - 
+      <span>Calls a PowerShell Script that is stored as an asset.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/powershell/psexec" title="PSExec">PSExec</a>
+       - 
+      <span>Executes a specified PowerShell script.</span>
+    </li>
+  </ul>
+  <h2 id="Proget">Proget</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/proget/ensure-package" title="Ensure Package">Ensure Package</a>
+       - 
+      <span>Ensures that the contents of a ProGet package are in the specified directory.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/proget/get-package" title="Get Package">Get Package</a>
+       - 
+      <span>Downloads the contents of a ProGet package to a specified directory.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/proget/push-package" title="Push Package">Push Package</a>
+       - 
+      <span>Uploads a zip file containing the contents of a Universal Package to a ProGet feed.</span>
+    </li>
+  </ul>
+  <h2 id="Reports">Reports</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/reports/artifact-comparison-report" title="Artifact Comparison Report">Artifact Comparison Report</a>
+       - 
+      <span>Compares the contents of two artifacts and generates a diff report.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/reports/create-report-from-directory" title="Create Report from Directory">Create Report from Directory</a>
+       - 
+      <span>Captures all files from a directory and stores them in a release package report.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/reports/directory-comparison-report" title="Directory Comparison Report">Directory Comparison Report</a>
+       - 
+      <span>Compares the contents of two directories and generates a diff report.</span>
+    </li>
+  </ul>
+  <h2 id="Servers">Servers</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/servers/acquire-server-operation" title="Acquire Server Operation">Acquire Server Operation</a>
+       - 
+      <span>Acquires a server from a resource pool defined by a server role.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/servers/release-server-operation" title="Release Server Operation">Release Server Operation</a>
+       - 
+      <span>Releases a server from a resource pool if acquired previously in the execution.</span>
+    </li>
+  </ul>
+  <h2 id="Services">Services</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/services/ensure-service" title="Ensure Service">Ensure Service</a>
+       - 
+      <span>Ensures the configuration of a Windows service on a server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/services/start-windows-service" title="Start Windows Service">Start Windows Service</a>
+       - 
+      <span>Starts an existing Windows service.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/services/stop-windows-service" title="Stop Windows Service">Stop Windows Service</a>
+       - 
+      <span>Stops an existing Windows service.</span>
+    </li>
+  </ul>
+  <h2 id="Source Control">Source Control</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/source-control/apply-label" title="Apply Label">Apply Label</a>
+       - 
+      <span>Applies a label to source files in the repository.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/source-control/get-labeled" title="Get Labeled">Get Labeled</a>
+       - 
+      <span>Gets the version of code from a repository with the specified label or tag.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/source-control/get-latest" title="Get Latest">Get Latest</a>
+       - 
+      <span>Gets the latest version of code from a repository.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/source-control/tag" title="Tag">Tag</a>
+       - 
+      <span>Copies a path in Source Control to a tag.</span>
+    </li>
+  </ul>
+  <h2 id="Windows">Windows</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="operations/windows/sign-binary" title="Sign Binary">Sign Binary</a>
+       - 
+      <span>Signs .exe or .dll files using an installed code signing certificate.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="operations/windows/xdt-transform" title="XDT Transform">XDT Transform</a>
+       - 
+      <span>Performs an XDT transform on a configuration file.</span>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

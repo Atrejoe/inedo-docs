@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Powershell - PSExec</title>
+  <meta name="keywords" content="buildmaster, operations, powershell" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>PSExec</h2>
+  <p>Executes a specified PowerShell script.</p>
+  <h4>Script usage:</h4><pre>Execute-PowerShell(
+	Text: &lt;text&gt;,
+	[Debug: &lt;true/false&gt;],
+	[Verbose: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>PowerShell::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Script contents</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Text</pre>
+      </td>
+      <td>
+        <span>The PowerShell script text.</span>
+        <span> Variables are not expanded within the contents of this property.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Capture debug</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Debug</pre>
+      </td>
+      <td>
+        <span>Captures the PowerShell Write-Debug stream into the Otter debug log. The default is false.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Capture verbose</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Verbose</pre>
+      </td>
+      <td>
+        <span>Captures the PowerShell Write-Verbose stream into the Otter debug log. The default is false.</span>
+      </td>
+    </tr>
+  </table>
+  <p class="info">
+    <b>Note: </b>This operation will inject PowerShell variables from the execution engine runtime that match PowerShell variable expressions. This means you won&#39;t get an error if you use an undeclared variable in your script, but some expressions that PowerShell interoplates at runtime (such as a variable inside of a string), cannot be replaced by the operation.</p>
+  <p class="info">
+    <b>Note: </b>If you are attempting to write the results of a Format-* call to the  log, you may see messages similar to &quot;Microsoft.PowerShell.Commands.Internal.Format.FormatEntryData&quot;. To convert this to text, use the Out-String commandlet at the end of your command chain.</p>
+  <h4>Example:</h4><pre>
+# writes the list of services running on the computer to the Otter log
+psexec &gt;&gt;
+    Get-Service | Where-Object {$_.Status -eq &quot;Running&quot;} | Format-Table Name, DisplayName | Out-String
+&gt;&gt;;
+
+# delete all but the latest 3 logs in the log directory, and log any debug/verbose messages to the Otter log
+psexec &gt;&gt;
+    Get-ChildItem &quot;E:\Site\Logs&quot; | Sort-Object $.CreatedDate -descending | Select-Object -skip 3 | Remove-Item
+&gt;&gt; (Verbose: true, Debug: true, RunOnSimulation: false);
+</pre>
+</div>
+</body>
+</html>

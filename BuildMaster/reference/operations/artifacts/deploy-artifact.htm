@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Artifacts - Deploy Artifact</title>
+  <meta name="keywords" content="buildmaster, operations, artifacts" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Deploy Artifact</h2>
+  <p>Retrieves the specified artifact from the artifact library and deploys it to a directory.</p>
+  <h4>Script usage:</h4><pre>Deploy-Artifact(
+	Name: &lt;text&gt;,
+	[To: &lt;text&gt;],
+	[Application: &lt;text&gt;],
+	[Release: &lt;text&gt;],
+	[Package: &lt;text&gt;],
+	[Deployable: &lt;text&gt;],
+	[DeployAsZipFile: &lt;true/false&gt;],
+	[TransferAll: &lt;true/false&gt;],
+	[DoNotClearTarget: &lt;true/false&gt;],
+	[Verbose: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Core::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Artifact name</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>To directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>To</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Application name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Application</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Release number</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Release</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Package number</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Package</pre>
+      </td>
+      <td>
+        <span>Valid values are specific release package numbers, or "furthest" or "latest".</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Deployable name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Deployable</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Deploy as zip</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>DeployAsZipFile</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Transfer all files</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>TransferAll</pre>
+      </td>
+      <td>
+        <span>By default, files will only be transferred if the last modified date or file size has changed. If set to true, all files will be transferred regardless if they have been modified.<br /><br />This value should generally be set to false, except when it would take more time to compare the files than simply transferring and overwriting them all (i.e. the artifact contains thousands of small files).</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Do not clear target</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>DoNotClearTarget</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Verbose logging</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Verbose</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <p class="info">
+    <b>Note: </b>Specifying &quot;latest&quot; as the source package number will attempt to retrieve the artifact from the most recently created package, whereas &quot;furthest&quot; will use the one that has been deployed to the furthest environment in the pipeline.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Servers - Acquire Server Operation</title>
+  <meta name="keywords" content="buildmaster, operations, servers" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Acquire Server Operation</h2>
+  <p>Acquires a server from a resource pool defined by a server role.</p>
+  <h4>Script usage:</h4><pre>Acquire-Server(
+	[Role: &lt;text&gt;],
+	[ServerName: &lt;text&gt;],
+	[Verbose: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Core::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>Server role</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Role</pre>
+      </td>
+      <td>
+        <span>A server role that defines the list of servers to be used as the source of the pool.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>⇒ </span>
+        <span>Server name output</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ServerName</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Log verbose</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Verbose</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre># acquires a server associated with the build-servers role
+Acquire-Server( 
+   Role: build-servers,
+   ServerName =&gt; $AcquiredServerName
+);
+
+for server $AcquiredServerName
+{
+    Log-Information Acquired server: $ServerName;
+}
+</pre>
+</div>
+</body>
+</html>

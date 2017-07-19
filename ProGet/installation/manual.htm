@@ -1,0 +1,109 @@
+﻿<html>
+	<head>
+		<title>ProGet Manual Installation</title>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta name="keywords" content="proget, installation" />
+	</head>
+	<body>
+		<h2>Manual ProGet Installation</h2>
+		<p class="announcement">
+			These manual installation instructions for ProGet are primarily for load balanced and high availability installations.
+			If you aren't using these features, you should probably use the <a href="/proget/download">installer</a>.
+		</p>
+		<p>
+			ProGet consists of 3 main deployable components:
+		</p>
+		<ul>
+			<li>
+				<b>Web Application</b> – an ASP.NET 4.0 web application which serves as an interface to ProGet and serves the NuGet API
+			</li>
+			<li>
+				<b>Service</b> – performs indexing and other background tasks; hosts the web application if IIS is not used
+			</li>
+			<li>
+				<b>Database</b> – a SQL Server database which contains all of the persistent data including feeds and privileges
+			</li>
+		</ul>
+
+		<h3>Installation</h3>
+		<p>
+			Prior to installation of ProGet, a ProGet 
+			"home" directory needs to be created, such as C:\ProGet
+		</p>
+		<p>
+			For the remainder of these instructions and simplicity, we will use <b>C:\ProGet</b> as 
+			the root - replace with the specific path you have chosen for your installation 
+			as necessary.
+		</p>
+
+		<h4>ProGet's Identity</h4>
+		<p>
+			ProGet may be configured to use its own domain account or may run as 
+			<i>Network Service</i> as long as the account has read/write access to the packages directory.
+		</p>
+
+		<h4>Database Installation</h4>
+		<ol>
+			<li>
+				Create a database called ProGet on the desired server
+			</li>
+			<li>
+				Unzip <b>ProGet-DbChangeScripts.zip</b> into any directory an run the 
+				executable and select option 3 (update). <b>Note</b>: if you are not running 
+				SQL Server using the Default Instance or you are not running the .exe on the 
+				same server as the database engine, you will have to manually update the 
+				connection string within the bmdbupdate executable by choosing option "C" 
+				prior to updating. 
+			</li>
+		</ol>
+
+		<h4>Service Installation</h4>
+		<ol>
+			<li>Create a directory named <b>Service\</b> under <b>C:\ProGet\</b></li>
+			<li>Unzip <b>ProGet-Service.zip</b> into <b>C:\ProGet\Service\</b></li>
+			<li>
+				Edit <b>ProGet.Service.exe.config</b> to ensure the following setting: 
+				<ul>
+					<li><b>InedoLib.DbConnectionString</b> (if on remote server or different instance)</li>
+				</ul>
+			</li>
+			<li>
+				Install the service. To do this, run <b>ProGet.Service.exe</b> and display help to discover
+				the arguments for the "install" option. Administrator elevation is required to install the
+				service and reserve URLs for self-hosted installations. If you do not reserve a URL the
+				integrated web server will not be enabled.
+			</li>
+		</ol>
+
+		<h4>Web Application Installation</h4>
+		<p>
+			The web application may be hosted either by IIS or self-hosted by the integrated web server
+			hosted by the service depending on how the service was installed above.
+		</p>
+		<ol>
+			<li>Create a directory named <b>WebApp\</b> under <b>C:\ProGet\</b></li>
+			<li>Unzip <b>ProGet-WebApp.zip</b> into <b>C:\ProGet\WebApp\</b></li>
+			<li>
+				Edit <b>Web.config</b> to ensure the following setting: 
+				<ul>
+					<li><b>InedoLib.DbConnectionString</b> (if on remote server or different instance)</li>
+				</ul>
+			</li>
+		</ol>
+		<p>
+			For IIS hosted applications, there are 2 additional steps:
+		</p>
+		<ol>
+			<li>
+				Create an application pool in IIS to run under the appropriate identity; 
+				for IIS7 and later, a classic (non-integrated) pipeline must be used
+			</li>
+			<li>
+				Create a website that points to <b>C:\ProGet\WebApp</b> using 
+				whichever host name configuration or ports preferred. <b>Note</b>: A virtual 
+				directory is not supported at this time. Note: If IIS6 is used, verify that 
+				the website is configured for ASP.NET 4.0.
+			</li>
+		</ol>
+	</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>services - Ensure Service</title>
+  <meta name="keywords" content="otter, operations, services" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Ensure Service</h2>
+  <p>Ensures the configuration of a Windows service on a server.</p>
+  <h4>Operation type:</h4>
+  <p>Ensuring - this operation will ensure a specified configuration exists on a remote server after comparing its current state to the desired state.</p>
+  <h4>Script usage:</h4><pre>Ensure-Service(
+	Name: &lt;text&gt;,
+	[DisplayName: &lt;text&gt;],
+	[Description: &lt;text&gt;],
+	[Status: &lt;integer&gt;],
+	[Exists: &lt;true/false&gt;],
+	Path: &lt;text&gt;,
+	[Startup: &lt;integer&gt;],
+	[DelayedStart: &lt;true/false&gt;],
+	[Credentials: &lt;text&gt;],
+	[UserName: &lt;text&gt;],
+	[Password: &lt;text&gt;],
+	[FirstFailure: &lt;integer&gt;],
+	[SecondFailure: &lt;integer&gt;],
+	[SubsequentFailures: &lt;integer&gt;],
+	[RestartDelay: &lt;integer&gt;],
+	[OnFailureProgramPath: &lt;text&gt;],
+	[RebootMessage: &lt;text&gt;],
+	[Dependencies: &lt;@(text)&gt;],
+	[StatusChangeTimeout: &lt;TimeSpan&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Windows::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>&#128273; </span>
+        <span>☆ </span>
+        <span>Name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is the unique key for this operation, which means it must uniquely identify the target of the operation.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Display name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>DisplayName</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Description</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Description</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Status</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>Status</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exists</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Exists</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Path w/ arguments</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Path</pre>
+      </td>
+      <td>
+        <span>The executable path of the service. This field may include any arguments that will be supplied to the executable. Executable paths that include spaces should be wrapped with double-quotes, e.g.: "C:\Program Files\Hdars\Hdars.Service.exe" -arg1 -arg2</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Startup</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>Startup</pre>
+      </td>
+      <td>
+        <span>Startup type</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>DelayedStart</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>DelayedStart</pre>
+      </td>
+      <td>
+        <span>Delayed start</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Credentials</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Credentials</pre>
+      </td>
+      <td>
+        <span>The Otter credential name to use as the service's Log On user. If a credential name is specified, the username and password fields will be ignored.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>User name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>UserName</pre>
+      </td>
+      <td>
+        <span>The user account name to run the service as. If this value is not supplied, NT AUTHORITY\LocalSystem will be assumed.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Password</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Password</pre>
+      </td>
+      <td>
+        <span>The password for the account that runs the service. If NT AUTHORITY\LocalSystem is specified, this field must not have a value set.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>First failure</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>FirstFailure</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Second failure</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>SecondFailure</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Subsequent failures</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>SubsequentFailures</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Restart delay</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>RestartDelay</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Run program</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>OnFailureProgramPath</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Reboot message</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>RebootMessage</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Dependencies</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Dependencies</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Status change timeout</span>
+      </td>
+      <td><pre>TimeSpan</pre>
+      </td>
+      <td><pre>StatusChangeTimeout</pre>
+      </td>
+      <td>
+        <span>The number of seconds to wait for a server to change between two statuses (e.g. stopped to starting) before raising an error.</span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# ensures the HdarsSvc is present on the server using the HdarsSvc credentials in Otter
+Windows::Ensure-Service
+(
+    Name: HdarsSvc,
+    DisplayName: HDARS Console Log Service,
+    Status: Running,
+    Path: E:\Services\Hdars.Service.exe,
+    Startup: Auto,
+    Credentials: HdarsSvc,
+    FirstFailure: Restart
+);
+</pre>
+</div>
+</body>
+</html>

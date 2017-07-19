@@ -1,0 +1,144 @@
+﻿<html>
+  <head>
+    <title>Agent Installation Guide</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter" />
+      <meta name="sequence" content="200" />
+  </head>
+  <body>
+      <style>
+          .documentation-content-wrapper .upcoming {
+              background-color: #fff;
+              position: relative;
+          }
+
+          .screenshot {
+              opacity: .4;
+          }
+
+
+          .documentation-content-wrapper .upcoming.buildmaster::before {
+              content: ' -- Placeholder screenshot from BuildMaster -- ';
+              background-color: #f15a24;
+              z-index: 1;
+              width: 100%;
+              padding: 2px 4px;
+              color: white;
+              text-align: center;
+          }
+      </style>
+      
+      
+
+      <p>
+         To facilitate communication between Otter and the Windows servers you want to configure and orchestrate, Otter 
+          uses a lightweight agent with a highly-optimized and resilient protocol. Installing agents is even easier than
+          installing Otter, and this guide will provide a step-by-step guide, as well provide some detail as to what's
+          happening behind the scenes.
+      </p>
+
+      <h2 id="pre-install">1. Pre-Installation Check List</h2>
+      <p>
+          Otter agents don't have any intense server requirements, and support all modern version of Windows (7+/2008+).
+          Before installing, consider the following:
+      </p>
+      <ul>
+          <li>
+              <strong>.NET Framework 4.5</strong> – Otter requires .NET 4.5 or later; this is already installed on
+              Windows Server 2012, and you can <a href="https://www.microsoft.com/en-us/download/details.aspx?id=30653">download it from Microsoft</a> on
+              earlier servers
+          </li>
+          <li>
+              <strong>Firewall (Inbound)</strong> – the agent will listen on the port of your choosing
+          </li>
+      </ul>
+
+      <h2 id="download">2. Download Otter Windows Agent</h2>
+      <p>
+          When you click the "Create Server" button on the Servers page in your Otter installation, you'll be given a direct link 
+          to the file with the correct version. You can also find it on the <a href="/otter/versions">all Otter downloads</a> 
+          page. Make sure to select the version that corresponds with your version of Otter, which can be found in the bottom-right
+          corner in your web browser.
+      </p>
+
+      
+
+      <h2 id="directory">3. Target Directory</h2>
+      <p>
+          Although you may install wherever you like, it is recommended to
+          keep the temporary directory short to avoid potential issues with tools that
+          have problems with long paths.
+      </p>
+      <div> <img alt="Agent Target Directory" src="/resources/documentation/otter-installation/target-directory-otteragent.png" /> </div>
+      
+      <h2 id="user-account">4. User Account</h2>
+      <p>
+          By default, the agent service will run as <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms677973(v=vs.85).aspx">LocalSystem</a>, which is an administrative service account. 
+          While not required, administrator-level privileges are strongly recommended as it will eliminate any
+          difficulty or confusion with moving files and running different operations.
+
+      </p>
+      <div>
+          <img alt="Agent User Info" src="/resources/documentation/otter-installation/user-account-otteragent.png" />
+      </div>
+      
+      <h2 id="network">5. Network</h2>
+      <p>
+          We recommend using the default port (46336), as that's Inedo's 
+          <a target="_blank" href="http://iana.org/assignments/port-numbers">officially designated port</a>.
+          Make sure that the selected port is not blocked by a firewall.
+      </p>
+      <div >
+          <img alt="Agent Port" src="/resources/documentation/otter-installation/network-otteragent.png" />
+      </div>
+      <p>
+          You can change this later by editing the configuration file in the installation directory, and restarting the
+          service.
+      </p>
+
+      <h2 id="encryption">6. Encryption</h2>
+      <p>
+          Otter's agents use a FIPS-compliant symmetric AES encryption scheme by default, and the installer will
+          automatically generate a secure, 32-digit key for you. You can use that key, or another one of your choosing.
+      </p>
+      <p>
+        If you select SSL instead of built-in AES, then you will need to have a valid certificate installed on the server
+        (see <a href="/support/kb/1040">KB#1040</a>). 
+      </p>
+      <p class="announcement">
+          <b>No Encryption</b> is also an option, but we don't recommend using it. The primary reason we have this is so
+          that you can use a tool like <a href="https://www.wireshark.org/" target="_parent">Wireshark</a> to inspect
+          the individual packages, either as directed by our support engineers or because you really like studying 
+          binary TCP protocols.
+      </p>
+      <p>
+          You can change this later by editing the configuration file in the installation directory, and restarting the
+          service.
+      </p>
+      
+      <h2 id="summary">7. Summary</h2>
+      <p>Verify that the information here is correct and then click Install.</p>
+      <div>
+          <img alt="Agent Summary" src="/resources/documentation/otter-installation/summary-otteragent.png" />
+      </div>
+
+      <h2 id="installation">8. Installation</h2>
+      <p>
+        The actual installation is near instantaneous, and should take no more than a minute or two, even on the slowest
+          of systems.
+      </p>
+      <div>
+          <img alt="Agent Installation" src="/resources/documentation/otter-installation/installation-otteragent.png" />
+      </div>
+
+      <p>Once the installation is complete, just close the installer or click the Exit button.</p>
+      
+      
+      <h2 id="adding-server">Adding the Server to Otter</h2>
+      <p>
+          Once the agent has been installed, the server must be added to Otter.
+          Click the <strong>Create Server</strong> button on the <strong>Servers</strong> page, and enter the
+          host name of the server, the port you installed the agent on, and the encryption key if you chose one.
+      </p>
+  </body>
+</html>

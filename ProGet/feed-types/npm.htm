@@ -1,0 +1,32 @@
+﻿<html>
+  <head>
+    <title>npm (Node.js)</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="300" />
+      <meta name="keywords" content="proget,feeds,npm" />
+      <meta name="subtitle" content="npm Feeds in ProGet" />
+  </head>
+  <body>
+	<p>
+		A ProGet npm feed is a repository compatible with the npm client for NodeJS. ProGet npm
+		feeds support both scoped and unscoped npm packages.
+	</p>
+
+	<h2>npm Feed Specifics</h2>
+	<p>
+		Connectors to the public repository at npmjs.org will not include scoped packages
+		in search results, because the public repository does not have a mechanism for
+		including them. Scoped packages can still be used through this connector; they are
+		only excluded from searches, and this is the same behavior seen from searching
+		at npmjs.org directly.
+	</p>
+	<p>
+		The npm client does not support using Windows Integrated Authentication, so ProGet
+		attempts to disable its usage for npm API endpoints in favor of basic HTTP authentication.
+		However, disabling Windows Authentication on a per-URL basis does not work in every
+		environment. If you are having trouble getting this working, you may create a second
+		web site in IIS for ProGet with Windows Authentication disabled without acquiring
+		a separate license.
+	</p>
+</body>
+</html>

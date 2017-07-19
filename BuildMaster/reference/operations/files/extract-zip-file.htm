@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Files - Extract Zip File</title>
+  <meta name="keywords" content="buildmaster, operations, files" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Extract Zip File</h2>
+  <p>Extracts a zip file on a server.</p>
+  <h4>Script usage:</h4><pre>Extract-ZipFile(
+	Name: &lt;text&gt;,
+	[Directory: &lt;text&gt;],
+	[ClearTarget: &lt;true/false&gt;],
+	[Overwrite: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Files::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>File name</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Target directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Directory</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Clear target directory</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>ClearTarget</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Overwrite</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Overwrite</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <div class="see-also">
+    <h4>See also:</h4>
+    <ul>
+      <li>
+        <a href="../files/create-zip-file">Create Zip File</a>
+      </li>
+    </ul>
+  </div>
+  <h4>Example:</h4><pre>
+# extracts archive.zip in ArchiveContents after deleting the directory contents
+Extract-ZipFile(
+    Name: archive.zip,
+    Directory: E:\Services\ArchiveContents,
+    ClearTarget: true
+);
+</pre>
+</div>
+</body>
+</html>

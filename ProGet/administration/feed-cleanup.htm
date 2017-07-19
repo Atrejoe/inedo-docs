@@ -1,0 +1,45 @@
+﻿<html>
+  <head>
+    <title>Feed Clean up</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="600" />
+      <meta name="keywords" content="proget,packages,chocolatey" />
+  </head>
+  <body>
+      <h2 id="feed-cleanup">Feed Cleanup</h2>
+      <p>
+          Repository packages/artifacts are generally stored on disk, while much of
+          their metadata is stored in a database for quick access. If there is a mismatch
+          between the metadata the actual package (for example, if someone deletes
+          a file from the storage directory), then undefined behavior can result.
+      </p>
+      <p>
+          To help prevent issues with incorrect metadata, ProGet verifies the package
+          metadata during a <i>feed cleanup</i> task. By default, these cleanup tasks
+          run in the background once a day, but they can also be invoked directly
+          from the web application.
+      </p>
+      <p>
+          ProGet also runs a feed's <a href="/support/documentation/proget/administration/retention-policies">retention rules</a>
+          during cleanup.
+      </p>
+      <h3 id="scheduled-tasks">Scheduled Tasks</h3>
+      <p>
+          Scheduled tasks are potentially long-running operations that ProGet
+          occassionally needs to perform in the background. Examples of scheduled
+          tasks include <a href="/support/documentation/proget/administration/feed-cleanup">feed cleanup</a>
+          and connector indexing.
+      </p>
+      <p>
+          A list of all scheduled tasks currently defined is available on the <i>Scheduled Tasks</i>
+          page, which is accessible from the main ProGet administration page. Individual tasks can be
+          rescheduled or completely disabled by clicking the corresponding edit icons. A task can
+          be run immediately by clicking the green play button.
+      </p>
+      <p>
+          ProGet maintains logs for past executions of scheduled tasks. These logs may be useful in the
+          event of a failure, but normally do not need to be consulted. To view a list of all previous
+          task executions, click the small [view history] link for that task.
+      </p>
+  </body>
+</html>

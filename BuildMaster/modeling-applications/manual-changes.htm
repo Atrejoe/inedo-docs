@@ -1,0 +1,40 @@
+﻿<html>
+  <head>
+    <title>Manual Changes</title>
+      <meta name="subtitle" content="Manual Changes " />
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+      <meta name="keywords" content="buildmaster, manual" />
+      <meta name="sequence" content="400" />
+  </head>
+  <body>
+
+    <p>
+        In BuildMaster, manual changes are executed through change controls and manual operations. 
+        BuildMaster coordinates and facilitates the processes that can't be automated, like adding RAM or creating a website in IIS before you can deploy to it.
+    </p>
+      <p>
+          By coordinating manual operations in BuildMaster, audit trails are created ensuring that actions are tracked and accurately executed when appropriate for the release.
+      </p>
+      <h2 id="change-controls">
+          Change Controls
+      </h2>
+   <p>
+       A Change Control is a manual step associated with a release that is performed before, during, or after an execution by the specified user or group. Change controls can be added and managed on the overview page of each release of your application. </p>
+   
+      <p> <img class="screenshot" src="/resources/documentation/buildmaster/change-control.png" alt="Setting a Change Control" /></p>
+      <h2 id="manual-operations">
+          Manual operations 
+      </h2>
+      <p>
+          BuildMaster comes with a <a href="/support/documentation/buildmaster/reference/operations/buildmaster/manual-operation">Built-in Manual Operation</a> that can be easily added to any deployment plan via text mode or by using the visual editor. 
+         The Manual Operation halts the deployment until an individual or group completes a specified task. 
+      </p>
+      <p>
+          <img class="screenshot" src="/resources/documentation/buildmaster/manual-action.png" alt="Manual Action Requried" />
+      </p>
+      <p>
+          Options for this action include: Task name, Task description, Assigned to, and Send email notifications. 
+      </p>
+      <img class="screenshot" src="/resources/documentation/buildmaster/manual-action-options.png" alt="Manual Action Options" />
+  </body>
+</html>

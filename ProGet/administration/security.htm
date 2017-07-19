@@ -1,0 +1,95 @@
+﻿<html>
+  <head>
+    <title>Security and Privileges</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="400" />
+      <meta name="keywords" content="proget,packages,chocolatey" />
+  </head>
+  <body>
+     
+      <p>
+          Users and Group add a level of granular control and security within ProGet. 
+          By associating users with a group or groups, organization are able to permit and restrict access to appropriate users. 
+      </p>
+      <p>
+          A <i>user directory</i> is a collection of users and groups that ProGet can query.
+          Currently, ProGet supports three types of user directories:
+      </p>
+      <ul>
+          <li>
+             Built-In - The default basic user account system used by new installs of ProGet.
+          </li>
+          <li>
+              <a href="/support/documentation/proget/administration/ldap-active-directory">LDAP/Single Domain AD</a> - Users and groups from an LDAP
+              directory are used, such as an Active Directory domain.
+          </li>
+          <li>
+              <a href="/support/documentation/proget/administration/ldap-active-directory">AD Domain Forest</a> - Users and groups from multiple domains
+              in an Active Directory forest are used.
+          </li>
+      </ul>
+      <p>
+          Directories are exclusive; meaning you can only use one at a time. 
+          For this reason, it’s important to make sure you will have sufficient administer permissions in ProGet for the user directory you are switching to. 
+          If you do accidentally lock yourself out, don’t worry; you can easily run the ProGet.Service.exe program, and select the reset to Built-In option.
+      </p>
+      <h2 id="built-in">Built In Directory</h2>
+      <p>
+          ProGet's built in user directory is used by default and initially contains
+          two user accounts:
+      </p>
+      <ul>
+          <li><b>Admin</b> - Administrator with full privileges; default password is <i>Admin</i></li>
+          <li><b>Anonymous</b> - Special user which represents anyone browsing the site anonymously</li>
+      </ul>
+
+<h3>
+    Tasks
+</h3>
+      <p>
+          ProGet allows you to create and customizes as many tasks as needed. 
+          Tasks in ProGet define the specific ability, access, and functions users or group are allowed to edit, create, and view. 
+          ProGet comes built-in with four tasks out of the box: Administer, Manage Feed, Publish Packages, and View and Download Packages. 
+          Built-in task can be edited and modified but it’s important to note that future updates may affect these built-In tasks.
+      </p>
+      <p>
+          ProGet allows you to create specific tasks that can be scoped at a feed level:
+      </p>
+      <img class="screenshot" src="/resources/documentation/proget/create-task.png" alt="Creating a Task in ProGet" />
+      <p>
+          Administrators can assign restrictions and permissions based on a group and individual users. 
+          It’s important to note that permissions are additive and restrictions override permission when they’re at the same level; 
+          the more specific personnel (One user vs. Group) or a more defined scope (Specific Feed vs. All Feeds) always override.
+      </p>
+      <h3 id="example">
+          Examples
+      </h3>
+      <p>
+          By associating users with a group you’re able to assign alike users the same permissions and restrictions.
+          For example everyone in the “Managers” group has access to manage feeds except the private-npm feed, only Bob who is also part of the managers groups has the permission to manage the npm feed. 
+      </p>
+      <img class="screenshot" src="/resources/documentation/proget/group-security.png" alt="Permissions and restrictions in ProGet" />
+      <h2 id="api-keys">API Access &amp; API Keys</h2>
+      <p>
+          API Keys are designed to grant access to other tools and integrations. You can control which functionality a key may be used for, and delete
+          keys that are not used.
+      </p>
+      <p class="announcement">Granting access to the <a href="../reference/api#native">Native API</a> will effectively allow for full control of the instance</p>
+      <p>
+         <img class="screenshot" src="/resources/documentation/proget/api-key.png" alt="API Keys in ProGet" /> 
+      </p>
+      <p>
+          To assist with debugging API usage, the request/response is logged whenever an API endpoint is accessed with a key. These logs are not retained indefinitely,
+          but are automatically purged.
+      </p>
+      <p>
+          An API key may be passed to an endpoint in one of four ways, depending on the content type of the expected request:
+      </p>
+      <ul>
+          <li>Request header (<code>X-ApiKey</code>) - all content types</li>
+          <li>Querystring value (<code>key</code>) - all content types</li>
+          <li>Form value (<code>key</code>) - only <code>application/x-www-form-urlencoded</code> content type</li>
+          <li>JSON property (<code>API_Key</code>) on root object - only <code>application/json</code> content type</li>
+      </ul>
+  </body>
+</html>

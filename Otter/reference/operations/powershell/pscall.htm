@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>powershell - PSCall</title>
+  <meta name="keywords" content="otter, operations, powershell" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>PSCall</h2>
+  <p>Calls a PowerShell Script that is stored as an asset.</p>
+  <h4>Operation type:</h4>
+  <p>Executing - this operation will perform a specified action or actions on a remote server.</p>
+  <h4>Script usage:</h4><pre>PSCall [DefaultArgument] (
+	[Arg1: Arg1Value],
+	[Arg2: Arg2Value],
+	[OutputArgument => $CustomVariable]
+);
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>PowerShell::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Example:</h4><pre>
+# execute the hdars.ps1 script, passing Argument1 and Aaaaaarg2 as variables, and capturing the value of OutputArg as $MyVariable
+pscall hdars (
+  Argument1: hello,
+  Aaaaaarg2: World,
+  OutputArg =&gt; $MyVariable
+);
+</pre>
+</div>
+</body>
+</html>

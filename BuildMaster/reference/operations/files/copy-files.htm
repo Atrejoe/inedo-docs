@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Files - Copy Files</title>
+  <meta name="keywords" content="buildmaster, operations, files" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Copy Files</h2>
+  <p>Copies files on a server.</p>
+  <h4>Script usage:</h4><pre>Copy-Files(
+	[Include: &lt;@(text)&gt;],
+	[Exclude: &lt;@(text)&gt;],
+	[From: &lt;text&gt;],
+	To: &lt;text&gt;,
+	[Verbose: &lt;true/false&gt;],
+	[Overwrite: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Files::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>Include</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Include</pre>
+      </td>
+      <td>
+        <span>See <a href="http://inedo.com/support/kb/1119" target="_blank">KB#1119</a> to learn more about masking syntax.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exclude</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Exclude</pre>
+      </td>
+      <td>
+        <span>See <a href="http://inedo.com/support/kb/1119" target="_blank">KB#1119</a> to learn more about masking syntax.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Source directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>From</pre>
+      </td>
+      <td>
+        <span>The source directory used for the operation. The default is the working directory of the agent.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Target directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>To</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Verbose</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Verbose</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Overwrite target files</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Overwrite</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# copy all files and all subdirectories beneath it to the target,
+# and log each individual file that is copied, and overwrite any files
+Copy-Files(
+    From: E:\Source,
+    To: F:\Target,
+    Include: **,
+    Verbose: true,
+    Overwrite: true
+);
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿<html>
+<head>
+    <title>Pipelines</title>
+    <meta name="subtitle" content="Pipelines in BuildMaster" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines" />
+    <meta name="sequence" content="200" />
+
+</head>
+<body>
+    <p>
+ Pipeline consist of stages, approvals, <a href="/support/documentation/buildmaster/core-concepts/deployment-plans">deployment plans</a>, and <a href="/support/documentation/buildmaster/core-concepts/environments"> Environments</a> which structure and facilitate applications changes both large, mission-critical and unscheduled, emergency deployments.
+    </p>
+    <p>
+        BuildMaster uses "Pipelines as Code" giving users the option to switch between pipeline Visual Mode and Text Mode,
+        making simple or complex changes effortless while maintaining consistency across every release.
+    </p>
+
+    <h2 id="creating-pipelines">Creating Pipelines</h2>
+    <p>
+        Pipelines are created based on the organizational requirements and may be as simple or as complex as needed. 
+        For a basic application, a pipeline may be as simple as two stages with two environments: just testing and production. 
+        However, some applications may require a complex pipeline with multiple stages, environments, and approvals needed for extensive government compliance standards.
+    </p>
+    
+    <h2 id="pipelines-as-code">Pipelines as Code</h2>
+    <p>
+        Pipelines are created in either Visual Mode or Text Mode. 
+        This gives you the ability to create pipelines in whichever mode you prefer. 
+        In text, you can simply copy the code and easily edit it if another release has similar but slightly different requirements. 
+        You can also easily share pipeline configurations among team members without having to take screenshots. 
+        Visual views provide an easy-to-understand, visual representation of your pipeline, while also being the “Code” behind your pipeline as code. 
+        Visual view and text view maintain parity with one another so users can switch back and forth as needed.
+    </p>
+  
+       
+    <p>
+    <inedo:tab-block>
+        <tab name="Visual Mode">
+            <img class="screenshot" src="/resources/documentation/buildmaster/pipeline-visual.png" alt="A Pipeline(Visual Mode)" />
+        </tab>
+        <tab name="Text Mode">
+            <img class="screenshot" src="/resources/documentation/buildmaster/pipeline-text.png" alt="A Pipeline (Text Mode)" />
+        </tab>
+    </inedo:tab-block>
+    </p>
+
+        <h2 id="global-pipelines">Global Pipelines</h2>
+<p>
+        Don't reinvent the wheel. 
+        Global pipelines allow you to reuse pipelines across multiple releases and applications while maintaining the same set of gates, deployment plans, and environments. 
+        Global Pipelines are used for common applications that are nearly identical. 
+        When a change is made to a Global Pipeline, every application that uses the pipeline is affected with the change.  
+    </p>
+    <h2 id="pipeline-stages">
+        Pipeline Stages
+    </h2>
+    <p>
+        Pipelines consist of a group of stages that are connected in a one-way sequence.  
+        Each stage consists of a deployment plan and one or more Environments that the deployment targets. 
+        Stages may also contain a set of approvals, configuration files, testing integrations, database files or change scripts, and automatic or manual actions. 
+        A release package must successfully move through each stage of a pipeline in order to be accepted into production.
+    </p>
+    <p>
+        Stages can be a simple notification step where no environments are created or tests run, or as complex as needed for any 
+        organizational requirement – including deploying to multiple testing servers with unique configurations and databases. 
+    </p>
+    <h2 id="pipeline-targets">
+        Pipeline Targets
+    </h2>
+    <p>
+        Targets within each stage consist of three elements: a Deployment Plan, Environments, and Servers. These elements describe how and where a release package is deployed for each individual stage.
+    </p>
+    <p>
+        The Deployment Plan directs the structural changes that must happen for each stage (things like which files to deploy, if an AppPool needs to be started, etc.). 
+        Environments describe the target of the deployment plan. It can be appropriate for a plan to target multiple environments per stage (ie: multiple testing environments). 
+        Lastly, Servers are the target where changes will be deployed to for each stage. Servers can be targeted individually, or grouped together by application and/or environment for easy selections. 
+    </p>
+	 <p> <img class="screenshot" src="/resources/documentation/buildmaster/targets.png" alt="targets" /> </p>
+    <h2 id="gates">
+        Gates
+    </h2>
+    <p>
+        Gates are a mix of manual and automated approvals a release package must go through before production.
+        They ensure quality and acceptability of a release. 
+        Before entering any stage in a pipeline, a release package must pass through that stage's gate. 
+    </p>
+    <p> <img class="screenshot" src="/resources/documentation/buildmaster/gates.png" alt="Manual and automatic approvals" /> </p>
+    <p>
+        Gates ensure that any release package that advances through the pipeline has been approved for the given stage. 
+        For example, if a package doesn't pass a set of automated unit tests, then it should not be advanced to the production stage since it is known to be a flawed package. 
+    </p>
+</body>
+</html>

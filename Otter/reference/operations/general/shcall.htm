@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>General - SHCall</title>
+  <meta name="keywords" content="otter, operations, " />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>SHCall</h2>
+  <p>Calls a shell script that is stored as an asset.</p>
+  <h4>Operation type:</h4>
+  <p>Executing - this operation will perform a specified action or actions on a remote server.</p>
+  <h4>Script usage:</h4><pre>SHCall(
+	Name: &lt;text&gt;,
+	[Arguments: &lt;text&gt;],
+	[Verbose: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Linux::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Name</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>The name of the script asset.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Arguments</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Arguments</pre>
+      </td>
+      <td>
+        <span>Arguments to pass to the script.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Verbose</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Verbose</pre>
+      </td>
+      <td>
+        <span>When true, additional information about staging the script is written to the debug log.</span>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

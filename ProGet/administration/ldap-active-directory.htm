@@ -1,0 +1,79 @@
+﻿<html>
+  <head>
+    <title>LDAP and Active Directory</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="500" />
+      <meta name="keywords" content="proget,packages,chocolatey" />
+  </head>
+  <body>
+      <h2 id="integrated">Integrated Authentication</h2>
+      <p>
+          When using either the LDAP
+          or Domain Forest 
+          user directories, ProGet allows the use of Windows Integrated Authentication. This allows
+          users to implicitly use their domain user profile to log in without
+          seeing a login prompt in ProGet. Certain tools such as nuget.exe also
+          support Windows Authentication and may be usable without explicit credentials.
+      </p>
+
+      <h3 id="prerequisites">Prerequisites</h3>
+      <p>
+          If ProGet is hosted in IIS, Windows Authentication must be enabled for
+          the ProGet web site. If using the integrated web server, no additional
+          configuration is required.
+      </p>
+      <h2 id="directory">LDAP Directory</h2>
+      <p>
+          An LDAP directory uses the Lightweight Directory Access Protocol to query
+          the users and groups of an external database. By default, this option will
+          connect to the Active Directory domain that the ProGet server is a member of.
+          For advanced or non-Active Directory scenarios, some additional configuration
+          may be required; please <a href="/contact">contact us</a>
+          if this is the case, and we will work with you to get things configured.
+      </p>
+
+      <h3 id="users">LDAP Users</h3>
+      <p>
+          Like the built in user directory, LDAP users must also have unique names.
+          Note that when connected to an Active Directory Domain, the user name
+          will <b>not</b> include the actual domain name for this directory.
+      </p>
+
+      <h3 id="groups">LDAP Groups</h3>
+      <p>
+          Groups in LDAP may contain users or other groups. ProGet will attempt to
+          determine group membership recursively, but may not always recognize every
+          type of group. For example, certain computed groups in Active Directory
+          such as Domain Users may not work in ProGet.
+      </p>
+      <h2 id="forest">Domain Forest Directory</h2>
+      <p>
+          This directory is similar to the LDAP directory, but is designed exclusively
+          for Active Directories that include multiple domains. Because an explicit domain
+          is required for every principal name, this adds a fair amount of complexity and
+          performance overhead, and should only be used if the LDAP/Single Domain directory
+          is inadequate for your organization.
+      </p>
+
+      <h3 id="active-users">Active Directory Users</h3>
+      <p>
+          Users in this directory have unique names across the entire domain forest. As such,
+          they are specified in the format: user@my.full.domain
+      </p>
+      <p>
+          Aside from the name, multi-domain AD users function identically to any other
+          type of user in ProGet.
+      </p>
+
+      <h3 id="active-groups">Active Directory Groups</h3>
+      <p>
+          Like the LDAP directory, AD groups in may contain users or other groups.
+          ProGet will attempt to determine group membership recursively, but may
+          not always recognize every type of group. For example, certain computed
+          groups in Active Directory such as Domain Users may not work in ProGet.
+      </p>
+      <p>
+          Like users, groups must be fully qualified. For example: Developers@my.full.domain
+      </p>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+﻿<html>
+<head>
+    <title>Managing Agents and Servers</title>
+    <meta name="subtitle" content="Agents and Servers" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,servers,agents" />
+</head>
+<body>
+    <p>
+        In order configure and orchestrate servers, Otter needs to be able to communicate with those servers in an 
+        fast and secure manner. 
+    </p>
+    <h2 id="windows">Windows Servers</h2>
+    <p>
+        Communication with Windows servers is generally accomplished using a lightweight agent that's installed on the remote server. 
+        This agent uses a highly-optimized and resilient protocol built solely for this purpose, and is 
+        <a href="../installation/agent-installation-guide">quite easy to install</a>.
+    </p>
+
+    <h3 id="agentless-windows-servers">Agentless Windows Servers</h3>
+    <p>
+        Alternatively, Otter can use PowerShell Remoting to communicate with Windows servers; however, this is generally slower and 
+        less resilient than the Inedo Agent protocol. You can connect using integrated authentication (i.e. whatever account the service is running under), or 
+        with a username &amp; password <a href="../global-components/resource-credentials">resource credential</a>. See <a href="https://technet.microsoft.com/en-us/library/hh849694.aspx" target="_blank">Enable-PSRemoting</a>
+        to configures a server to receive remote commands.
+
+
+    </p>
+    
+    <h2 id="linux">Linux Servers</h2>
+    <p>
+        To communicate with Linux servers, Otter uses the lightweight, highly-optimized, and resilient protocol already 
+        enabled on nearly every Linux box: SSH and SFTP. You can connect with a private key or username &amp; password 
+        <a href="../global-components/resource-credentials">resource credential</a>.
+    </p>
+
+
+    <h2 id="local">Local Agents</h2>
+    <p>
+        If you're using Otter to interact with the server it's installed on, you can just set it up using a local agent. 
+        This uses the same process/identity that the <a href="service">service</a> is hosted as, and doesn't have very many privileges
+        by default.
+    </p>
+
+
+
+</body>
+</html>

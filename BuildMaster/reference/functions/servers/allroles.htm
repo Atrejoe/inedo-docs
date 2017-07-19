@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Servers - AllRoles</title>
+  <meta name="keywords" content="buildmaster, functions, servers" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>@AllRoles</h2>
+  <p>Returns a list of all server roles.</p>
+  <h4>Script usage:</h4>
+  <pre>@AllRoles</pre>
+  <h4>Example:</h4><pre>
+# log all server roles in context to the execution log
+foreach $Role in @AllRoles
+{
+    Log-Information $Role;
+}
+</pre>
+</div>
+</body>
+</html>

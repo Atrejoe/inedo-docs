@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Configuration Files - Export Configuration File</title>
+  <meta name="keywords" content="buildmaster, operations, configuration-files" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Export Configuration File</h2>
+  <p>Exports a configuration file instance or template to disk without recording a deployment or replacing variables.</p>
+  <h4>Script usage:</h4><pre>Export-ConfigFile(
+	ConfigFileName: &lt;text&gt;,
+	Instance: &lt;text&gt;,
+	[To: &lt;text&gt;],
+	[OutputFileName: &lt;text&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>ConfigFiles::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Configuration file name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ConfigFileName</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Instance</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Instance</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>To directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>To</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>To file name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>OutputFileName</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,3260 @@
+    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Native API Methods</title>
+    
+    <meta name="keywords" content="buildmaster,api" />
+    <style type="text/css">
+        th {
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        These methods are callable through JSON, SOAP, or SQL. Note that the
+        Native API must be explicitly enabled by setting an API key under Administration &gt; All Settings.
+        Because this is a low-level API, specific user or task authorization is not performed and, if needed, may
+        be done through the various Security_ methods.
+    </p>
+    <p class="announcement">
+        This API endpoint should be avoided if there is an alternate API endpoint available, as those are much easier to use and will likely not change.
+    </p>
+    <p>
+        For security and simplicity, these endpoints require that an <a href="../../administration/security#api-keys">API Key</a> is created and passed into each request.
+    </p>
+    <h3>Method Listing</h3>
+    <p class="info">
+        This listing was generated from BuildMaster 5.5, and may be different in earlier releases. To see the
+        api methods for your specific version, visit <code>/reference/api</code> in your BuildMaster installation.
+    </p>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>
+                </th>
+                <th>Input</th>
+                <th>Output</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3">
+                    <a name="AdminEdit_PurgeArtifact"></a>
+                    <b>AdminEdit_PurgeArtifact</b><br />Purges an artifact from the specified build.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />Artifact_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="AdminEdit_PurgeBuild"></a>
+                    <b>AdminEdit_PurgeBuild</b><br />Purges an entire build and all associated data from the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="AdminEdit_UpdateBuildStatus"></a>
+                    <b>AdminEdit_UpdateBuildStatus</b><br />Updates the status of a build.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />BuildStatus_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="AdminEdit_UpdateExecutionStatus"></a>
+                    <b>AdminEdit_UpdateExecutionStatus</b><br />Updates the status of an execution.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)<br />ExecutionStatus_Code (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="AdminEdit_UpdatePromotionStatus"></a>
+                    <b>AdminEdit_UpdatePromotionStatus</b><br />Updates the status of a promotion.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Promotion_Id (Int32)<br />PromotionStatus_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="AdminEdit_UpdateReleaseStatus"></a>
+                    <b>AdminEdit_UpdateReleaseStatus</b><br />Updates the status of a release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />ReleaseStatus_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ApplicationGroups_CreateOrUpdateApplicationGroup"></a>
+                    <b>ApplicationGroups_CreateOrUpdateApplicationGroup</b><br />Creates or updates a new application group
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ApplicationGroup_Id (Int32)<br />ApplicationGroup_Name (String)<br />ApplicationGroup_Description (String)<br />Parent_ApplicationGroup_Id (Int32)</td>
+                <td>ApplicationGroup_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ApplicationGroups_DeleteApplicationGroup"></a>
+                    <b>ApplicationGroups_DeleteApplicationGroup</b><br />Deletes an application group
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ApplicationGroup_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ApplicationGroups_GetApplicationGroup"></a>
+                    <b>ApplicationGroups_GetApplicationGroup</b><br />Gets an application group by ID.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ApplicationGroup_Id (Int32)</td>
+                <td>DataRow (ApplicationGroups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ApplicationGroups_GetApplicationGroups"></a>
+                    <b>ApplicationGroups_GetApplicationGroups</b><br />Gets all the application groups
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (ApplicationGroups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ApplicationGroups_GetOrCreateApplicationGroup"></a>
+                    <b>ApplicationGroups_GetOrCreateApplicationGroup</b><br />Gets or creates a new application group using the name
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ApplicationGroup_Name (String)<br />ApplicationGroup_Id (Int32)</td>
+                <td>ApplicationGroup_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_AddImportedDeployable"></a>
+                    <b>Applications_AddImportedDeployable</b><br />Adds an imported deployable to an application
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Deployable_Id (Int32)<br />Application_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_CreateApplication"></a>
+                    <b>Applications_CreateApplication</b><br />Creates a new application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Name (String)<br />ReleaseNumber_Scheme_Name (String)<br />IssueTracking_Provider_Id (Int32)<br />BuildNumber_Scheme_Name (String)<br />AllowMultipleActiveReleases_Indicator (YNIndicator)<br />AllowMultipleActiveBuilds_Indicator (YNIndicator)<br />ApplicationGroup_Id (Int32)<br />Application_Id (Int32)</td>
+                <td>Application_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_CreateOrUpdateDeployable"></a>
+                    <b>Applications_CreateOrUpdateDeployable</b><br />Creates a deployable for a specified application, or updates an existing one
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Deployable_Id (Int32)<br />Application_Id (Int32)<br />Deployable_Name (String)</td>
+                <td>Deployable_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_DeactivateApplication"></a>
+                    <b>Applications_DeactivateApplication</b><br />Deactivates an application, removing it from menu options but preserves data.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_DeleteImportedDeployable"></a>
+                    <b>Applications_DeleteImportedDeployable</b><br />Deletes an existing imported deployable relation, but does not delete the deployable from the host application
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Deployable_Id (Int32)<br />Application_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_EditApplication"></a>
+                    <b>Applications_EditApplication</b><br />Edits an existing application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Application_Name (String)<br />Application_Description (String)<br />ApplicationGroup_Id (Int32)<br />AllowMultipleActiveReleases_Indicator (YNIndicator)<br />AllowMultipleActiveBuilds_Indicator (YNIndicator)<br />VariableSupport_Code (String)<br />ReleaseNumber_Scheme_Name (String)<br />BuildNumber_Scheme_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_FindDeployables"></a>
+                    <b>Applications_FindDeployables</b><br />Searches for deployables in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>SearchTerm_Text (String)<br />Max_Count (Int32)</td>
+                <td>DataTable (Deployables_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_GetApplication"></a>
+                    <b>Applications_GetApplication</b><br />Gets the details of an application along with the associated deployables
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td>DataSet (Applications_Extended, Deployables_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_GetApplications"></a>
+                    <b>Applications_GetApplications</b><br />Gets the specified number of applications in the system, or all if null is passed in
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Count (Int32)<br />IncludeInactive_Indicator (YNIndicator)</td>
+                <td>DataTable (Applications_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_GetDependentApplications"></a>
+                    <b>Applications_GetDependentApplications</b><br />Gets all applications with imported deployables from a specified application
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td>DataTable (Applications_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_GetDeployable"></a>
+                    <b>Applications_GetDeployable</b><br />Gets the specified deployable
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Deployable_Id (Int32)</td>
+                <td>DataTable (Deployables_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_GetDeployableDependencies"></a>
+                    <b>Applications_GetDeployableDependencies</b><br />Gets a set of dependencies for the deployables in a given application or a specific deployable if one is specified
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Deployable_Id (Int32)</td>
+                <td>DataTable (DeployableDependencies)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_GetDeployables"></a>
+                    <b>Applications_GetDeployables</b><br />Gets the deployables for a specific application or for all applications.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td>DataTable (Deployables_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_GetImportedDeployables"></a>
+                    <b>Applications_GetImportedDeployables</b><br />Gets a set a imported deployables for a specified application
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td>DataTable (DeployablesImported_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_GetLatestEnvironmentExecutions"></a>
+                    <b>Applications_GetLatestEnvironmentExecutions</b><br />Gets a view of all the latest executions grouped by application and environment, optionally filtered by application or application group.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />ApplicationGroup_Id (Int32)</td>
+                <td>DataTable (Applications_LatestEnvironmentExecutions)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_GetSpecifiedApplications"></a>
+                    <b>Applications_GetSpecifiedApplications</b><br />Gets only the active applications in the specified CSV string.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ApplicationIds_Csv (String)</td>
+                <td>DataTable (Applications_Slim)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_PurgeApplicationData"></a>
+                    <b>Applications_PurgeApplicationData</b><br />Purges an entire application and all associated data from the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_PurgeDeployableData"></a>
+                    <b>Applications_PurgeDeployableData</b><br />Purges a deployable and all its associations from the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Deployable_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_ReactivateApplication"></a>
+                    <b>Applications_ReactivateApplication</b><br />Reactivates an application that has been deactivated.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_SearchApplications"></a>
+                    <b>Applications_SearchApplications</b><br />Searches for applications by application name and group name that contain the search term.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>SearchTerm_Text (String)</td>
+                <td>DataTable (Applications_Slim)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_SetDeployableDependencies"></a>
+                    <b>Applications_SetDeployableDependencies</b><br />Sets the dependency relationships between the specified deployable and its dependents
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Deployable_Id (Int32)<br />DependsOn_Deployables_Csv (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Applications_SetIssueTracker"></a>
+                    <b>Applications_SetIssueTracker</b><br />Sets the issue tracking provider of a specified application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />IssueTracking_Provider_Id (Int32)<br />IssueTracking_CategoryIdList_Text (String)<br />IssueTracking_Filter_Configuration (String)<br />IssueTracking_AllowBuildMasterIssues_Indicator (YNIndicator)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Artifacts_CreateOrReplaceArtifact"></a>
+                    <b>Artifacts_CreateOrReplaceArtifact</b><br />Creates a reference to an artifact in the artifact library.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />Deployable_Id (Int32)<br />Artifact_Name (String)<br />Execution_Id (Int32)<br />Artifact_Path (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Artifacts_GetArtifact"></a>
+                    <b>Artifacts_GetArtifact</b><br />Gets an artifact based on the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />Artifact_Name (String)</td>
+                <td>DataRow (BuildArtifacts_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Artifacts_GetArtifacts"></a>
+                    <b>Artifacts_GetArtifacts</b><br />Gets a set of artifacts based on the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />Deployable_Id (Int32)<br />Artifact_Count (Int32)</td>
+                <td>DataTable (BuildArtifacts_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Artifacts_GetArtifactsByBuildStatus"></a>
+                    <b>Artifacts_GetArtifactsByBuildStatus</b><br />Gets a set of artifacts that are associated with a specified build status, optionally filtered by application and release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />BuildStatus_Name (String)</td>
+                <td>DataTable (BuildArtifacts_Slim)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildOutputs_AddOutput"></a>
+                    <b>BuildOutputs_AddOutput</b><br />Adds a build output report to a specified build execution
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)<br />Output_Name (String)<br />Output_Bytes (Byte[])<br />OutputType_Code (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildOutputs_GetOutput"></a>
+                    <b>BuildOutputs_GetOutput</b><br />Gets the build output report for a specified build and sequence number
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)<br />Output_Sequence (Int32)</td>
+                <td>DataRow (BuildOutputs_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildOutputs_GetOutputs"></a>
+                    <b>BuildOutputs_GetOutputs</b><br />Gets the build output reports for a specified build
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)</td>
+                <td>DataTable (BuildOutputs_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_CreateBuild"></a>
+                    <b>Builds_CreateBuild</b><br />Creates a new build of an application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />BuildImporter_Configuration (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetBuild"></a>
+                    <b>Builds_GetBuild</b><br />Gets the details for a specified build.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)</td>
+                <td>DataRow (Builds_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetBuildById"></a>
+                    <b>Builds_GetBuildById</b><br />Gets the details for a specified build by ID.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Build_Id (Int32)</td>
+                <td>DataRow (Builds_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetBuilds"></a>
+                    <b>Builds_GetBuilds</b><br />Gets the details for all builds that match the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />BuildStatus_Name (String)<br />Build_Count (Int32)</td>
+                <td>DataTable (Builds_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetExecution"></a>
+                    <b>Builds_GetExecution</b><br />Gets all details regarding a specific build execution
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)</td>
+                <td>DataRow (BuildExecutions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetExecutionExtended"></a>
+                    <b>Builds_GetExecutionExtended</b><br />Gets all details regarding a specific build execution.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)</td>
+                <td>DataSet (BuildExecutions_Extended, BuildExecution_DeploymentPlans, BuildExecution_DeploymentPlanActionGroups, BuildExecution_ActionGroupActions, BuildExecution_ActionGroupActionLogEntries)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetExecutions"></a>
+                    <b>Builds_GetExecutions</b><br />Gets all the build executions for the specified build
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />PipelineStage_Name (String)<br />Execution_Count (Int32)</td>
+                <td>DataTable (BuildExecutions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetExecutionsByServer"></a>
+                    <b>Builds_GetExecutionsByServer</b><br />Gets recent build executions for the specified server.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Server_Id (Int32)<br />Execution_Count (Int32)</td>
+                <td>DataTable (BuildExecutions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetExecutionsInProgress"></a>
+                    <b>Builds_GetExecutionsInProgress</b><br />Gets all executions in the executing state optionally filtered by application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td>DataTable (BuildExecutions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetPromotion"></a>
+                    <b>Builds_GetPromotion</b><br />Gets a build promotion.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Promotion_Id (Int32)</td>
+                <td>DataRow (BuildPromotions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_GetPromotions"></a>
+                    <b>Builds_GetPromotions</b><br />Gets all of the promotions that have occurred.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)</td>
+                <td>DataTable (BuildPromotions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_PromoteBuild"></a>
+                    <b>Builds_PromoteBuild</b><br />Promotes a build to to a pipeline stage.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />Comments_Text (String)<br />ForcePromotion_Indicator (YNIndicator)<br />PromoteTo_PipelineStage_Name (String)<br />SetFurthestStage_Indicator (YNIndicator)<br />Promotion_Id (Int32)</td>
+                <td>Promotion_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_PurgeBuildData"></a>
+                    <b>Builds_PurgeBuildData</b><br />Purges an entire build and all associated data from the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_RejectBuild"></a>
+                    <b>Builds_RejectBuild</b><br />Rejects the specified build.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />Rejection_Notes (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Builds_SetBuildNumber"></a>
+                    <b>Builds_SetBuildNumber</b><br />Sets the build number of a build.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Build_Id (Int32)<br />Build_Number (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildSchedules_CreateOrUpdateRecurring"></a>
+                    <b>BuildSchedules_CreateOrUpdateRecurring</b><br />Creates a recurring build based on the specified parameters, or updates an existing schedule if one with the given ID already exists.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Schedule_Id (Int32)<br />Schedule_Name (String)<br />Application_Id (Int32)<br />StartTime_Minutes (Int32)<br />EndTime_Minutes (Int32)<br />DailyInterval_Minutes (Int32)<br />Recurrence_Type (String)<br />RecurrenceFrequency_Value (Int32)<br />RecurrenceWeeklyDay_Mask (String)<br />RecurrenceMonthlyDay_Value (Int32)<br />RecurrenceMonthlyRelativity_Type (String)<br />RecurrenceMonthlyRelativityDay_Type (String)<br />RecurrenceMonthlyRelativityWeek_Type (String)<br />RecurrenceMonthlyRelativityWeekDay_Value (Int32)<br />ReleaseFilter_ReleaseType_Code (String)<br />ReleaseFilter_Pipeline_Id (Int32)<br />BuildImporter_Configuration (String)<br />Active_Indicator (YNIndicator)</td>
+                <td>Schedule_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildSchedules_CreateOrUpdateSchedule"></a>
+                    <b>BuildSchedules_CreateOrUpdateSchedule</b><br />Creates a scheduled build based on the specified parameters, or updates an existing scheduled build if one with the given ID already exists.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Schedule_Id (Int32)<br />Schedule_Name (String)<br />Application_Id (Int32)<br />Active_Indicator (YNIndicator)<br />Schedule_Type (String)<br />StartTime_Minutes (Int32)<br />EndTime_Minutes (Int32)<br />DailyInterval_Minutes (Int32)<br />Recurrence_Type (String)<br />RecurrenceFrequency_Value (Int32)<br />RecurrenceWeeklyDay_Mask (String)<br />RecurrenceMonthlyDay_Value (Int32)<br />RecurrenceMonthlyRelativity_Type (String)<br />RecurrenceMonthlyRelativityDay_Type (String)<br />RecurrenceMonthlyRelativityWeek_Type (String)<br />RecurrenceMonthlyRelativityWeekDay_Value (Int32)<br />Url_AllowedIP_CSV (String)<br />Url_Username_Text (String)<br />Url_Password_Text (String)<br />SourceControl_Path_Name (String)<br />SourceControl_Provider_Id (Int32)<br />SourceControl_QuietPeriod_Minutes (Int32)<br />ReleaseFilter_ReleaseType_Code (String)<br />ReleaseFilter_Pipeline_Id (Int32)</td>
+                <td>Schedule_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildSchedules_CreateOrUpdateSCMTriggered"></a>
+                    <b>BuildSchedules_CreateOrUpdateSCMTriggered</b><br />Creates a source control triggered automated build based on the specified parameters, or updates an existing one if one with a given ID already exists.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Schedule_Id (Int32)<br />Schedule_Name (String)<br />Application_Id (Int32)<br />SourceControl_Path_Name (String)<br />SourceControl_Provider_Id (Int32)<br />SourceControl_QuietPeriod_Minutes (Int32)<br />ReleaseFilter_ReleaseType_Code (String)<br />ReleaseFilter_Pipeline_Id (Int32)<br />Active_Indicator (YNIndicator)</td>
+                <td>Schedule_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildSchedules_CreateOrUpdateURLTriggered"></a>
+                    <b>BuildSchedules_CreateOrUpdateURLTriggered</b><br />Creates a URL-triggered build based on the specified parameters, or updates an existing schedule if one with the given ID already exists.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Schedule_Id (Int32)<br />Schedule_Name (String)<br />Application_Id (Int32)<br />Url_AllowedIP_CSV (String)<br />Url_Username_Text (String)<br />Url_Password_Text (String)<br />ReleaseFilter_ReleaseType_Code (String)<br />ReleaseFilter_Pipeline_Id (Int32)<br />BuildImporter_Configuration (String)<br />Active_Indicator (YNIndicator)</td>
+                <td>Schedule_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildSchedules_DeleteBuildSchedule"></a>
+                    <b>BuildSchedules_DeleteBuildSchedule</b><br />Deletes the specified build schedule
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Schedule_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildSchedules_GetBuildSchedule"></a>
+                    <b>BuildSchedules_GetBuildSchedule</b><br />Gets the specified build schedule
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Schedule_Id (Int32)</td>
+                <td>DataSet (BuildSchedules_Extended, BuildScheduleVariableDefinitions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildSchedules_GetBuildSchedules"></a>
+                    <b>BuildSchedules_GetBuildSchedules</b><br />Gets a set of builds schedules for the specified application and active indicator, or all if null is supplied
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Active_Indicator (YNIndicator)</td>
+                <td>DataTable (BuildSchedules_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildSchedules_SetVariableDefinition"></a>
+                    <b>BuildSchedules_SetVariableDefinition</b><br />Updates a variable definition to use with a scheduled build
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Schedule_Id (Int32)<br />VariableDeclaration_Id (Int32)<br />Value_Text (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildTestResults_GetAllGroups"></a>
+                    <b>BuildTestResults_GetAllGroups</b><br />Gets all of the test result groups in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (BuildTestResults_AllGroups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildTestResults_GetTestGroupResults"></a>
+                    <b>BuildTestResults_GetTestGroupResults</b><br />Gets the unit test results for a specified build execution.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)</td>
+                <td>DataTable (BuildTestResults_TestGroupResults)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildTestResults_GetTestGroupResultsForBuild"></a>
+                    <b>BuildTestResults_GetTestGroupResultsForBuild</b><br />Gets the unit test results for the specified build.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)</td>
+                <td>DataTable (BuildTestResults_TestGroupResults)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildTestResults_GetTestHistory"></a>
+                    <b>BuildTestResults_GetTestHistory</b><br />Gets this history of a test by its name, and optionally filtered by test group and application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Test_Name (String)<br />Group_Name (String)<br />Application_Id (Int32)<br />TestStatus_Code (String)<br />Row_Count (Int32)</td>
+                <td>DataTable (BuildTestResults_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildTestResults_GetTestLog"></a>
+                    <b>BuildTestResults_GetTestLog</b><br />Gets the results of a specific unit test
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)<br />Group_Name (String)<br />Test_Sequence (Int32)</td>
+                <td>DataTable (BuildTestResults_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildTestResults_GetTestResults"></a>
+                    <b>BuildTestResults_GetTestResults</b><br />Gets the build test results based on the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)<br />Group_Name (String)</td>
+                <td>DataTable (BuildTestResults_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="BuildTestResults_RecordTestResult"></a>
+                    <b>BuildTestResults_RecordTestResult</b><br />Logs the result of an individual unit test.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)<br />Group_Name (String)<br />Test_Name (String)<br />TestStatus_Code (String)<br />TestResult_Text (String)<br />TestStarted_Date (DateTime)<br />TestEnded_Date (DateTime)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ChangeControlPerformances_GetReleaseSummary"></a>
+                    <b>ChangeControlPerformances_GetReleaseSummary</b><br />Gets a summary of the change control performances for a specified change control.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ChangeControl_Id (Int32)</td>
+                <td>DataTable (ChangeControlPerformances_ReleaseSummary)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ChangeControls_CreateOrUpdateChangeControl"></a>
+                    <b>ChangeControls_CreateOrUpdateChangeControl</b><br />Creates a new change control, or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ChangeControl_Id (Int32)<br />ChangeControl_Name (String)<br />Application_Id (Int32)<br />Release_Number (String)<br />Group_Name (String)<br />Description_Text (String)<br />Principal_Name (String)<br />PrincipalType_Code (String)<br />PerformanceType_Code (String)<br />Active_Indicator (YNIndicator)<br />Environments_Csv (String)</td>
+                <td>ChangeControl_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ChangeControls_DeleteChangeControl"></a>
+                    <b>ChangeControls_DeleteChangeControl</b><br />Deletes the specified change control
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ChangeControl_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ChangeControls_GetChangeControl"></a>
+                    <b>ChangeControls_GetChangeControl</b><br />Gets the details of a specified change control.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ChangeControl_Id (Int32)</td>
+                <td>DataSet (ChangeControls_Extended, ChangeControlEnvironments_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ChangeControls_GetChangeControlPerformances"></a>
+                    <b>ChangeControls_GetChangeControlPerformances</b><br />Gets a list of change control performances for a specified change control or all change controls if none is specified.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />ChangeControl_Id (Int32)<br />Release_Number (String)<br />IncludeInactive_Indicator (YNIndicator)<br />Environment_Id (Int32)<br />Row_Count (Int32)</td>
+                <td>DataTable (ChangeControlPerformances_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ChangeControls_GetChangeControls"></a>
+                    <b>ChangeControls_GetChangeControls</b><br />Gets a list of change controls based on the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />IncludeInactive_Indicator (YNIndicator)<br />ChangeControl_Count (Int32)</td>
+                <td>DataSet (ChangeControls_Extended, ChangeControlEnvironments_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ChangeControls_PerformChangeControl"></a>
+                    <b>ChangeControls_PerformChangeControl</b><br />Adds a change control performance for a specified environment.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ChangeControl_Id (Int32)<br />Environment_Id (Int32)<br />Notes_Text (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Configuration_GetConfiguration"></a>
+                    <b>Configuration_GetConfiguration</b><br />Gets the a complete list of BuildMaster configuration settings.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (Configuration)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Configuration_GetValue"></a>
+                    <b>Configuration_GetValue</b><br />Gets the specified BuildMaster configuration value.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Scope_Name (String)<br />Key_Name (String)<br />Value_Text (String)</td>
+                <td>Value_Text</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Configuration_SetValue"></a>
+                    <b>Configuration_SetValue</b><br />Sets a BuildMaster configuration value.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Scope_Name (String)<br />Key_Name (String)<br />Value_Text (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_CreateConfigurationFile"></a>
+                    <b>ConfigurationFiles_CreateConfigurationFile</b><br />Creates a configuration file in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Deployable_Id (Int32)<br />FilePath_Text (String)<br />ConfigurationFile_Name (String)<br />Description_Text (String)<br />ConfigurationFile_Id (Int32)</td>
+                <td>ConfigurationFile_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_CreateConfigurationFileInstance"></a>
+                    <b>ConfigurationFiles_CreateConfigurationFileInstance</b><br />Creates a new instance of a configuration file.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ConfigurationFile_Id (Int32)<br />Instance_Name (String)<br />Environment_Id (Int32)<br />Template_Indicator (YNIndicator)<br />Template_Instance_Name (String)<br />TransformType_Code (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_CreateConfigurationFileVersions"></a>
+                    <b>ConfigurationFiles_CreateConfigurationFileVersions</b><br />Creates new configuration file versions for each instance specified in the ConfigurationFiles_Xml for the given configuration file.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ConfigurationFile_Id (Int32)<br />ConfigurationFiles_Xml (String)<br />ReleaseNumbers_Csv (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_DeployConfigurationFile"></a>
+                    <b>ConfigurationFiles_DeployConfigurationFile</b><br />Saves the result of a deployed configuration file (this will not physically deploy the configuration file).
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)<br />ConfigurationFile_Id (Int32)<br />Instance_Name (String)<br />Version_Number (Int32)<br />Server_Id (Int32)<br />DeployedTo_Path (String)<br />DeployedBy_User_Name (String)<br />ConfigurationFileDeployment_Id (Int32)</td>
+                <td>ConfigurationFileDeployment_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_GetConfigurationFile"></a>
+                    <b>ConfigurationFiles_GetConfigurationFile</b><br />Gets a configuration file and all of its instances.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ConfigurationFile_Id (Int32)<br />IncludeInactiveInstances_Indicator (YNIndicator)</td>
+                <td>DataSet (ConfigurationFiles_Extended, ConfigurationFileInstances_Extended, ConfigurationFileVersions_Combined, ConfigurationFileVersions_ModifiedInstances)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_GetConfigurationFileDeployments"></a>
+                    <b>ConfigurationFiles_GetConfigurationFileDeployments</b><br />Gets a list of all configuration file deployments based on the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />ConfigurationFile_Id (Int32)<br />Deployable_Id (Int32)<br />Instance_Name (String)<br />Server_Id (Int32)<br />File_Count (Int32)</td>
+                <td>DataTable (ConfigurationFileDeployments_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_GetConfigurationFileInstances"></a>
+                    <b>ConfigurationFiles_GetConfigurationFileInstances</b><br />Gets a list of all configuration file instances that match the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Deployable_Id (Int32)<br />Active_Indicator (YNIndicator)</td>
+                <td>DataTable (ConfigurationFileInstances_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_GetConfigurationFiles"></a>
+                    <b>ConfigurationFiles_GetConfigurationFiles</b><br />Gets all configuration files that match the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Deployable_Id (Int32)<br />IncludeInactive_Indicator (YNIndicator)<br />IncludeInstances_Indicator (YNIndicator)<br />IncludeVersions_Indicator (YNIndicator)</td>
+                <td>DataSet (ConfigurationFiles_Extended, ConfigurationFileInstances_Extended, ConfigurationFileVersions_Combined, ConfigurationFileVersions_ModifiedInstances)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_GetConfigurationFileVersion"></a>
+                    <b>ConfigurationFiles_GetConfigurationFileVersion</b><br />Gets a list of configuration file versions for a specified configuration file.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ConfigurationFile_Id (Int32)<br />Instance_Name (String)<br />Version_Number (Int32)</td>
+                <td>DataTable (ConfigurationFileVersions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_PurgeConfigurationFile"></a>
+                    <b>ConfigurationFiles_PurgeConfigurationFile</b><br />Purges a configuration file, including all previous versions of all instances and deployment history.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ConfigurationFile_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_PurgeConfigurationFileInstance"></a>
+                    <b>ConfigurationFiles_PurgeConfigurationFileInstance</b><br />Purges a configuration file instance, including all previous versions and deployment history.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ConfigurationFile_Id (Int32)<br />Instance_Name (String)<br />UnlinkTemplate_Indicator (YNIndicator)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_UpdateConfigurationFile"></a>
+                    <b>ConfigurationFiles_UpdateConfigurationFile</b><br />Updates metadata for an existing configuration file.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ConfigurationFile_Id (Int32)<br />Active_Indicator (YNIndicator)<br />ConfigurationFile_Name (String)<br />FilePath_Text (String)<br />Description_Text (String)<br />Deployable_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ConfigurationFiles_UpdateConfigurationFileInstance"></a>
+                    <b>ConfigurationFiles_UpdateConfigurationFileInstance</b><br />Updates metadata for an existing configuration file instance.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ConfigurationFile_Id (Int32)<br />Instance_Name (String)<br />Environment_Id (Int32)<br />Active_Indicator (YNIndicator)<br />Template_Instance_Name (String)<br />TransformType_Code (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_CreateOrUpdateCredential"></a>
+                    <b>Credentials_CreateOrUpdateCredential</b><br />Creates a new credential or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Credential_Name (String)<br />Environment_Id (Int32)<br />CredentialType_Name (String)<br />Configuration_Xml (String)<br />AllowFunctionAccess_Indicator (YNIndicator)<br />Credential_Id (Int32)</td>
+                <td>Credential_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_DeleteCredential"></a>
+                    <b>Credentials_DeleteCredential</b><br />Gets the specified credential.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Credential_Id (Int32)</td>
+                <td>DataRow (Credentials_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_GetCredential"></a>
+                    <b>Credentials_GetCredential</b><br />Gets the specified credential.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Credential_Id (Int32)</td>
+                <td>DataRow (Credentials_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_GetCredentialByName"></a>
+                    <b>Credentials_GetCredentialByName</b><br />Gets the specified credential by its qualified name.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>CredentialType_Name (String)<br />Credential_Name (String)</td>
+                <td>DataRow (Credentials_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Credentials_GetCredentials"></a>
+                    <b>Credentials_GetCredentials</b><br />Gets all credentials in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (Credentials_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DatabaseChangeScripts_CreateOrUpdateChangeScript"></a>
+                    <b>DatabaseChangeScripts_CreateOrUpdateChangeScript</b><br />Creates or edits a database change script.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Deployable_Id (Int32)<br />Script_Name (String)<br />Script_Text (String)<br />Active_Indicator (YNIndicator)<br />Script_Id (Int32)</td>
+                <td>Script_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DatabaseChangeScripts_DeleteChangeScript"></a>
+                    <b>DatabaseChangeScripts_DeleteChangeScript</b><br />Deletes a database change script.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Script_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DatabaseChangeScripts_GetChangeScript"></a>
+                    <b>DatabaseChangeScripts_GetChangeScript</b><br />Gets the specified database change script.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Script_Id (Int32)</td>
+                <td>DataRow (DatabaseChangeScripts_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DatabaseChangeScripts_GetChangeScripts"></a>
+                    <b>DatabaseChangeScripts_GetChangeScripts</b><br />Gets all the database change scripts that match the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />IncludeInactive_Indicator (YNIndicator)<br />DatabaseChangeScript_Count (Int32)</td>
+                <td>DataTable (DatabaseChangeScripts_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DatabaseChangeScripts_GetExecution"></a>
+                    <b>DatabaseChangeScripts_GetExecution</b><br />Gets a database change script execution.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)</td>
+                <td>DataRow (DatabaseChangeScriptExecutions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DatabaseConnections_CreateOrUpdateConnection"></a>
+                    <b>DatabaseConnections_CreateOrUpdateConnection</b><br />Creates a new database connection or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DatabaseConnection_Name (String)<br />DatabaseConnection_Description (String)<br />DatabaseConnection_Configuration (String)<br />ExecuteOn_Server_Id (Int32)<br />Application_Id (Int32)<br />Environment_Id (Int32)<br />DatabaseConnection_Id (Int32)</td>
+                <td>DatabaseConnection_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DatabaseConnections_DeleteConnection"></a>
+                    <b>DatabaseConnections_DeleteConnection</b><br />Deletes a database connection.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DatabaseConnection_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DatabaseConnections_GetConnection"></a>
+                    <b>DatabaseConnections_GetConnection</b><br />Gets a database connection.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DatabaseConnection_Id (Int32)</td>
+                <td>DataRow (DatabaseConnections_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="DatabaseConnections_GetConnections"></a>
+                    <b>DatabaseConnections_GetConnections</b><br />Gets database connections, optionally filtered by application and environment.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Environment_Id (Int32)</td>
+                <td>DataTable (DatabaseConnections_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Environments_CreateOrUpdateEnvironment"></a>
+                    <b>Environments_CreateOrUpdateEnvironment</b><br />Creates a new environment or updates an existing one
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Name (String)<br />ServerIds_Csv (String)<br />Parent_Environment_Id (Int32)<br />Display_Sequence (Int32)<br />Environment_Id (Int32)</td>
+                <td>Environment_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Environments_DeleteEnvironment"></a>
+                    <b>Environments_DeleteEnvironment</b><br />Soft deletes an environment
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Environments_GetEnvironment"></a>
+                    <b>Environments_GetEnvironment</b><br />Gets an environment.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)</td>
+                <td>DataSet (Environments_Extended, Servers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Environments_GetEnvironments"></a>
+                    <b>Environments_GetEnvironments</b><br />Gets all environments.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>IncludeInactive_Indicator (YNIndicator)</td>
+                <td>DataTable (Environments_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Environments_GetEnvironmentsAndServers"></a>
+                    <b>Environments_GetEnvironmentsAndServers</b><br />Gets the a dataset containing all environments, all environment/server relations, and servers
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>IncludeInactive_Environments_Indicator (YNIndicator)<br />IncludeInactive_Servers_Indicator (YNIndicator)</td>
+                <td>DataSet (Environments_Extended, EnvironmentServers_Extended, Servers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Environments_ResequenceEnvironment"></a>
+                    <b>Environments_ResequenceEnvironment</b><br />Resequences the specified environment by placing it where another environment is sequenced
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)<br />New_Environment_Sequence (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Environments_UndeleteEnvironment"></a>
+                    <b>Environments_UndeleteEnvironment</b><br />Undeletes the specified environment
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="EventListeners_CreateOrUpdateEventListener"></a>
+                    <b>EventListeners_CreateOrUpdateEventListener</b><br />Creates or updates an event listener.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>EventListener_Description (String)<br />EventListener_Configuration (String)<br />Owner_User_Name (String)<br />Active_Indicator (YNIndicator)<br />EventCodeList_Csv (String)<br />ApplicationIdList_Csv (String)<br />ApplicationGroupIdList_Csv (String)<br />PipelineStageNameList_Csv (String)<br />EventListener_Id (Int32)</td>
+                <td>EventListener_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="EventListeners_DeleteEventListener"></a>
+                    <b>EventListeners_DeleteEventListener</b><br />Deletes an event listener.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>EventListener_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="EventListeners_GetEventListener"></a>
+                    <b>EventListeners_GetEventListener</b><br />Gets a EventListener and a list of event codes that the EventListener is subscribed to.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>EventListener_Id (Int32)</td>
+                <td>DataSet (EventListeners, EventListenerApplications, EventListenerApplicationGroups, EventListenerStages, EventListenerEvents)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="EventListeners_GetEventListeners"></a>
+                    <b>EventListeners_GetEventListeners</b><br />Gets a list of event listeners for the specified user, or all users if no user is specified.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Owner_User_Name (String)</td>
+                <td>DataSet (EventListeners, EventListenerApplications, EventListenerApplicationGroups, EventListenerStages, EventListenerEvents)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Events_GetEventOccurrence"></a>
+                    <b>Events_GetEventOccurrence</b><br />Get a specific event occurrence along with its event details.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>EventOccurence_Id (Int32)</td>
+                <td>DataSet (EventOccurences_Extended, EventOccurenceDetails)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Events_GetEventOccurrences"></a>
+                    <b>Events_GetEventOccurrences</b><br />Gets all the event occurrences in the system for a specific application, or all applications, limited to a specified count if provided.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Event_Count (Int32)<br />After_EventOccurence_Id (Int32)</td>
+                <td>DataTable (EventOccurences_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Executions_GetManualExecution"></a>
+                    <b>Executions_GetManualExecution</b><br />Gets a manual execution.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Execution_Id (Int32)</td>
+                <td>DataRow (ManualExecutions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ExtensionConfiguration_DeleteConfiguration"></a>
+                    <b>ExtensionConfiguration_DeleteConfiguration</b><br />Deletes an extension configuration
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ExtensionConfiguration_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ExtensionConfiguration_GetConfiguration"></a>
+                    <b>ExtensionConfiguration_GetConfiguration</b><br />Gets the details of an extension configurer for extension with the specified name
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>QualifiedType_Name (String)<br />Profile_Name (String)</td>
+                <td>DataTable (ExtensionConfigurations)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ExtensionConfiguration_GetConfigurationById"></a>
+                    <b>ExtensionConfiguration_GetConfigurationById</b><br />Gets the details of an extension configurer for extension with the specified ID
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ExtensionConfiguration_Id (Int32)</td>
+                <td>DataRow (ExtensionConfigurations)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ExtensionConfiguration_GetConfigurations"></a>
+                    <b>ExtensionConfiguration_GetConfigurations</b><br />Gets the details for all extension configurers in the system, or a specific one if specified
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>QualifiedType_Name (String)</td>
+                <td>DataTable (ExtensionConfigurations)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ExtensionConfiguration_SaveConfiguration"></a>
+                    <b>ExtensionConfiguration_SaveConfiguration</b><br />Creates an extension configurer in the system, or updates an existing one
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ExtensionConfiguration_Id (Int32)<br />QualifiedType_Name (String)<br />Profile_Name (String)<br />Extension_Configuration (String)<br />Default_Indicator (YNIndicator)</td>
+                <td>ExtensionConfiguration_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Infrastructure_GetInfrastructure"></a>
+                    <b>Infrastructure_GetInfrastructure</b><br />Gets all of the infrastructure; this includes servers, environments, and roles.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataSet (Servers, Environments_Extended, ServerRoles_Extended, EnvironmentServers_Extended, ServerRoleServers, Variables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Issues_CloseIssue"></a>
+                    <b>Issues_CloseIssue</b><br />Closes a BuildMaster issue.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Issue_Id (Int32)<br />Build_Number (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Issues_CreateIssue"></a>
+                    <b>Issues_CreateIssue</b><br />Creates an issue for a release of an application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Type_Text (String)<br />Title_Text (String)<br />Description_Text (String)<br />Closed_Indicator (YNIndicator)<br />Build_Number (String)<br />CreatedBy_User_Name (String)<br />CreatedOn_Date (DateTime)<br />IssueTracker_IssueId_Text (String)<br />IssueTracker_IssueStatus_Text (String)<br />IssueTracker_LastSync_Date (DateTime)<br />IssueTracker_IssueUrl_Text (String)<br />Issue_Id (Int32)</td>
+                <td>Issue_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Issues_DeleteIssue"></a>
+                    <b>Issues_DeleteIssue</b><br />Deletes an issue.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Issue_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Issues_GetIssue"></a>
+                    <b>Issues_GetIssue</b><br />Gets the specified.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Issue_Id (Int32)</td>
+                <td>DataRow (Issues_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Issues_GetIssues"></a>
+                    <b>Issues_GetIssues</b><br />Gets the issues for an application, optionally filtered by release or build.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)</td>
+                <td>DataTable (Issues_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Issues_GetIssueTypes"></a>
+                    <b>Issues_GetIssueTypes</b><br />Gets a list of distinct issue types that have been synchronized by the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (Issues_Types)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Issues_ReopenIssue"></a>
+                    <b>Issues_ReopenIssue</b><br />Re-opens a BuildMaster issue.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Issue_Id (Int32)<br />Build_Number (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Issues_UpdateIssue"></a>
+                    <b>Issues_UpdateIssue</b><br />Updates one or more properties of an issue.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Issue_Id (Int32)<br />Release_Number (String)<br />Type_Text (String)<br />Title_Text (String)<br />Description_Text (String)<br />Closed_Indicator (YNIndicator)<br />IssueTracker_IssueStatus_Text (String)<br />IssueTracker_IssueUrl_Text (String)<br />IssueTracker_LastSync_Date (DateTime)<br />OpenedOn_Original_Build_Number (String)<br />ClosedOn_Original_Build_Number (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LegacyExecutions_SetVariableValue"></a>
+                    <b>LegacyExecutions_SetVariableValue</b><br />Creates, updates, or deletes an execution time variable value.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>BuildExecution_ActionGroupAction_Id (Int32)<br />Variable_Name (String)<br />Value_Text (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LogMessages_DeleteMessages"></a>
+                    <b>LogMessages_DeleteMessages</b><br />Deletes one or all message from the error log
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>LogMessage_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LogMessages_GetMessage"></a>
+                    <b>LogMessages_GetMessage</b><br />Gets a specified message from the error log
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>LogMessage_Id (Int32)</td>
+                <td>DataRow (LogMessages_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="LogMessages_GetMessages"></a>
+                    <b>LogMessages_GetMessages</b><br />Gets the messages from the error log that match the specified criteria
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Row_Count (Int32)<br />Message_Level (Int32)<br />Category_Name (String)<br />Application_Id (Int32)<br />Schedule_Id (Int32)<br />Requirement_Id (Int32)<br />Provider_Id (Int32)<br />EventListener_Id (Int32)<br />Server_Id (Int32)</td>
+                <td>DataTable (LogMessages_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Notifiers_CreateOrUpdateNotifier"></a>
+                    <b>Notifiers_CreateOrUpdateNotifier</b><br />Creates a new notifier, or updates an existing one
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Notifier_Id (Int32)<br />Notifier_Name (String)<br />Notifier_Description (String)<br />Notifier_Configuration (String)<br />Owner_User_Name (String)<br />Active_Indicator (YNIndicator)<br />EventCodeList_Csv (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Notifiers_DeleteNotifier"></a>
+                    <b>Notifiers_DeleteNotifier</b><br />Deletes a notifier from the system
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Notifier_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Notifiers_GetNotifier"></a>
+                    <b>Notifiers_GetNotifier</b><br />Gets a notifier and a list of event codes that the notifier is subscribed to
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Notifier_Id (Int32)</td>
+                <td>DataSet (Notifiers, NotifierEventCodes)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Notifiers_GetNotifiers"></a>
+                    <b>Notifiers_GetNotifiers</b><br />Gets a list of notifiers for the specified user, or all users if no user is specified
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Owner_User_Name (String)</td>
+                <td>DataTable (Notifiers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Pipelines_CreatePipeline"></a>
+                    <b>Pipelines_CreatePipeline</b><br />Creates a new pipeline.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Pipeline_Name (String)<br />Pipeline_Configuration (String)<br />Active_Indicator (YNIndicator)<br />Application_Id (Int32)<br />Pipeline_Color (String)<br />Pipeline_Id (Int32)</td>
+                <td>Pipeline_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Pipelines_DeletePipeline"></a>
+                    <b>Pipelines_DeletePipeline</b><br />Deletes a pipeline.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Pipeline_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Pipelines_GetPipeline"></a>
+                    <b>Pipelines_GetPipeline</b><br />Returns the specified pipeline.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Pipeline_Id (Int32)</td>
+                <td>DataRow (Pipelines)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Pipelines_GetPipelines"></a>
+                    <b>Pipelines_GetPipelines</b><br />Returns the pipelines in the system, optionally filtered by application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td>DataTable (Pipelines)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Pipelines_UpdatePipeline"></a>
+                    <b>Pipelines_UpdatePipeline</b><br />Updates a pipeline.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Pipeline_Id (Int32)<br />Pipeline_Name (String)<br />Pipeline_Configuration (String)<br />Active_Indicator (YNIndicator)<br />Pipeline_Color (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_ChangeActionGroup"></a>
+                    <b>Plans_ChangeActionGroup</b><br />Moves an action into a different action group.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlanActionGroup_Id (Int32)<br />Action_Sequence (Int32)<br />New_DeploymentPlanActionGroup_Id (Int32)<br />New_Action_Sequence (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_ChangeActionGroupDeploymentPlan"></a>
+                    <b>Plans_ChangeActionGroupDeploymentPlan</b><br />Moves a plan action group to the final position of a different deployment plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlanActionGroup_Id (Int32)<br />New_DeploymentPlan_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_CloneDeploymentPlans"></a>
+                    <b>Plans_CloneDeploymentPlans</b><br />Clones one or more deployment plans
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlanCloneData_Xml (String)<br />NewDeploymentPlanIdsCsv (String)</td>
+                <td>NewDeploymentPlanIdsCsv</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_CreateOrUpdateAction"></a>
+                    <b>Plans_CreateOrUpdateAction</b><br />Creates an action in the specified action group or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ActionGroup_Id (Int32)<br />Action_Sequence (Int32)<br />Server_Id (Int32)<br />Server_Variable_Name (String)<br />Long_Description (String)<br />ResumeNextOnFailure_Indicator (YNIndicator)<br />Action_Configuration (String)<br />Short_Description (String)<br />Active_Indicator (YNIndicator)<br />Retry_Count (Int32)<br />LogFailureAsWarning_Indicator (YNIndicator)<br />Target_Server_Id (Int32)<br />Target_Server_Variable_Name (String)<br />ExtensionConfiguration_Id (Int32)</td>
+                <td>Action_Sequence</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_CreateOrUpdateDeploymentPlan"></a>
+                    <b>Plans_CreateOrUpdateDeploymentPlan</b><br />Creates a new deployment plan or changes the name of an existing deployment plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlan_Name (String)<br />AllowLocalChanges_Indicator (YNIndicator)<br />Application_Id (Int32)<br />DeploymentPlan_Id (Int32)</td>
+                <td>DeploymentPlan_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_CreatePlan"></a>
+                    <b>Plans_CreatePlan</b><br />Creates a new OtterScript deployment plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Plan_Name (String)<br />Application_Id (Int32)<br />Environment_Id (Int32)<br />PlanType_Code (String)<br />Plan_Bytes (Byte[])<br />Plan_Id (Int32)</td>
+                <td>Plan_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_DeleteAction"></a>
+                    <b>Plans_DeleteAction</b><br />Deletes an action from an action group.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlanActionGroup_Id (Int32)<br />Action_Sequence (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_DeleteDeploymentPlan"></a>
+                    <b>Plans_DeleteDeploymentPlan</b><br />Deletes a deployment plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlan_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_DeleteDeploymentPlanActionGroup"></a>
+                    <b>Plans_DeleteDeploymentPlanActionGroup</b><br />Deletes the specified action group.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlanActionGroup_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_DeletePlan"></a>
+                    <b>Plans_DeletePlan</b><br />Deletes an OtterScript plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Plan_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetAction"></a>
+                    <b>Plans_GetAction</b><br />Gets the details of the specified action.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ActionGroup_Id (Int32)<br />Action_Sequence (Int32)</td>
+                <td>DataRow (ActionGroupActions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetActionGroup"></a>
+                    <b>Plans_GetActionGroup</b><br />Gets the details of the specified plan, and all the actions associated with the plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ActionGroup_Id (Int32)</td>
+                <td>DataSet (ActionGroups, ActionGroupActions_Extended, ActionGroupUsage_Slim)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetActionGroups"></a>
+                    <b>Plans_GetActionGroups</b><br />Gets all action groups.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (ActionGroups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetDeploymentPlan"></a>
+                    <b>Plans_GetDeploymentPlan</b><br />Returns action groups and actions for a deployment plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlan_Id (Int32)<br />IncludeActionUsage_Indicator (YNIndicator)</td>
+                <td>DataSet (DeploymentPlans, ApplicationDeploymentPlans, DeploymentPlanActionGroups_Extended, ActionGroupActions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetDeploymentPlanActionGroup"></a>
+                    <b>Plans_GetDeploymentPlanActionGroup</b><br />Gets the details of the specified plan, and all the actions associated with the plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlanActionGroup_Id (Int32)</td>
+                <td>DataSet (DeploymentPlanActionGroups_Extended, ActionGroupActions_Extended, ActionGroupUsage_Slim, ApplicationDeploymentPlans)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetDeploymentPlans"></a>
+                    <b>Plans_GetDeploymentPlans</b><br />Returns the deployment plans in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>IncludeAnonymous_Indicator (YNIndicator)</td>
+                <td>DataSet (DeploymentPlans, ApplicationDeploymentPlans)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetGlobalDeploymentPlans"></a>
+                    <b>Plans_GetGlobalDeploymentPlans</b><br />Returns named deployment plans and optionally plans orphaned.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (DeploymentPlans)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetPlan"></a>
+                    <b>Plans_GetPlan</b><br />Returns the specified OtterScript plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Plan_Id (Int32)</td>
+                <td>DataRow (Plans_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetPlanByName"></a>
+                    <b>Plans_GetPlanByName</b><br />Gets the plan which has the specified name and type that is visible to the specified application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Plan_Name (String)<br />PlanType_Code (String)</td>
+                <td>DataRow (Plans_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetPlans"></a>
+                    <b>Plans_GetPlans</b><br />Returns all OtterScript plans of the specified type which are visible to the specified application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />PlanType_Code (String)</td>
+                <td>DataTable (Plans_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_GetPlansByName"></a>
+                    <b>Plans_GetPlansByName</b><br />Gets all plans in the system with the specified name and type.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Plan_Name (String)<br />PlanType_Code (String)</td>
+                <td>DataTable (Plans_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_ResequenceAction"></a>
+                    <b>Plans_ResequenceAction</b><br />Changes the sequence of an action within a plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlanActionGroup_Id (Int32)<br />Action_Sequence (Int32)<br />New_Action_Sequence (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_ResequenceActionGroup"></a>
+                    <b>Plans_ResequenceActionGroup</b><br />Changes the sequence of a deployment plan action group.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlanActionGroup_Id (Int32)<br />New_DeploymentPlanActionGroup_Sequence (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_UpdateActionGroup"></a>
+                    <b>Plans_UpdateActionGroup</b><br />Updates the specified action group.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ActionGroup_Id (Int32)<br />ActionGroup_Name (String)<br />ActionGroup_Description (String)<br />Predicate_Configuration (String)<br />Server_Id (Int32)<br />Server_Variable_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_UpdateDeploymentPlanActionGroup"></a>
+                    <b>Plans_UpdateDeploymentPlanActionGroup</b><br />Updates the specified deployment plan action group.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>DeploymentPlanActionGroup_Id (Int32)<br />Active_Indicator (YNIndicator)<br />ActionGroup_Name (String)<br />ActionGroup_Description (String)<br />Predicate_Configuration (String)<br />Server_Id (Int32)<br />Server_Variable_Name (String)<br />Deployable_Name (String)<br />Deployable_Application_Id (Int32)<br />Iterate_Servers_Indicator (YNIndicator)<br />Iterate_Deployables_Indicator (YNIndicator)<br />Parallel_Indicator (YNIndicator)<br />OnSuccess_DeploymentPlanActionGroup_Id (Int32)<br />OnFailure_DeploymentPlanActionGroup_Id (Int32)<br />OnFailure_Continue_Indicator (YNIndicator)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Plans_UpdatePlan"></a>
+                    <b>Plans_UpdatePlan</b><br />Updates an OtterScript deployment plan.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Plan_Id (Int32)<br />Plan_Name (String)<br />Plan_Bytes (Byte[])<br />Environment_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Promotions_AddApproval"></a>
+                    <b>Promotions_AddApproval</b><br />Adds an approval for a promotion.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />PipelineStage_Name (String)<br />Requirement_Id (Int32)<br />RequirementType_Code (String)<br />User_Name (String)<br />Requirement_Description (String)<br />Comments_Text (String)<br />Approval_Id (Int32)</td>
+                <td>Approval_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Promotions_DeleteApproval"></a>
+                    <b>Promotions_DeleteApproval</b><br />Deletes an approval for a promotion.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Approval_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Promotions_GetApprovalsReceived"></a>
+                    <b>Promotions_GetApprovalsReceived</b><br />Gets all requirements and approvals received for the specified promotion.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />PipelineStage_Name (String)<br />Approval_Id (Int32)</td>
+                <td>DataTable (BuildApprovalsReceived_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Promotions_GetScheduled"></a>
+                    <b>Promotions_GetScheduled</b><br />Gets scheduled promotions, optionally filtered by promotion and date.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />PipelineStage_Name (String)<br />Before_Date (DateTime)</td>
+                <td>DataTable (BuildPromotionsScheduled_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Promotions_SchedulePromotion"></a>
+                    <b>Promotions_SchedulePromotion</b><br />Schedules a promotion or removes a previously scheduled promotion.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />PipelineStage_Name (String)<br />PromoteOn_Date (DateTime)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Providers_CreateOrUpdateProvider"></a>
+                    <b>Providers_CreateOrUpdateProvider</b><br />Creates a new provider or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Provider_Id (Int32)<br />ProviderType_Code (String)<br />ExecuteOn_Server_Id (Int32)<br />Provider_Name (String)<br />Provider_Description (String)<br />Provider_Configuration (String)<br />Internal_Indicator (YNIndicator)</td>
+                <td>Provider_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Providers_DeleteProvider"></a>
+                    <b>Providers_DeleteProvider</b><br />Deletes the specified provider
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Provider_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Providers_GetProvider"></a>
+                    <b>Providers_GetProvider</b><br />Gets the details of the specified provider
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Provider_Id (Int32)</td>
+                <td>DataRow (Providers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Providers_GetProviders"></a>
+                    <b>Providers_GetProviders</b><br />Gets a list of providers in the system based on the specified criteria
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ProviderType_Code (String)<br />Application_Id (Int32)<br />Environment_Id (Int32)</td>
+                <td>DataTable (Providers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_CancelRelease"></a>
+                    <b>Releases_CancelRelease</b><br />Cancels the specified release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />CancelledReason_Text (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_CreateOrUpdateRelease"></a>
+                    <b>Releases_CreateOrUpdateRelease</b><br />Creates a release or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Pipeline_Id (Int32)<br />Target_Date (DateTime)<br />Release_Name (String)<br />ReleaseTemplate_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_CreateOrUpdateReleaseDeployable"></a>
+                    <b>Releases_CreateOrUpdateReleaseDeployable</b><br />Sets the furthest build number for the release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Deployable_Id (Int32)<br />Referenced_Application_Id (Int32)<br />Referenced_Release_Number (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_CreateOrUpdateReleaseNote"></a>
+                    <b>Releases_CreateOrUpdateReleaseNote</b><br />Creates a new release note, or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />ReleaseNote_Sequence (Int32)<br />Build_Number (String)<br />Promotion_Id (Int32)<br />Notes_Text (String)</td>
+                <td>ReleaseNote_Sequence</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_DeleteReleaseDeployable"></a>
+                    <b>Releases_DeleteReleaseDeployable</b><br />Removes a deployable from the release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Deployable_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_DeleteReleaseNote"></a>
+                    <b>Releases_DeleteReleaseNote</b><br />Deletes a release note from the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />ReleaseNote_Sequence (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_GetBuildExecutions"></a>
+                    <b>Releases_GetBuildExecutions</b><br />Gets the list of build executions for the specified release
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)</td>
+                <td>DataTable (BuildExecutions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_GetDependentReleases"></a>
+                    <b>Releases_GetDependentReleases</b><br />Gets all releases with referenced deployables from a specified release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)</td>
+                <td>DataTable (Releases_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_GetRelease"></a>
+                    <b>Releases_GetRelease</b><br />Gets the details of a specified release, the deployables associated with the release, and the configuration file versions associated with the release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)</td>
+                <td>DataSet (Releases_Extended, ReleaseDeployables_Extended, ReleaseConfigurationFiles)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_GetReleaseById"></a>
+                    <b>Releases_GetReleaseById</b><br />Gets the details of a specified release by ID.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Release_Id (Int32)</td>
+                <td>DataRow (Releases_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_GetReleaseDeployables"></a>
+                    <b>Releases_GetReleaseDeployables</b><br />Gets the set of deployables associated with any release for an application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td>DataTable (ReleaseDeployables_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_GetReleaseNote"></a>
+                    <b>Releases_GetReleaseNote</b><br />Gets a release note from the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />ReleaseNote_Sequence (Int32)</td>
+                <td>DataRow (ReleaseNotes_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_GetReleaseNotes"></a>
+                    <b>Releases_GetReleaseNotes</b><br />Gets the release notes that match the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Promotion_Id (Int32)</td>
+                <td>DataTable (ReleaseNotes_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_GetReleases"></a>
+                    <b>Releases_GetReleases</b><br />Gets a list of releases that match the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />ReleaseStatus_Name (String)<br />Release_Count (Int32)</td>
+                <td>DataTable (Releases_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_PurgeReleaseData"></a>
+                    <b>Releases_PurgeReleaseData</b><br />Purges an entire release and all associated data from the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_ReleaseExists"></a>
+                    <b>Releases_ReleaseExists</b><br />Determines whether a release already exists, and also whether a newer release of an application exists
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />ReleaseExists_Indicator (YNIndicator)<br />NewerDeployedReleaseExists_Indicator (YNIndicator)</td>
+                <td>ReleaseExists_Indicator<br />NewerDeployedReleaseExists_Indicator</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_ResequenceRelease"></a>
+                    <b>Releases_ResequenceRelease</b><br />Resequences the specified release by placing it where another release is sequenced.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />Release_Sequence (Int64)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_SetConfigurationFileVersion"></a>
+                    <b>Releases_SetConfigurationFileVersion</b><br />Sets the configuration file version for the specified release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)<br />ConfigurationFile_Id (Int32)<br />Version_Number (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Releases_UnCancelRelease"></a>
+                    <b>Releases_UnCancelRelease</b><br />Restores a previously canceled release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />Release_Number (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ReleaseTemplates_CreateOrUpdateTemplate"></a>
+                    <b>ReleaseTemplates_CreateOrUpdateTemplate</b><br />Creates a release template or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />ReleaseTemplate_Name (String)<br />ReleaseTemplate_Configuration (String)<br />ReleaseTemplate_Id (Int32)</td>
+                <td>ReleaseTemplate_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ReleaseTemplates_DeleteTemplate"></a>
+                    <b>ReleaseTemplates_DeleteTemplate</b><br />Deletes the specified release template.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ReleaseTemplate_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ReleaseTemplates_GetTemplate"></a>
+                    <b>ReleaseTemplates_GetTemplate</b><br />Gets the specified release template.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ReleaseTemplate_Id (Int32)</td>
+                <td>DataRow (ReleaseTemplates)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ReleaseTemplates_GetTemplateByName"></a>
+                    <b>ReleaseTemplates_GetTemplateByName</b><br />Gets the specified release template by application and name.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)<br />ReleaseTemplate_Name (String)</td>
+                <td>DataRow (ReleaseTemplates)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ReleaseTemplates_GetTemplates"></a>
+                    <b>ReleaseTemplates_GetTemplates</b><br />Gets the release templates for the specified application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td>DataTable (ReleaseTemplates)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RetentionPolicies_CreateOrUpdateRetentionPolicy"></a>
+                    <b>RetentionPolicies_CreateOrUpdateRetentionPolicy</b><br />Creates or updates a retention policy.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>RetentionPolicy_Name (String)<br />PurgeType_Code (String)<br />PurgeIn_Application_Id (Int32)<br />PurgeIn_ApplicationGroup_Id (Int32)<br />PurgeIn_OnlyDeployedReleases_Indicator (YNIndicator)<br />PurgeIn_OnlyRejectedBuilds_Indicator (YNIndicator)<br />PurgeOrphanedArtifacts_Indicator (YNIndicator)<br />PurgeIn_Pipeline_Id (Int32)<br />PurgeIn_Environment_Id (Int32)<br />PurgeIn_BuildStep_Indicator (YNIndicator)<br />Retention_Count (Int32)<br />Retention_Size (Int64)<br />Retention_Days_Count (Int32)<br />PurgeWindow_Start_Minutes (Int32)<br />PurgeWindow_Duration_Minutes (Int32)<br />Active_Indicator (YNIndicator)<br />RetentionPolicy_Id (Int32)</td>
+                <td>RetentionPolicy_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RetentionPolicies_DeleteRetentionPolicy"></a>
+                    <b>RetentionPolicies_DeleteRetentionPolicy</b><br />Deletes a retention policy.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>RetentionPolicy_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RetentionPolicies_GetPurgeHistory"></a>
+                    <b>RetentionPolicies_GetPurgeHistory</b><br />Gets the purge history for one or all retention policies.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>RetentionPolicy_Id (Int32)<br />Max_Count (Int32)</td>
+                <td>DataTable (RetentionPoliciesPurgeHistory)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RetentionPolicies_GetPurgeLog"></a>
+                    <b>RetentionPolicies_GetPurgeLog</b><br />Gets the specified purge history log.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>RetentionPoliciesPurgeHistoryEntry_Id (Int32)</td>
+                <td>DataRow (RetentionPoliciesPurgeHistory)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RetentionPolicies_GetRetentionPolicies"></a>
+                    <b>RetentionPolicies_GetRetentionPolicies</b><br />Gets all of the retention policies.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Include_Inactive (String)</td>
+                <td>DataTable (RetentionPolicies_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RetentionPolicies_GetRetentionPolicy"></a>
+                    <b>RetentionPolicies_GetRetentionPolicy</b><br />Gets the specified retention policy.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>RetentionPolicy_Id (Int32)</td>
+                <td>DataRow (RetentionPolicies_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="RetentionPolicies_PurgeNow"></a>
+                    <b>RetentionPolicies_PurgeNow</b><br />Marks a retention policy as ready to run immediately.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>RetentionPolicy_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ScriptAssets_CreateOrUpdateScript"></a>
+                    <b>ScriptAssets_CreateOrUpdateScript</b><br />Creates a new script or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ScriptAsset_Name (String)<br />Application_Id (Int32)<br />Script_Text (Byte[])<br />ScriptAsset_Id (Int32)</td>
+                <td>ScriptAsset_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ScriptAssets_DeleteScript"></a>
+                    <b>ScriptAssets_DeleteScript</b><br />Deletes a script.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ScriptAsset_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ScriptAssets_GetScript"></a>
+                    <b>ScriptAssets_GetScript</b><br />Gets the script with the specified ID.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ScriptAsset_Id (Int32)</td>
+                <td>DataRow (ScriptAssets)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ScriptAssets_GetScriptByName"></a>
+                    <b>ScriptAssets_GetScriptByName</b><br />Gets the script with the specified name, searching from the specified application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ScriptAsset_Name (String)<br />Application_Id (Int32)</td>
+                <td>DataRow (ScriptAssets)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ScriptAssets_GetScripts"></a>
+                    <b>ScriptAssets_GetScripts</b><br />Gets the scripts which are visible to the specified application.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Application_Id (Int32)</td>
+                <td>DataTable (ScriptAssets)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Scripts_CreateOrUpdateParameter"></a>
+                    <b>Scripts_CreateOrUpdateParameter</b><br />Creates a new script parameter or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Script_Id (Int32)<br />Parameter_Name (String)<br />ParameterType_Code (String)<br />DefaultValue_Text (String)<br />Description_Text (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Scripts_CreateOrUpdateScript"></a>
+                    <b>Scripts_CreateOrUpdateScript</b><br />Creates a new script or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Script_Id (Int32)<br />Script_Name (String)<br />Description_Text (String)<br />ScriptType_Code (String)<br />Active_Indicator (YNIndicator)<br />AutoSync_Indicator (YNIndicator)</td>
+                <td>Script_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Scripts_CreateOrUpdateVariable"></a>
+                    <b>Scripts_CreateOrUpdateVariable</b><br />Creates a new script variable or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Script_Id (Int32)<br />ScriptVariable_Name (String)<br />Value_Text (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Scripts_CreateVersion"></a>
+                    <b>Scripts_CreateVersion</b><br />Creates a new version of a script.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Version_Number (Int32)<br />Script_Id (Int32)<br />Script_Bytes (Byte[])</td>
+                <td>Version_Number</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Scripts_DeleteParameter"></a>
+                    <b>Scripts_DeleteParameter</b><br />Deletes a script parameter.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Script_Id (Int32)<br />Parameter_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Scripts_DeleteScript"></a>
+                    <b>Scripts_DeleteScript</b><br />Permanently deletes a script.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Script_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Scripts_DeleteVariable"></a>
+                    <b>Scripts_DeleteVariable</b><br />Deletes a script variable.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Script_Id (Int32)<br />ScriptVariable_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Scripts_GetScript"></a>
+                    <b>Scripts_GetScript</b><br />Gets a script and all of its associated information.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Script_Id (Int32)</td>
+                <td>DataSet (Scripts_Extended, ScriptParameters, ScriptVariables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Scripts_GetScripts"></a>
+                    <b>Scripts_GetScripts</b><br />Gets all of the scripts in the system, optionally filtered by type code.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ScriptType_Code (String)<br />IncludeInactive_Indicator (YNIndicator)</td>
+                <td>DataTable (Scripts_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_AddNamedUser"></a>
+                    <b>Security_AddNamedUser</b><br />Assigns the specified user as a named user with the specified user class type
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_AddPrivilege"></a>
+                    <b>Security_AddPrivilege</b><br />Grants or denies the specified principal the ability to perform a certain role
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Privilege_Id (Int32)<br />UserDirectory_Id (Int32)<br />Principal_Name (String)<br />PrincipalType_Code (String)<br />Role_Id (Int32)<br />ApplicationGroup_Id (Int32)<br />Application_Id (Int32)<br />Environment_Id (Int32)<br />PrivilegeType_Code (String)</td>
+                <td>Privilege_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_CreateOrUpdateRole"></a>
+                    <b>Security_CreateOrUpdateRole</b><br />Creates or updates a role.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Role_Id (Int32)<br />Role_Name (String)<br />Role_Description (String)<br />Tasks_Csv (String)</td>
+                <td>Role_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_DeleteRole"></a>
+                    <b>Security_DeleteRole</b><br />Deletes the specified role from the system
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Role_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetNamedUser"></a>
+                    <b>Security_GetNamedUser</b><br />Gets the specified named user
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)</td>
+                <td>DataRow (NamedUsers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetNamedUsers"></a>
+                    <b>Security_GetNamedUsers</b><br />Gets a list of the named users in the system
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (NamedUsers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetOrAddAnonymousRole"></a>
+                    <b>Security_GetOrAddAnonymousRole</b><br />Gets an anonymous role containing the specified tasks, creating one if necessary.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Tasks_Csv (String)<br />Role_Id (Int32)</td>
+                <td>Role_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetPrivileges"></a>
+                    <b>Security_GetPrivileges</b><br />Gets a list of privileges assigned in the system
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>UserDirectory_Id (Int32)<br />PrincipalType_Code (String)</td>
+                <td>DataTable (Privileges_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetRole"></a>
+                    <b>Security_GetRole</b><br />Gets the specified role, along with all the tasks that comprise the role.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Role_Id (Int32)</td>
+                <td>DataSet (Roles, RoleTasks_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetRoles"></a>
+                    <b>Security_GetRoles</b><br />Gets all the roles in the system, along with all the tasks comprising each role.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>IncludeAnonymous_Indicator (YNIndicator)</td>
+                <td>DataSet (Roles, RoleTasks_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_GetTasks"></a>
+                    <b>Security_GetTasks</b><br />Gets all of the tasks in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (Tasks)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_RemoveNamedUser"></a>
+                    <b>Security_RemoveNamedUser</b><br />Removes the specified user as a named user
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_RemovePrivilege"></a>
+                    <b>Security_RemovePrivilege</b><br />Deletes a privilege from the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Privilege_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Security_UserIsNamed"></a>
+                    <b>Security_UserIsNamed</b><br />Determines whether or not a user is a named user in the system
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)<br />UserIsNamed_Indicator (YNIndicator)</td>
+                <td>UserIsNamed_Indicator</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ServerRoles_CreateOrUpdateServerRole"></a>
+                    <b>ServerRoles_CreateOrUpdateServerRole</b><br />Creates or updates a server role.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ServerRole_Name (String)<br />ServerIds_Csv (String)<br />ServerRole_Id (Int32)</td>
+                <td>ServerRole_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ServerRoles_DeleteServerRole"></a>
+                    <b>ServerRoles_DeleteServerRole</b><br />Deletes the specified server and its configurations.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ServerRole_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ServerRoles_GetServerRole"></a>
+                    <b>ServerRoles_GetServerRole</b><br />Gets the specified server role.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ServerRole_Id (Int32)</td>
+                <td>DataRow (ServerRoles_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ServerRoles_GetServerRoles"></a>
+                    <b>ServerRoles_GetServerRoles</b><br />Gets all the servers roles in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (ServerRoles_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ServerRoles_GetServerRolesEnvironments"></a>
+                    <b>ServerRoles_GetServerRolesEnvironments</b><br />Gets all the server role and environment relations that match the specified criteria.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)<br />ServerRole_Id (Int32)</td>
+                <td>DataTable (ServerRolesEnvironments_Merged)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ServerRoles_GetServerRoleServers"></a>
+                    <b>ServerRoles_GetServerRoleServers</b><br />Gets all the server role servers for a specific role, or all the roles in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ServerRole_Id (Int32)</td>
+                <td>DataTable (ServerRoleServers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="ServerRoles_SearchServerRoles"></a>
+                    <b>ServerRoles_SearchServerRoles</b><br />Searches servers roles in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)</td>
+                <td>DataTable (ServerRoles_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Servers_CreateOrUpdateServer"></a>
+                    <b>Servers_CreateOrUpdateServer</b><br />Creates a new server, or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Server_Name (String)<br />Agent_Configuration (String)<br />Active_Indicator (YNIndicator)<br />ServerType_Code (String)<br />Restricted_Indicator (YNIndicator)<br />EnvironmentIds_Csv (String)<br />ServerIdsInGroup_Csv (String)<br />ServerRoleIds_Csv (String)<br />LogServerErrors_Indicator (YNIndicator)<br />Server_Id (Int32)</td>
+                <td>Server_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Servers_DeleteServer"></a>
+                    <b>Servers_DeleteServer</b><br />Deletes a server.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Server_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Servers_GetServer"></a>
+                    <b>Servers_GetServer</b><br />Gets the details of a specific server and its environments.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Server_Id (Int32)</td>
+                <td>DataSet (Servers, Environments_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Servers_GetServerLogs"></a>
+                    <b>Servers_GetServerLogs</b><br />Gets the logs associated with the specified server.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Server_Id (Int32)<br />LogMessage_Count (Int32)</td>
+                <td>DataTable (LogMessages_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Servers_GetServers"></a>
+                    <b>Servers_GetServers</b><br />Gets all the servers in the system.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>IncludeInactive_Indicator (YNIndicator)</td>
+                <td>DataTable (Servers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Servers_GetServersInGroup"></a>
+                    <b>Servers_GetServersInGroup</b><br />Gets all the servers in a specified server group.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>ServerGroup_Server_Id (Int32)<br />IncludeInactive_Indicator (YNIndicator)</td>
+                <td>DataTable (Servers)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Servers_SearchServers"></a>
+                    <b>Servers_SearchServers</b><br />Gets all the servers specified by the filter, as well as their associated environments and roles.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Has_ServerRole_Id (Int32)<br />In_Environment_Id (Int32)</td>
+                <td>DataSet (Servers, ServerRoleServers, EnvironmentServers_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="UserConfiguration_GetUserConfiguration"></a>
+                    <b>UserConfiguration_GetUserConfiguration</b><br />Gets the a complete list of user configuration settings
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)</td>
+                <td>DataTable (UserConfiguration)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="UserConfiguration_GetValue"></a>
+                    <b>UserConfiguration_GetValue</b><br />Gets the specified user configuration value
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)<br />Key_Name (String)<br />Value_Text (String)</td>
+                <td>Value_Text</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="UserConfiguration_SetValue"></a>
+                    <b>UserConfiguration_SetValue</b><br />Sets a user configuration value
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)<br />Key_Name (String)<br />Value_Text (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_CreateOrUpdateGroup"></a>
+                    <b>Users_CreateOrUpdateGroup</b><br />Creates a new user group in the system
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Group_Name (String)<br />Users_Xml (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_CreateOrUpdateUser"></a>
+                    <b>Users_CreateOrUpdateUser</b><br />Creates a new user in the system or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)<br />Display_Name (String)<br />Email_Address (String)<br />Groups_Xml (String)<br />ChangePasswordOnLogin_Indicator (YNIndicator)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_DeleteGroup"></a>
+                    <b>Users_DeleteGroup</b><br />Deletes a user group from the system, but does not delete the users who belong to the group
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Group_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_DeleteUser"></a>
+                    <b>Users_DeleteUser</b><br />Deletes a user from the system
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_GetGroups"></a>
+                    <b>Users_GetGroups</b><br />Gets a list of user groups in the system
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (Groups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_GetUser"></a>
+                    <b>Users_GetUser</b><br />Gets the details of the specified user, and a list of all the groups the user belongs to
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)</td>
+                <td>DataSet (Users, UserGroups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_GetUsers"></a>
+                    <b>Users_GetUsers</b><br />Gets all the users in the system, along with all group membership information.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataSet (Users, UserGroups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_GetUsersInGroup"></a>
+                    <b>Users_GetUsersInGroup</b><br />Gets a list of users in the specified group
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Group_Name (String)</td>
+                <td>DataTable (Users)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_SearchGroups"></a>
+                    <b>Users_SearchGroups</b><br />Gets a specific group by name, or if a wildcard search is performed, a group whose name starts with the specified name
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Group_Name (String)<br />PerformWildcardSearch_Indicator (YNIndicator)</td>
+                <td>DataTable (Groups)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_SearchUsers"></a>
+                    <b>Users_SearchUsers</b><br />Gets the specified user, or searchs for a user whose name starts with any of the specified criteria
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)<br />Display_Name (String)<br />Email_Address (String)<br />PerformWildcardSearch_Indicator (YNIndicator)</td>
+                <td>DataTable (Users)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Users_ValidateLogin"></a>
+                    <b>Users_ValidateLogin</b><br />Validates the password of a specified user
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>User_Name (String)<br />Password_Text (String)<br />Validated_Indicator (YNIndicator)</td>
+                <td>Validated_Indicator</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_CreateOrUpdatePackageVariable"></a>
+                    <b>Variables_CreateOrUpdatePackageVariable</b><br />Creates a new package variable or sets an existing release package variable's value.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Build_Id (Int32)<br />Variable_Name (String)<br />ValueType_Code (String)<br />Variable_Value (Byte[])<br />Sensitive_Indicator (YNIndicator)<br />EvaluateVariables_Indicator (YNIndicator)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_CreateOrUpdateReleaseVariable"></a>
+                    <b>Variables_CreateOrUpdateReleaseVariable</b><br />Creates a new release variable or sets an existing release variable's value.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Release_Id (Int32)<br />Variable_Name (String)<br />ValueType_Code (String)<br />Variable_Value (Byte[])<br />Sensitive_Indicator (YNIndicator)<br />EvaluateVariables_Indicator (YNIndicator)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_CreateOrUpdateVariable"></a>
+                    <b>Variables_CreateOrUpdateVariable</b><br />Creates a new variable, or updates an existing variable with the specified ID or matching scope.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Variable_Name (String)<br />ValueType_Code (String)<br />Variable_Value (Byte[])<br />Environment_Id (Int32)<br />ServerRole_Id (Int32)<br />Server_Id (Int32)<br />ApplicationGroup_Id (Int32)<br />Application_Id (Int32)<br />Deployable_Id (Int32)<br />Sensitive_Indicator (YNIndicator)<br />EvaluateVariables_Indicator (YNIndicator)<br />Variable_Id (Int32)</td>
+                <td>Variable_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_CreateOrUpdateVariableDeclaration"></a>
+                    <b>Variables_CreateOrUpdateVariableDeclaration</b><br />Creates a new variable declaration or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>VariableDeclaration_Id (Int32)<br />Variable_Name (String)<br />Scope_Code (String)<br />Scoped_Application_Id (Int32)<br />Scoped_PipelineStage_Name (String)<br />Scoped_Environment_Id (Int32)<br />Required_Indicator (YNIndicator)<br />Variable_Configuration (String)<br />DefaultValue_Text (String)<br />Sensitive_Indicator (YNIndicator)</td>
+                <td>VariableDeclaration_Id</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_CreateOrUpdateVariableDefinition"></a>
+                    <b>Variables_CreateOrUpdateVariableDefinition</b><br />Creates a new variable definition or updates an existing one.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Variable_Name (String)<br />Environment_Id (Int32)<br />ServerRole_Id (Int32)<br />Server_Id (Int32)<br />ApplicationGroup_Id (Int32)<br />Application_Id (Int32)<br />Deployable_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />Promotion_Id (Int32)<br />Execution_Id (Int32)<br />Value_Text (String)<br />Sensitive_Indicator (YNIndicator)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_DeletePackageVariable"></a>
+                    <b>Variables_DeletePackageVariable</b><br />Deletes a release package variable.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Build_Id (Int32)<br />Variable_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_DeleteReleaseVariable"></a>
+                    <b>Variables_DeleteReleaseVariable</b><br />Deletes a release variable.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Release_Id (Int32)<br />Variable_Name (String)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_DeleteVariable"></a>
+                    <b>Variables_DeleteVariable</b><br />Deletes a variable.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Variable_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_DeleteVariableDeclaration"></a>
+                    <b>Variables_DeleteVariableDeclaration</b><br />Deletes a variable declaration.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>VariableDeclaration_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_DeleteVariableDefinition"></a>
+                    <b>Variables_DeleteVariableDefinition</b><br />Deletes a variable definition
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>VariableDefinition_Id (Int32)</td>
+                <td><em>none</em></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetPackageVariables"></a>
+                    <b>Variables_GetPackageVariables</b><br />Gets the package variables for a specific release package.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Build_Id (Int32)</td>
+                <td>DataTable (BuildVariables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetReleaseVariables"></a>
+                    <b>Variables_GetReleaseVariables</b><br />Gets the release variables for a specific release.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Release_Id (Int32)</td>
+                <td>DataTable (ReleaseVariables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetSystemVariableDefinitions"></a>
+                    <b>Variables_GetSystemVariableDefinitions</b><br />Gets the variable definitions for system-scoped variables.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (VariableDefinitions_System)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariable"></a>
+                    <b>Variables_GetVariable</b><br />Gets a variable from a specified id.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Variable_Id (Int32)</td>
+                <td>DataRow (Variables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariableDeclaration"></a>
+                    <b>Variables_GetVariableDeclaration</b><br />Gets the variable declaration in the system that has the specified ID.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>VariableDeclaration_Id (Int32)</td>
+                <td>DataRow (VariableDeclarations)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariableDeclarations"></a>
+                    <b>Variables_GetVariableDeclarations</b><br />Gets the variable declarations in the system that are defined in the specified scope.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Scope_Code (String)<br />Scoped_Application_Id (Int32)<br />Scoped_PiplineStage_Name (String)<br />Scoped_Environment_Id (Int32)</td>
+                <td>DataTable (VariableDeclarations)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariableDefinition"></a>
+                    <b>Variables_GetVariableDefinition</b><br />Gets the specified variable definition.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>VariableDefinition_Id (Int32)</td>
+                <td>DataRow (VariableDefinitions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariableDefinitions"></a>
+                    <b>Variables_GetVariableDefinitions</b><br />Gets the variable definitions in the system that are defined in the specified scope
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)<br />ServerRole_Id (Int32)<br />Server_Id (Int32)<br />ApplicationGroup_Id (Int32)<br />Application_Id (Int32)<br />Deployable_Id (Int32)<br />Release_Id (Int32)<br />Build_Id (Int32)<br />Execution_Id (Int32)</td>
+                <td>DataTable (VariableDefinitions_Extended)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariables"></a>
+                    <b>Variables_GetVariables</b><br />Gets all variables.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><em>none</em></td>
+                <td>DataTable (Variables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariablesAccessibleFromScope"></a>
+                    <b>Variables_GetVariablesAccessibleFromScope</b><br />Gets the variables that are defined in any of the specified scopes.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)<br />ServerRole_Id (Int32)<br />Server_Id (Int32)<br />ApplicationGroup_Id (Int32)<br />Application_Id (Int32)<br />Deployable_Id (Int32)<br />Variable_Name (String)<br />ExpandRolesAndEnvironments_Indicator (YNIndicator)<br />IncludeSystemVariables_Indicator (YNIndicator)</td>
+                <td>DataTable (Variables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariablesForScope"></a>
+                    <b>Variables_GetVariablesForScope</b><br />Gets the variables that are defined only in the specified scope.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)<br />ServerRole_Id (Int32)<br />Server_Id (Int32)<br />ApplicationGroup_Id (Int32)<br />Application_Id (Int32)<br />Deployable_Id (Int32)</td>
+                <td>DataTable (Variables)</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a name="Variables_GetVariableValues"></a>
+                    <b>Variables_GetVariableValues</b><br />Gets the variable values for the specified scope.
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>Environment_Id (Int32)<br />ServerRole_Id (Int32)<br />Server_Id (Int32)<br />ApplicationGroup_Id (Int32)<br />Application_Id (Int32)<br />Deployable_Id (Int32)<br />Release_Number (String)<br />Build_Number (String)<br />Promotion_Id (Int32)<br />Execution_Id (Int32)</td>
+                <td>DataTable (Variable_Values)</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>

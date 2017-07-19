@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>BuildMaster - Create Release Package</title>
+  <meta name="keywords" content="buildmaster, operations, buildmaster,releases" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Create Release Package</h2>
+  <p>Creates a new release package in BuildMaster of an application, and optionally waits for it to complete.</p>
+  <h4>Script usage:</h4><pre>Create-ReleasePackage(
+	Application: &lt;text&gt;,
+	[ReleaseNumber: &lt;text&gt;],
+	[Variables: &lt;%(key1: value1, ...)&gt;],
+	[ForcePromotion: &lt;true/false&gt;],
+	[Wait: &lt;true/false&gt;],
+	[FailIfCannotCreate: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>BuildMaster::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>In application</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Application</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>For release number</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ReleaseNumber</pre>
+      </td>
+      <td>
+        <span>This may be a specific release number, "latest" or "all".</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Package variables</span>
+      </td>
+      <td><pre>%(key1: value1, ...)</pre>
+      </td>
+      <td><pre>Variables</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Force past gate</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>ForcePromotion</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Wait for execution</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Wait</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Fail if nothing created</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>FailIfCannotCreate</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <p class="info">
+    <b>Note: </b>When all releases is specified, then a package in *each* release will be created.</p>
+  <p class="info">
+    <b>Note: </b>When FailIfCannotCreate is specified, the execution will halt if there are no valid packages to create; for example, if the targeted release number doesn&#39;t exist. Otherwise, a warning will be issued.</p>
+  <h4>Example:</h4><pre>Create-ReleasePackage
+(
+    Application: Hdars.Packager,
+    ReleaseNumber: latest,
+    Variables: %(ReleaseCandidate: true, PackageType: $PackageType)
+);</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<html>
+<head>
+   <title>Releases</title>
+    <meta name="subtitle" content="Releases in BuildMaster" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines" />
+    <meta name="sequence" content="100" />
+</head>
+<body>
+   <p>
+       A release in BuildMaster can be thought of as an event. It represents the changes that are being made to an application; anything from a major product launch down to a single-line-change rushed to production in an emergency. 
+       BuildMaster makes release automation and deploying software easy and secure, and provides a central dashboard for all your applications. 
+       
+   </p>
+    
+  
+    <h2 id="release-package"> 
+        Release Package
+    </h2>
+    <p>
+        Release Packages create certainty that what gets deployed to production is what has been tested through various <a href="/support/documentation/buildmaster/core-concepts/environments">environments</a>. 
+        A Release Package is what is actually advancing through the <a href="/support/documentation/buildmaster/core-concepts/pipelin">pipeline</a> into production. 
+        It can’t be changed or replaced; it must be either accepted and deployed, or rejected in its entirety. 
+    </p>
+    <p>
+        Release package artifacts can enter a pipeline through a variety of ways:
+    </p>
+    <ul>
+        <li>Uploaded manually</li>
+        <li>Pushed from <a href="/proget"> ProGet</a></li>
+        <li>Pushed from a CI server like <a href="/support/tutorials/deploying-a-jenkins-build-with-buildmaster">Jenkins</a> or <a href="/support/tutorials/importing-and-deploying-a-tfs-/-visual-studio-online-build-with-buildmaster">TFS</a></li>
+        <li>Created within BuildMaster</li>
+    </ul>
+    <h2 id="components">
+        Components of a Release
+    </h2>
+    <p>
+        A Release is composed of many different components not only release packages. 
+        Some releases may be more complex than others; with BuildMaster you are able to create a release that consists of any or all of the following: <a href="/support/documentation/buildmaster/modeling-applications/issues-notes">issues and notes</a>, changes to <a href="/support/documentation/buildmaster/modeling-applications/configuration-files">configurations files</a>, <a href="/support/documentation/buildmaster/modeling-applications/database-changes">database changes</a>, variables, or manual/automated approvals. 
+        The combination of these things allows users to coordinate stages of the release lifecycle from creating or importing an artifact all the way through to production. 
+    </p>
+    <p> <img class="screenshot" src="/resources/documentation/buildmaster/release-component.png" alt="Release Components" /> </p>
+    <p>
+        The various components of a release facilitate how you meet organizational requirements, and allow you to structure simple or trivial changes and major, complex releases.
+    </p>
+    <h2 id="release-deployment">
+        Release Deployment  
+    </h2>
+    <p>
+        Release packages are deployed through the different stages of a pipeline. 
+        A deployment of a release package indicates that it has been successfully vetted and tested in accordance with the requirements of the specific stage in the pipeline (ie. Gate, environment, deployment plan, etc.) 
+    </p>
+    <p> <img class="screenshot" src="/resources/documentation/buildmaster/release-promotion.png" alt="Release Advancement" /> </p>
+    <p>
+        A release package may also be rejected in its entirety. 
+        If the deployment plan is not successfully executed or any artifact in the release package is deemed unsuitable, the package is rejected and a new package may be created.
+    </p>
+    <h2 id="release-templates">
+        Release Templates 
+    </h2>
+    <p>
+        Release templates add another level of flexibility in BuildMaster. You are now able to create a release from a template, giving you the ability to make sure the appropriate deployables are added for that release.
+        For example if there are multiple supported version of an application, you may have a patch release template for the older version that will have different deployables compared to a major feature release for the most current version.
+        Taking the guess work out of the process, overall reducing human error, and saving time. 
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/buildmaster/release-template.png" alt="Release Templates"/>  
+    </p>
+    <p>
+        With each release template you are able to define the appropriate deployables, Pipeline, and are even able to edit in either visual or code view, which ever you prefer. 
+    </p>
+</body>
+</html>

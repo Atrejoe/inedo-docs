@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iis - Ensure App Pool</title>
+  <meta name="keywords" content="buildmaster, operations, iis,application-pools" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Ensure App Pool</h2>
+  <p>Ensures the existence of a file on a server.</p>
+  <h4>Script usage:</h4><pre>IIS::Ensure-AppPool(
+	Name: &lt;text&gt;,
+	[Runtime: &lt;text&gt;],
+	[Enable32BitAppOnWin64: &lt;true/false&gt;],
+	[Pipeline: &lt;integer&gt;],
+	[AutoStart: &lt;true/false&gt;],
+	[QueueLength: &lt;Int64&gt;],
+	[State: &lt;integer&gt;],
+	[IdentityType: &lt;integer&gt;],
+	[Credentials: &lt;text&gt;],
+	[UserName: &lt;text&gt;],
+	[Password: &lt;text&gt;],
+	[CpuLimit: &lt;Int64&gt;],
+	[CpuAction: &lt;integer&gt;],
+	[CpuResetInterval: &lt;TimeSpan&gt;],
+	[CpuSmpAffinitized: &lt;true/false&gt;],
+	[CpuSmpProcessorAffinityMask: &lt;Int64&gt;],
+	[CpuSmpProcessorAffinityMask2: &lt;Int64&gt;],
+	[IdleTimeout: &lt;TimeSpan&gt;],
+	[LoadUserProfile: &lt;true/false&gt;],
+	[MaxProcesses: &lt;Int64&gt;],
+	[PingingEnabled: &lt;true/false&gt;],
+	[PingResponseTime: &lt;TimeSpan&gt;],
+	[PingInterval: &lt;TimeSpan&gt;],
+	[ShutdownTimeLimit: &lt;TimeSpan&gt;],
+	[StartupTimeLimit: &lt;TimeSpan&gt;],
+	[OrphanWorkerProcess: &lt;true/false&gt;],
+	[OrphanActionExe: &lt;text&gt;],
+	[OrphanActionParams: &lt;text&gt;],
+	[LoadBalancerCapabilities: &lt;integer&gt;],
+	[RapidFailProtection: &lt;true/false&gt;],
+	[RapidFailProtectionInterval: &lt;TimeSpan&gt;],
+	[RapidFailProtectionMaxCrashes: &lt;Int64&gt;],
+	[AutoShutdownExe: &lt;text&gt;],
+	[AutoShutdownParams: &lt;text&gt;],
+	[DisallowOverlappingRotation: &lt;true/false&gt;],
+	[DisallowRotationOnConfigChange: &lt;true/false&gt;],
+	[PeriodicRestartPrivateMemory: &lt;Int64&gt;],
+	[PeriodicRestartTime: &lt;TimeSpan&gt;],
+	[PeriodicRestartRequests: &lt;Int64&gt;],
+	[PeriodicRestartMemory: &lt;Int64&gt;],
+	[Exists: &lt;true/false&gt;]
+);
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>The unique name of the IIS site or application pool.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>.NET CLR version</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Runtime</pre>
+      </td>
+      <td>
+        <span>The .NET runtime version used by this application pool. Current valid values are "v4.0", "v2.0", or "v1.1".</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Enable 32-bit applications</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Enable32BitAppOnWin64</pre>
+      </td>
+      <td>
+        <span>If set to True for an application pool on a 64-bit operating system, the worker process(es) serving the application pool run in WOW64 (Windows on Windows64) mode. In WOW64 mode, 32-bit processes load only 32-bit applications.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Managed pipeline mode</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>Pipeline</pre>
+      </td>
+      <td>
+        <span>Configures ASP.NET to run in classic mode as an ISAPI extension or in integrated mode where managed code is integrated into the request-processing pipeline.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Start automatically</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>AutoStart</pre>
+      </td>
+      <td>
+        <span>If True, the application pool starts on creation or when IIS starts. Starting an application pool sets this property to True. Stopping an application sets this property to False.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Queue length</span>
+      </td>
+      <td><pre>Int64</pre>
+      </td>
+      <td><pre>QueueLength</pre>
+      </td>
+      <td>
+        <span>Maximum number of requests that Http.sys queues for the application pool. When the queue is full, new requests receive a 503 "Service Unavailable" response</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>State</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>State</pre>
+      </td>
+      <td>
+        <span>Sets the running state for the application pool.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Identity type</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>IdentityType</pre>
+      </td>
+      <td>
+        <span>Configures the application pool to run as a built-in account, such as Network Service (recommended), Local Service, or as a specific user identity.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Otter credentials</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Credentials</pre>
+      </td>
+      <td>
+        <span>The Otter credential name to use for the application pool's identity. If a credential name is specified, the username and password fields will be ignored.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>User name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>UserName</pre>
+      </td>
+      <td>
+        <span>Configures the application pool to run as a built-in account, such as Network Service (recommended), Local Service, or as a specific user identity.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Password</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Password</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Limit (percent)</span>
+      </td>
+      <td><pre>Int64</pre>
+      </td>
+      <td><pre>CpuLimit</pre>
+      </td>
+      <td>
+        <span>Configures the maximum percentage of CPU time (in 1/1000ths of a percent) that the worker processes in an application pool are allowed to consume over a period of time as indicated by the Limit Interval setting (resetInterval property). If the limit set by Limit (limit property) is exceeded, the event is written to the event log and an optional set of events can be triggered or determined by the Limit Action setting (action property). Setting the value of Limit to 0 disables limiting the worker processes to a percentage of CPU time.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Limit action</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>CpuAction</pre>
+      </td>
+      <td>
+        <span>If set to NoAction, an event log entry is generated. If set to KillW3WP, the application pool is shut down for the duration of the reset interval and an event log entry is generated.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Limit interval (minutes)</span>
+      </td>
+      <td><pre>TimeSpan</pre>
+      </td>
+      <td><pre>CpuResetInterval</pre>
+      </td>
+      <td>
+        <span>Specifies the reset period (in minutes) for CPU monitoring and throttling limits on the application pool. When the number of minutes elapsed since the last process accounting reset equals the number specified by this property, IIS resets the CPU timers for both the logging and limit intervals. Setting the value of Limit Interval to 0 disables CPU monitoring.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Processor affinity enabled</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>CpuSmpAffinitized</pre>
+      </td>
+      <td>
+        <span>If True, Processor Affinity Enabled forces the worker process(es) serving this application pool to run on specific CPUs. This enables sufficient use of CPU caches on multiprocessor servers.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Processor affinity mask</span>
+      </td>
+      <td><pre>Int64</pre>
+      </td>
+      <td><pre>CpuSmpProcessorAffinityMask</pre>
+      </td>
+      <td>
+        <span>Hexadecimal mask that forces the worker process(es) for this application pool to run on a specific CPU. If processor affinity is enabled, a value of 0 causes an error condition.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Processor affinity (64-bit)</span>
+      </td>
+      <td><pre>Int64</pre>
+      </td>
+      <td><pre>CpuSmpProcessorAffinityMask2</pre>
+      </td>
+      <td>
+        <span>Hexadecimal mask that forces the worker process(es) for this application pool to run on a specific CPU. If processor affinity is enabled, a value of 0 causes an error condition.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Idle time-out (minutes)</span>
+      </td>
+      <td><pre>TimeSpan</pre>
+      </td>
+      <td><pre>IdleTimeout</pre>
+      </td>
+      <td>
+        <span>Amount of time (in minutes) a worker process remains idle before it shuts down. A worker process is idle if it is not processing requests and no new requests are received.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Load user profile</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>LoadUserProfile</pre>
+      </td>
+      <td>
+        <span>Specifies whether IIS loads the user profile for an application pool identity. When set to True, IIS loads the user profile for the application pool identity. Set to False when you require IIS 6.0 behavior.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Max worker processes</span>
+      </td>
+      <td><pre>Int64</pre>
+      </td>
+      <td><pre>MaxProcesses</pre>
+      </td>
+      <td>
+        <span>Maximum number of worker processes permitted to service requests for the application pool. If this number is greater than 1, the application pool is called a Web garden.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Ping enabled</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>PingingEnabled</pre>
+      </td>
+      <td>
+        <span>If True, the worker process(es) serving this application pool are pinged periodically to ensure that they are still responsive. This process is called health monitoring.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Ping max response time (seconds)</span>
+      </td>
+      <td><pre>TimeSpan</pre>
+      </td>
+      <td><pre>PingResponseTime</pre>
+      </td>
+      <td>
+        <span>Maximum time (in seconds) that a worker process is given to respond to a health monitoring ping. If the worker process does not respond, it is terminated.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Ping period (seconds)</span>
+      </td>
+      <td><pre>TimeSpan</pre>
+      </td>
+      <td><pre>PingInterval</pre>
+      </td>
+      <td>
+        <span>Period of time (in seconds) between health monitoring pings sent to the worker process(es) serving this application pool.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Shutdown time limit (seconds)</span>
+      </td>
+      <td><pre>TimeSpan</pre>
+      </td>
+      <td><pre>ShutdownTimeLimit</pre>
+      </td>
+      <td>
+        <span>Period of time (in seconds) a worker process is given to finish processing requests and shut down. If the worker process exceeds the shutdown time limit, it is terminated.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Startup time limit (seconds)</span>
+      </td>
+      <td><pre>TimeSpan</pre>
+      </td>
+      <td><pre>StartupTimeLimit</pre>
+      </td>
+      <td>
+        <span>Period of time (in seconds) a worker process is given to start up and initialize. If the worker process initialization exceeds the startup time limit, it is terminated.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Process orphaning enabled</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>OrphanWorkerProcess</pre>
+      </td>
+      <td>
+        <span>If True, an unresponsive worker process is abandoned (orphaned) instead of terminated. This feature can be used to debug a worker process failure.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Process orphaning executable</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>OrphanActionExe</pre>
+      </td>
+      <td>
+        <span>Executable to run when a worker process is abandoned (orphaned). For example, C:\dbgtools
+tsd.exe would invoke NTSD to debug a worker process failure.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Executable parameters</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>OrphanActionParams</pre>
+      </td>
+      <td>
+        <span>Parameters for the executable that is run when a worker process is abandoned (orphaned). For example, -g –p %1% is appropriate if the NTSD is the executable invoked for debugging worker process failures.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Service unavailable response type</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>LoadBalancerCapabilities</pre>
+      </td>
+      <td>
+        <span>If set to HttpLevel and the application pool is stopped, Http.sys returns an HTTP 503 error. If set to TcpLevel, Http.sys resets the connection. This is useful if the load balancer recognizes one of the response types and subsequently redirects it.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Rapid fail protection enabled</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>RapidFailProtection</pre>
+      </td>
+      <td>
+        <span>If True, the application pool is shut down if there are a specified number of worker process failures (Maximum Failures) within a specified period (Failure Interval). By default, an application pool is shut down if there are five failures in a five minute period.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Failure interval (minutes)</span>
+      </td>
+      <td><pre>TimeSpan</pre>
+      </td>
+      <td><pre>RapidFailProtectionInterval</pre>
+      </td>
+      <td>
+        <span>The time interval (in minutes) during which the specified number of worker process failures (Maximum Failures) must occur before the application pool is shut down by Rapid Fail Protection.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Maximum failures</span>
+      </td>
+      <td><pre>Int64</pre>
+      </td>
+      <td><pre>RapidFailProtectionMaxCrashes</pre>
+      </td>
+      <td>
+        <span>Maximum number of worker process failures permitted before the application pool is shut down by Rapid Fail Protection.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Shutdown executable</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>AutoShutdownExe</pre>
+      </td>
+      <td>
+        <span>Executable to run when an application pool is shut down by Rapid Fail Protection.This can be used to configure a load balancer to redirect traffic for this application to another server.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Shutdown executable parameters</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>AutoShutdownParams</pre>
+      </td>
+      <td>
+        <span>Parameters for the executable to run when an application pool is shut down by Rapid Fail Protection.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Disable overlapped recycle</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>DisallowOverlappingRotation</pre>
+      </td>
+      <td>
+        <span>If True, when the application pool recycles, the existing worker process exits before another worker process is created. Set to True if the worker process loads an application that does not support multiple instances.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Disable for config changes</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>DisallowRotationOnConfigChange</pre>
+      </td>
+      <td>
+        <span>If True, the application pool does not recycle when its configuration is changed.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Private memory limit (KB)</span>
+      </td>
+      <td><pre>Int64</pre>
+      </td>
+      <td><pre>PeriodicRestartPrivateMemory</pre>
+      </td>
+      <td>
+        <span>Maximum amount of private memory (in KB) a worker process can consume before causing the application pool to recycle. A value of 0 means there is no limit.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Regular time interval (minutes)</span>
+      </td>
+      <td><pre>TimeSpan</pre>
+      </td>
+      <td><pre>PeriodicRestartTime</pre>
+      </td>
+      <td>
+        <span>Period of time (in minutes) after which an application pool recycles. A value of 0 means the application pool does not recycle at a regular interval.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Request Limit</span>
+      </td>
+      <td><pre>Int64</pre>
+      </td>
+      <td><pre>PeriodicRestartRequests</pre>
+      </td>
+      <td>
+        <span>Maximum number of requests an application pool can process before it is recycled. A value of 0 means the application pool can process an unlimited number of requests.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Virtual memory limit (KB)</span>
+      </td>
+      <td><pre>Int64</pre>
+      </td>
+      <td><pre>PeriodicRestartMemory</pre>
+      </td>
+      <td>
+        <span>Maximum amount of virtual memory (in KB) a worker process can consume before causing the application pool to recycle. A value of 0 means there is no limit.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exists</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Exists</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <div class="see-also">
+    <h4>See also:</h4>
+    <ul>
+      <li>
+        <a href="../iis/ensure-site">Ensure Site</a>
+      </li>
+    </ul>
+  </div>
+  <h4>Example:</h4><pre>
+# ensures that the Otter application pool is present on the web server
+IIS::Ensure-AppPool(
+    Name: OtterAppPool,
+    Pipeline: 1, # classic mode
+    Runtime: v4.0
+);
+
+# ensures that the DefaultAppPool is removed from the web server
+IIS::Ensure-AppPool(
+    Name: DefaultAppPool,
+    Exists: false
+);
+</pre>
+</div>
+</body>
+</html>

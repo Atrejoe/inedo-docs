@@ -1,0 +1,84 @@
+﻿<html>
+<head>
+    <title>Romp Command-line Tool</title>
+    <meta name="subtitle" content="Romp Reference Guide" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,otterscript,configuration-plans,romp" />
+    <meta name="display-child-topics" content="false" />
+</head>
+<body>
+    <p><img src="/resources/documentation/otter/romp-admi-arch.png" /></p>
+    <p>
+        <em>Romp</em> is a standalone command-line execution engine for executing OtterScript
+		plans on a single server. Like the full version of Otter, it uses the <a href="../execution-engine/overview">execution engine</a>
+		to execute <a href="../core-concepts/plans#configuration">configuration plans</a> or
+        <a href="../core-concepts/plans#orchestration">orchestration plans</a>.
+    </p>
+    <p>
+		Romp is typically used by developers to develop and test plans or extensions.
+    </p>
+
+    <h2 id="installation">Installation</h2>
+	<p>
+		Romp is available from the <a href="/otter/versions">Otter Downloads</a> page
+		as a zip file, or as a package on <a href="https://chocolatey.org">chocolatey.org</a>.
+		To install the chocolatey package, simply type <code>choco install romp</code>.
+	</p>
+
+	<h2 id="usage">Usage</h2>
+	<p>
+		Romp is invoked as follows:
+	</p>
+	<code>romp [--globalOptions...] &lt;command&gt; [commandOptions...]</code>
+
+    <p>The <b>command</b> is one of the following:</p>
+    <ul>
+        <li><a href="/support/documentation/otter/reference/romp/collect"><code>collect</code></a></li>
+        <li><a href="/support/documentation/otter/reference/romp/configure"><code>configure</code></a></li>
+        <li><a href="/support/documentation/otter/reference/romp/run"><code>run</code></a></li>
+        <li><a href="/support/documentation/otter/reference/romp/validate"><code>validate</code></a></li>
+    </ul>
+
+    <p>
+        The <b>global options</b> can be used with any command, and are used to configure
+        execution behavior and environments.
+    </p>
+    <table>
+        <tr>
+            <td>--variables=&lt;variableDefinitionFile.otter&gt;</td>
+            <td>
+                When specified, Romp will process the specified OtterScript file
+                as a variable declaration file; that is, any top-level
+                <a href="../../execution-engine/statements-and-blocks/other-statements">Set Variable</a>
+                statements will be imported into the execution environment.
+            </td>
+        </tr>
+        <tr>
+            <td>--lib=&lt;templateDirectory&gt;</td>
+            <td>
+                When specified, Romp will process all <b>.otter</b> OtterScript files
+                in the specified directory and make any top-level templates available
+                to the executing plan.
+            </td>
+        </tr>
+        <tr>
+            <td>--extensionsPath=&lt;extensionsDirectory&gt;</td>
+            <td>
+                Romp will attempt to load all <b>.otterx</b> Otter extensions from this
+                directory before executing the plan. When this option is not specified,
+                Romp will look for extensions in the same directory that contains romp.exe.
+            </td>
+        </tr>
+        <tr>
+            <td>--verbose</td>
+            <td>
+                When this flag is present, Romp will log extra low-level execution
+                information in addition to standard execution logging. This level
+                of logging is normally not necessary and should only be used if
+                you suspect there is a bug in the execution engine.
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

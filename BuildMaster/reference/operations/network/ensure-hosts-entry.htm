@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Network - Ensure Hosts Entry</title>
+  <meta name="keywords" content="buildmaster, operations, network" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Ensure Hosts Entry</h2>
+  <p>Ensures an entry in the hosts file on a server.</p>
+  <h4>Script usage:</h4><pre>Ensure-HostsEntry(
+	Host: &lt;text&gt;,
+	IP: &lt;text&gt;,
+	[Exists: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Network::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Host name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Host</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>IP address</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>IP</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exists</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Exists</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# bind otter.localhost to local ip
+Ensure-HostsEntry otter.localhost (IP: 127.0.0.1);
+
+# override hdars.com to a local address
+Ensure-HostsEntry (
+  Host: hdars.com
+  IP: 192.168.10.0);
+</pre>
+</div>
+</body>
+</html>

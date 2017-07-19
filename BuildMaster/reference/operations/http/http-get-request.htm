@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>HTTP - HTTP GET Request</title>
+  <meta name="keywords" content="buildmaster, operations, http" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>HTTP GET Request</h2>
+  <p>Executes an HTTP GET, DELETE, or HEAD request against a URL, typically used for RESTful operations.</p>
+  <h4>Script usage:</h4><pre>Get-Http(
+	[Method: &lt;integer&gt;],
+	Url: &lt;text&gt;,
+	[LogResponseBody: &lt;true/false&gt;],
+	[ErrorStatusCodes: &lt;text&gt;],
+	[ResponseBody: &lt;text&gt;],
+	[RequestHeaders: &lt;%(key1: value1, ...)&gt;],
+	[MaxResponseLength: &lt;integer&gt;],
+	[ProxyRequest: &lt;true/false&gt;],
+	[UserName: &lt;text&gt;],
+	[Password: &lt;text&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>HTTP::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>Method</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>Method</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>URL</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Url</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Log response body</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>LogResponseBody</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Error status codes</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ErrorStatusCodes</pre>
+      </td>
+      <td>
+        <span>Comma-separated status codes (or ranges in the form of start:end) that should indicate this action has failed. For example, a value of "401,500:599" will fail on all server errors and also when "HTTP Unauthorized" is returned. The default is 400:599.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>⇒ </span>
+        <span>Store response as</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ResponseBody</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Request headers</span>
+      </td>
+      <td><pre>%(key1: value1, ...)</pre>
+      </td>
+      <td><pre>RequestHeaders</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Max response length</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>MaxResponseLength</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Use server in context</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>ProxyRequest</pre>
+      </td>
+      <td>
+        <span>When selected, this will proxy the HTTP calls through the server is in context instead of using the server Otter or BuildMaster is installed on. If the server in context is SSH-based, then an error will be raised.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>User name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>UserName</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Password</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Password</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# downloads the http://httpbin.org/get page and stores its contents in the 
+# $ResponseBody variable, failing only on 500 errors
+Get-Http http://httpbin.org/get
+(
+    ErrorStatusCodes: 500:599,
+    ResponseBody =&gt; $ResponseBody
+);
+</pre>
+</div>
+</body>
+</html>

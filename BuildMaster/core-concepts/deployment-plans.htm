@@ -1,0 +1,103 @@
+﻿<html>
+  <head>
+    <title>Deployment Plans</title>
+      <meta name="subtitle" content="Plans in BuildMaster" />
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+      <meta name="keywords" content="buildmaster, plans" />
+    <meta name="sequence" content="300" />
+  </head>
+  <body>
+     
+      <p>
+          Deployment plans are at the heart of BuildMaster’s automation, and are used to direct the <a href="/support/documentation/buildmaster/execution-engine/overview"> execution engine</a>.
+          They provide an easy-to-understand, visual representation of the “code” that is directing and structuring a deployment. 
+      </p>
+      <p>
+          From a simple, single action deployment plan to a complex deployment plan involving multiple actions, 
+          <a href="/support/documentation/buildmaster/global-components/powershell-and-shell">PowerShell integrations</a>, and customized action created via the <a href="/buildmaster/sdk">BuildMaster SDK</a>, plans help bring visibility to the entire release process.  
+      </p>
+      <h2 id="visual-editor">
+          Visual Editor
+      </h2>
+      <p>
+          Beginning with version 5.0, BuildMaster’s visual editor provides a drag-and-drop interface to build deployment plans one step at a time, allowing for the entire development team to know exactly what’s happening to your release.
+      </p>
+      <p> <img class="screenshot" src="/resources/documentation/buildmaster/plan-visual.png" alt="Release Components" /> </p>
+      <p>
+          Plans allow you to deploy applications through various stages, targeting numerous <a href="/support/documentation/buildmaster/core-concepts/environments">environments</a>, and are created through either the visual editor or text mode. 
+          Giving you the flexibility to work in whichever mode you prefer.
+      </p>
+      <h2 id="statements-blocks">
+          Statements and Blocks 
+      </h2>
+      <p>
+          The execution engine interprets a plan as a series of <a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks">statements and blocks</a>, in a top-down manner.
+      </p>
+      <ul>
+          <li>
+              <b>Statements</b> -
+              most of the statements in your plans will be operations, but there are a few
+              other statements that can help build extremely advanced plans.
+          </li>
+          <li>
+              <b>Blocks</b> -
+              blocks contain statements and other blocks, and help with organization and flow error control; there are
+              four block types:
+              <ul>
+                  <li><a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/general-blocks">General Blocks</a></li>
+                  <li><a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/loop">Loop Blocks</a></li>
+                  <li><a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/try-catch">Try /Catch Blocks</a></li>
+                  <li><a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/if-else">If/Else Blocks</a></li>
+              </ul>
+          </li>
+      </ul>
+      <p>
+          If you're comfortable with programming or scripting, you may already be familiar with how these blocks work.
+      </p>
+      <h3>
+          Blocks
+      </h3>
+      <p>
+          Blocks provide an easy way to organize your plans and the sub-tasks those plans are made of. 
+          They can be nested as many levels deep as you need, and all blocks provide variable scoping (i.e. if you set a variable in that block, it will only be available within that block) as well as log scoping.
+      </p>
+      <h2 id="operations">
+          Operations
+      </h2>
+      <p>
+          There are dozens of built-in operations in BuildMaster that allow organizations to create simple and complex deployment plans. 
+          Operations for Build Artifacts, <a href="/support/documentation/buildmaster/modeling-applications/configuration-files">Configuration Files</a>, <a href="/support/documentation/buildmaster/modeling-applications/database-changes">Database changes</a>, <a href="/support/documentation/buildmaster/modeling-applications/issues-notes">Issue Tracking</a>, Source Control, and even Email Notification are all ready to use ‘out-of-the-box’ in BuildMaster.
+      </p>
+      <p> <img class="screenshot" src="/resources/documentation/buildmaster/plan-operations.png" alt="Plan Operations" /> </p>
+      <p>
+          With BuildMaster’s tight PowerShell integration, actions are extensible for any organizational need.
+      </p>
+      <h2 id="global-scripts">
+          Global Scripts
+      </h2>
+      <p>
+          Creating a Global Script in BuildMaster allows you to leverage the use of your current <a href="/support/documentation/buildmaster/global-components/powershell-and-shell"> PowerShell and Shell scripts </a>to automate part of the deployment process. 
+          Once a global script is created it can be used as an operation in any deployment plan. 
+          If you use PowerShell's header documentation standards, you'll even get rich descriptions for script arguments when editing in visual mode.
+      </p>
+
+      <h2 id="global-deployment">
+          Global Deployment Plans
+      </h2>
+      <p>
+          Global deployment plans in BuildMaster allow you to use the same plan across multiple applications and stages. 
+          When a global plan is edited, each use of the global plan is modified. 
+          Once the global deployment plan is created, it’s added to any stage or pipeline as an operation within a deployment plan. 
+          The combined use of variables and global deployment plans enables flexibility at an application level and automation on an organizational level.
+      </p>
+      <h2 id="templates">
+          Templates
+      </h2>
+      <p>
+          Templates are reusable plans that can be called from another plan or another template, as if it were an operation. 
+          Like other plans, templates are created using the BuildMaster visual editor, or text mode, and consist of blocks. 
+          Template reusability allows for quick plan creation, greater accuracy, and infinite extensibility. 
+          Templates are commonly used when a portion or part of a deployment is used across multiple releases but customization is needed.
+      </p>
+  </body>
+</html>

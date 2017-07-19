@@ -1,0 +1,105 @@
+﻿    <html>
+  <head>
+    <title>Security and Privileges</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="400" />
+      <meta name="keywords" content="Otter,permissions" />
+  </head>
+  <body>
+      <h1>Users and Groups</h1>
+      <p>
+          Users and groups add a level of granular control and security within Otter. 
+          By associating users with a groups, and associating  users and groups to external directories,
+          organization are able to permit and restrict access to certain tasks with ease. 
+      </p>
+      <p class="info">
+          Managing users and groups is an Otter Enterprise feature.
+      </p>
+      <p>
+          A <i>user directory</i> is a collection of users and groups that Otter can query.
+          Currently, Otter supports three types of user directories:
+      </p>
+      <ul>
+          <li>
+             Built-In - The default basic user account system used by new installs of Otter.
+          </li>
+          <li>
+             LDAP/Single Domain AD - Users and groups from an LDAP
+              directory are used, such as an Active Directory domain.
+          </li>
+          <li>
+            AD Domain Forest - Users and groups from multiple domains
+              in an Active Directory forest are used.
+          </li>
+      </ul>
+      <p>
+          Directories are exclusive; meaning you can only use one at a time. For this reason, it’s important to make sure you will have sufficient administer permissions in Otter for the user directory you are switching to. 
+          If you do accidentally lock yourself out, don’t worry; you can easily run the Otter.Service.exe program, and select the reset to Built-In option. 
+      </p>
+      <h2 id="built-in-directory">Built-In Directory</h2>
+      <p>
+          Otter gives you the option to grant permissions and restrictions using the Built-In directory. 
+      </p>
+     <p>
+         Four groups are initially configured in Otter’s Built’In directory: Administrators, Configurers, Orchestrators, and Viewers. 
+         These groups can be deleted and additional groups added as organizational structure demands. 
+     </p>
+      <h2 id="tasks">
+          Tasks
+      </h2>
+      <p>
+          Otter allows you to create and customizes as many tasks as needed. 
+          Tasks in Otter define the specific ability, access, and functions users or group are allowed to edit, create, and view. 
+          Otter comes built-in with four tasks out of the box: Administer, Configure Environment, Orchestrate, and View Environment. 
+          Built-in task can be edited and modified but it’s important to note that future updates may affect these built-In tasks. 
+      </p>
+      <p>
+          <img class="screenshot" src="/resources/documentation/otter/otter-tasks.png" alt="Creating a Task in Otter" />
+      </p>
+      <p>
+          Administrators can assign restrictions and permissions based on a group and individual users. 
+          It’s important to note that permissions are additive and restrictions override permission when they’re at the same level; 
+          the more specific personnel (One user vs. Group) or a more defined scope (integration vs. all environments) always override. 
+      </p>
+      <h2 id="real-world-examples">
+          Real-world Examples
+      </h2>
+      <p>
+          For example we have a user Rick who’s a member of the Configures group, all users in this group have been given the permission to “Configure Environment” for all environments except production. 
+          Rick however, is the only user with the permission to configure the Production environment. 
+          Because he’s part of the Configurers group and permission are additive, he has permission for all environments including production. 
+      </p>
+      <p>
+          <img class="screenshot" src="/resources/documentation/otter/otter-permissions.png" alt="Setting user permissions" />
+      </p>
+      <p>
+          Whereas Carol is a member of the Viewers group meaning she only has access to view and not change; however, she has also been given the permission to configure the Integration Environment. 
+          Permission are additive so she has the permission to view environment AND Configure Integration environment. 
+      </p>
+      <h3>
+          Example 2
+      </h3>
+      <p>
+          Often times organizations have more than one group responsible for similar task but ultimately a member of a specific group has final control. 
+          In this example there are two groups of Users who have the ability to Configure Environments, ConfiguresA and ConfiguresB.
+           However, only those in ConfigurersA are able to configure the production environment. 
+      </p>
+      <p>
+          <img class="screenshot" src="/resources/documentation/otter/otter-permissions-groups.png" alt="Setting Group permissions" />
+      </p>
+
+      <h2 id="api-keys">API Access &amp; API Keys</h2>
+      <p>
+          API Keys are designed to grant access to other tools and integrations. You can control which functionality a key may be used for, and delete
+          keys that are not used.
+      </p>
+      <p class="announcement">Granting access to the <a href="../reference/api#native">Native API</a> will effectively allow for full control of the instance</p>
+      <p>
+          <img class="screenshot" src="/resources/documentation/otter/otter-api-key.png" alt="API Keys in Otter" />
+      </p>
+      <p>
+          To assist with debugging API usage, the request/response is logged whenever an API endpoint is accessed with a key. These logs are not retained indefinitely,
+          but are automatically purged.
+      </p>
+  </body>
+</html>

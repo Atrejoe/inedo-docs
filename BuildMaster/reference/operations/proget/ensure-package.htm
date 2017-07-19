@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Proget - Ensure Package</title>
+  <meta name="keywords" content="buildmaster, operations, proget" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Ensure Package</h2>
+  <p>Ensures that the contents of a ProGet package are in the specified directory.</p>
+  <h4>Script usage:</h4><pre>ProGet::Ensure-Package(
+	[Credentials: &lt;text&gt;],
+	Feed: &lt;text&gt;,
+	Name: &lt;text&gt;,
+	[Version: &lt;text&gt;],
+	[DeleteExtra: &lt;true/false&gt;],
+	Directory: &lt;text&gt;,
+	[FeedUrl: &lt;text&gt;],
+	[UserName: &lt;text&gt;],
+	[Password: &lt;text&gt;]
+);
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>Credentials</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Credentials</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Feed name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Feed</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Package name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Package version</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Version</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Delete files not in Package</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>DeleteExtra</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Target directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Directory</pre>
+      </td>
+      <td>
+        <span>The directory path on disk of the package contents.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>ProGet server URL</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>FeedUrl</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>ProGet user name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>UserName</pre>
+      </td>
+      <td>
+        <span>The name of a user in ProGet that can access this feed.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>ProGet password</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Password</pre>
+      </td>
+      <td>
+        <span>The password of a user in ProGet that can access this feed.</span>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

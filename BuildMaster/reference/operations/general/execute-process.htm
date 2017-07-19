@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>General - Execute Process</title>
+  <meta name="keywords" content="buildmaster, operations, " />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Execute Process</h2>
+  <p>Executes a process, logs its output, and waits until it exits.</p>
+  <h4>Script usage:</h4><pre>InedoCore::Exec(
+	FileName: &lt;text&gt;,
+	[Arguments: &lt;text&gt;],
+	[WorkingDirectory: &lt;text&gt;],
+	[OutputLogLevel: &lt;integer&gt;],
+	[ErrorOutputLogLevel: &lt;integer&gt;],
+	[SuccessExitCode: &lt;text&gt;],
+	[ImportVariables: &lt;true/false&gt;],
+	[WarnRegex: &lt;text&gt;]
+);
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>File name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>FileName</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Arguments</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Arguments</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Working directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>WorkingDirectory</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Output log level</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>OutputLogLevel</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Error log level</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>ErrorOutputLogLevel</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Success exit code</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>SuccessExitCode</pre>
+      </td>
+      <td>
+        <span>Integer exit code which indicates no error. The default is 0. This can also be an integer prefixed with an inequality operator.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Import variables</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>ImportVariables</pre>
+      </td>
+      <td>
+        <span>When set to true, all scalar execution variables currently accessible will be exported as environment variables to the process.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Warning regex</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>WarnRegex</pre>
+      </td>
+      <td>
+        <span>When set to a valid regular expression string, output messages which are matched will be logged as warnings. To log only part of the message, use a group with name "m".</span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# execute 7zip and only succeed if the executable returns a non-negative exit code
+Exec c:\tools\7za.exe (
+    Arguments: i *.*,
+    SuccessExitCode: &gt;= 0
+);</pre>
+</div>
+</body>
+</html>

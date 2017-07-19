@@ -1,0 +1,75 @@
+﻿<html>
+<head>
+    <title>Server Roles</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,server-roles" />
+    <meta name="sequence" content="100" />
+</head>
+<body>
+    <p>
+        Server Roles help define common configuration between <a href="/support/documentation/otter/core-concepts/servers">Servers</a>. They model the real-world overlap of servers, and provide the visualization 
+        necessary to easily understand your infrastructure. Server roles facilitate the flexibility needed to address the complexities that modern infrastructure 
+        automation poses.  
+	</p>
+	<p>
+		For example, you may have an <code>iis-server</code> role that ensures IIS is configured in a particular way, as well as an <code>hdar-api-host</code> role that ensures
+        a particular web application is configured properly. Both roles can be applied to the same server so that <code>hdar-api-host</code> is configured on an IIS server.
+    </p>
+    <p>
+        <a href="../core-concepts/plans">Configuration plans</a> that are associated with a server role are run <em>before</em> any plans for individual servers within that role. 
+    </p>
+    <h2 id="configuration-drift">Configuration &amp; Drift</h2>
+    <p>
+        Just as an individual server can become <a href="../core-concepts/servers#drift">Drifted</a>, so can server roles. If any the servers in the role have configuration that differ from the desired configurations then the entire server role is considered drifted.
+</p>
+    <p>
+        Server role drift is remediated in the same manner as configuration drift: either automatically, or by creating a <a href="../core-concepts/jobs#configuration">Configuration job</a> that
+        targets the role and, optionally, an <a href="/support/documentation/otter/modeling-infrastructure/environments">Environment</a>. 
+    </p>
+	<p>
+        When remediating server role drift, only that server role's configuration plan is executed; this gives fine-grain control over which sets of configuration
+        you want to deploy, and when.
+	</p>
+    <h3 id="multiple">Multiple Server Roles Example</h3>
+	<p>
+        Let's say you have a complex, multi-tier system called <b>HDars</b> that's designed to scale and run across multiple servers.
+    </p>
+
+    <ul>
+        <li><code>HDars-Cloud</code> could describe the configuration of the middle-tier, cloud-data processing components</li>
+        <li><code>HDars-Web</code> might describe how HDars is configured in IIS for end users to use</li>
+        <li><code>IIS-server</code> would actually ensure that IIS is installed and configured in a manner appropriate for your organization</li>
+        <li><code>HDars-database</code> would configure the database and make sure it's running and configured to backup properly</li>
+        <li><code>Loupe-Loging</code> would ensure that a <a href="http://www.gibraltarsoftware.com/loupe">third-party error management</a> agent
+        is installed</li>
+    </ul>
+    <p>You can mix and match server roles as needed.</p>
+	<p>
+		<img class="screenshot" src="/resources/documentation/otter/roles.png" alt="Server Roles in Otter" />
+	</p>
+ <!--   
+    <div class="upcoming">
+        <h2>Sever Role Constraints</h2>
+		
+        <p>
+            Not all roles are appropriate for all servers. An obvious example would be attempting to configure Windows elements on a Linux server (although you'd discover that pretty quickly through runtime errors), but there are plenty of other examples: one role may only be appropriate for pre-production servers, for example.
+        </p>
+        <p>
+            This is where Role Constraints come in. You can define constraints that will prevent a role from being utilized by a server, and put any server already associated with that role in an
+            error state. When a server role has any constraints added those constraints are checked before any configuration plans are run.
+		</p>
+		<p>
+			Role Constraints are extensible via the SDK, and Otter comes built in with several:
+        </p>
+        <ul>
+            <li><b>Environment</b> - selected servers must or must not be in a specific environment</li>
+            <li><b>Other Role</b> - selected servers must have or must not have another specific role applied to them</li>
+            <li><b>Variable</b> - the server must have a specific variable defined (at the sever level)</li>
+            <li><b>Agent Type</b> - the server must have a specific type of agent (such as Windows or SSH)</li>
+            <li><b>Virtual Host Type</b> - the server must be associated with a specific virtual host (such as AWS)</li>
+            <li><b>Role-only Configuration</b> - the server may not define its own configuration plan</li>
+        </ul>
+    </div>
+     -->
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>http - HTTP POST to URL</title>
+  <meta name="keywords" content="otter, operations, http" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>HTTP POST to URL</h2>
+  <p>Executes an HTTP POST/PUT/PATCH request to a URL, typically used for RESTful operations.</p>
+  <h4>Operation type:</h4>
+  <p>Executing - this operation will perform a specified action or actions on a remote server.</p>
+  <h4>Script usage:</h4><pre>Post-Http(
+	[Method: &lt;integer&gt;],
+	[ContentType: &lt;text&gt;],
+	[TextData: &lt;text&gt;],
+	[FormData: &lt;%(key1: value1, ...)&gt;],
+	[LogRequestData: &lt;true/false&gt;],
+	Url: &lt;text&gt;,
+	[LogResponseBody: &lt;true/false&gt;],
+	[ErrorStatusCodes: &lt;text&gt;],
+	[ResponseBody: &lt;text&gt;],
+	[RequestHeaders: &lt;%(key1: value1, ...)&gt;],
+	[UserName: &lt;text&gt;],
+	[Password: &lt;SecureString&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>HTTP::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>Method</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>Method</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Content type</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ContentType</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Request text content</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>TextData</pre>
+      </td>
+      <td>
+        <span>Direct text input that will be written to the request content body. This will override any form data if both are supplied.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Form data</span>
+      </td>
+      <td><pre>%(key1: value1, ...)</pre>
+      </td>
+      <td><pre>FormData</pre>
+      </td>
+      <td>
+        <span>A map of form data key/value pairs to send. If TextData is supplied, this value is ignored.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Log request data</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>LogRequestData</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>URL</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Url</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Log response body</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>LogResponseBody</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Error status codes</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ErrorStatusCodes</pre>
+      </td>
+      <td>
+        <span>Comma-separated status codes (or ranges in the form of start:end) that should indicate this action has failed. For example, a value of "401,500:599" will fail on all server errors and also when "HTTP Unauthorized" is returned. The default is 400:599.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>⇒ </span>
+        <span>Store response as</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ResponseBody</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Request headers</span>
+      </td>
+      <td><pre>%(key1: value1, ...)</pre>
+      </td>
+      <td><pre>RequestHeaders</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>User name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>UserName</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Password</span>
+      </td>
+      <td><pre>SecureString</pre>
+      </td>
+      <td><pre>Password</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# posts some key-value pairs to a test service and writes the response body to the BuildMaster execution log
+Post-Http http://httpbin.org/post
+(
+    FormData: %(
+        Var1: &quot;value1&quot;,
+        Var2: &quot;value2&quot;
+    ),
+    LogResponseBody: true
+);
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Windows - Sign Binary</title>
+  <meta name="keywords" content="buildmaster, operations, windows" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Sign Binary</h2>
+  <p>Signs .exe or .dll files using an installed code signing certificate.</p>
+  <h4>Script usage:</h4><pre>Sign-Exe(
+	SubjectName: &lt;text&gt;,
+	[TimestampServer: &lt;text&gt;],
+	[ContentDescription: &lt;text&gt;],
+	[ContentUrl: &lt;text&gt;],
+	Include: &lt;@(text)&gt;,
+	[Exclude: &lt;@(text)&gt;],
+	[SignToolPath: &lt;text&gt;],
+	[SourceDirectory: &lt;text&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Windows::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Subject</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>SubjectName</pre>
+      </td>
+      <td>
+        <span>The subject name of the certificate. This is used to identify the certificate.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Timestamp server</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>TimestampServer</pre>
+      </td>
+      <td>
+        <span>This server will be used to add a timestamp to the signature.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Description</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ContentDescription</pre>
+      </td>
+      <td>
+        <span>The content description that will be included with the signature.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>URL</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ContentUrl</pre>
+      </td>
+      <td>
+        <span>The content URL that will be included with the signature.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Include</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Include</pre>
+      </td>
+      <td>
+        <span>Specifies the files to include for the operation. The default is *. To learn more about masking, visit the <a href="#">Masking documentation</a>.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exclude</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Exclude</pre>
+      </td>
+      <td>
+        <span>Specifies the files to exclude for the operation. To learn more about masking, visit the <a href="#">Masking documentation</a>.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>signtool.exe path</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>SignToolPath</pre>
+      </td>
+      <td>
+        <span>The full path of signtool.exe.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>SourceDirectory</pre>
+      </td>
+      <td>
+        <span>The source directory used for the operation. The default is the working directory of the agent.</span>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

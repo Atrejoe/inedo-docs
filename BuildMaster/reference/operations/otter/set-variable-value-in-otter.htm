@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Otter - Set Variable Value in Otter</title>
+  <meta name="keywords" content="buildmaster, operations, otter,variables" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Set Variable Value in Otter</h2>
+  <p>Creates or assigns a configuration variable in Otter.</p>
+  <h4>Script usage:</h4><pre>Otter::Set-Variable(
+	[Credentials: &lt;text&gt;],
+	Name: &lt;text&gt;,
+	Value: &lt;text&gt;,
+	[Server: &lt;text&gt;],
+	[Role: &lt;text&gt;],
+	[Environment: &lt;text&gt;],
+	[Sensitive: &lt;true/false&gt;],
+	[Host: &lt;text&gt;],
+	[ApiKey: &lt;SecureString&gt;]
+);
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>Credentials</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Credentials</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Variable name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Value</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Value</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Server name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Server</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Role name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Role</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Environment name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Environment</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Sensitive</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Sensitive</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Otter server URL</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Host</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>API key</span>
+      </td>
+      <td><pre>SecureString</pre>
+      </td>
+      <td><pre>ApiKey</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <p class="info">
+    <b>Note: </b>If multiple entity scopes are provided, the variable will be multi-scoped. If no entity scope is provided, a global variable will be set.</p>
+  <h4>Example:</h4><pre>
+# sets the variable for the hdars-web-1k-tokyo server to the name of the current application
+Otter::Set-Variable
+(
+    Credentials: ProductionOtter,
+    Server: hdars-web-1k-tokyo,
+    Name: LatestDeployedApplication,
+    Value: $ApplicationName,
+    Sensitive: false
+);</pre>
+</div>
+</body>
+</html>

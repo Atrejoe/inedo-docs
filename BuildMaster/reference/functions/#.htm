@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Built-in Functions &amp; Variables</title>
+  <meta name="display-child-topics" content="false" />
+  <meta name="keywords" content="buildmaster, functions" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div class="extensible-items-container">
+  <h2 id="Applications">Applications</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/applications/applicationdescription">$ApplicationDescription</a>
+      <span class="doc-item-arguments">([appName])</span>
+       - 
+      <span>description of the current or specified application</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/applications/applicationname">$ApplicationName</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>name of the current application</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/applications/applicationsingroup">@ApplicationsInGroup</a>
+      <span class="doc-item-arguments">(groupName)</span>
+       - 
+      <span>list of applications which belong to the specified application group</span>
+    </li>
+  </ul>
+  <h2 id="Configuration Files">Configuration Files</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/configuration-files/configurationfileinstances">@ConfigurationFileInstances</a>
+      <span class="doc-item-arguments">(configurationFileName, [appName])</span>
+       - 
+      <span>list configuration file instances defined for an application</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/configuration-files/configurationfiles">@ConfigurationFiles</a>
+      <span class="doc-item-arguments">([appName])</span>
+       - 
+      <span>list configuration files defined for an application</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/configuration-files/configurationfiletext">$ConfigurationFileText</a>
+      <span class="doc-item-arguments">(instance, [fileName], [releaseNum])</span>
+       - 
+      <span>text contents of the specified configuration file instance</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/configuration-files/configurationfileversion">$ConfigurationFileVersion</a>
+      <span class="doc-item-arguments">([fileName], [releaseNum])</span>
+       - 
+      <span>version number used for deployment of the specified configuration file</span>
+    </li>
+  </ul>
+  <h2 id="Credentials">Credentials</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/credentials/credentialproperty">$CredentialProperty</a>
+      <span class="doc-item-arguments">(credential, property)</span>
+       - 
+      <span>the value of a specified credentials property</span>
+    </li>
+  </ul>
+  <h2 id="Deployables">Deployables</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/deployables/dependentapplications">@DependentApplications</a>
+      <span class="doc-item-arguments">([appName])</span>
+       - 
+      <span>list of applications which import at least one deployable from the specified application</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/deployables/dependentreleases">@DependentReleases</a>
+      <span class="doc-item-arguments">(appName)</span>
+       - 
+      <span>list of active or deployed releases from the specified application with at least one deployable imported from the current release of the current application</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/deployables/deployablename">$DeployableName</a>
+      <span class="doc-item-arguments">([depName], [releaseNum])</span>
+       - 
+      <span>name of the current deployable in context</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/deployables/deployablesinrelease">@DeployablesInRelease</a>
+      <span class="doc-item-arguments">([appName], [releaseNum], [includeImported])</span>
+       - 
+      <span>list of deployables included in the specified release, or the current release in context</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/deployables/referencedapplicationname">$ReferencedApplicationName</a>
+      <span class="doc-item-arguments">([depName], [releaseNum])</span>
+       - 
+      <span>application name referenced by the current or specified deployable</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/deployables/referencedpackagenumber">$ReferencedPackageNumber</a>
+      <span class="doc-item-arguments">([depName], [releaseNum], [furthestOrLatest])</span>
+       - 
+      <span>package number referenced by the current or specified deployable</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/deployables/referencedreleasename">$ReferencedReleaseName</a>
+      <span class="doc-item-arguments">([depName], [releaseNum])</span>
+       - 
+      <span>release name of the current deployable in context</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/deployables/referencedreleasenumber">$ReferencedReleaseNumber</a>
+      <span class="doc-item-arguments">([depName], [releaseNum])</span>
+       - 
+      <span>release number of the current deployable in context</span>
+    </li>
+  </ul>
+  <h2 id="Environments">Environments</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/environments/environmentname">$EnvironmentName</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>name of the environment in context</span>
+    </li>
+  </ul>
+  <h2 id="Executions">Executions</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/executions/executionid">$ExecutionId</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>Returns the current execution ID.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/executions/executionstate">$ExecutionState</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>Returns the current state of the execution (normal, warning, or error).</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/executions/executionuser">$ExecutionUser</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>user name that initiated the current execution</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/executions/getvariablevalue">GetVariableValue</a>
+      <span class="doc-item-arguments">(VariableName, [VariableType])</span>
+       - 
+      <span>Returns the value of a variable if the specified variable name is available in the current context; otherwise returns null.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/executions/isreexecution">$IsReexecution</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>true if the current execution is a redeployment</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/executions/isrollback">$IsRollback</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>true if a package from an earlier release is redeployed to a stage</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/executions/isvariabledefined">$IsVariableDefined</a>
+      <span class="doc-item-arguments">(VariableName, [VariableType])</span>
+       - 
+      <span>Returns true if the specified variable name is available in the current context; otherwise returns false.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/executions/workingdirectory">$WorkingDirectory</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>Returns the current working directory.</span>
+    </li>
+  </ul>
+  <h2 id="Files">Files</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/files/directoryexists">$DirectoryExists</a>
+      <span class="doc-item-arguments">(name)</span>
+       - 
+      <span>Returns &quot;true&quot; if the specified directory exists on the current server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/files/filecontents">$FileContents</a>
+      <span class="doc-item-arguments">(name, [maxLength])</span>
+       - 
+      <span>Returns the contents of a file on the current server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/files/fileexists">$FileExists</a>
+      <span class="doc-item-arguments">(name)</span>
+       - 
+      <span>Returns &quot;true&quot; if the specified file exists on the current server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/files/pathcombine">$PathCombine</a>
+      <span class="doc-item-arguments">(Path1, Path2)</span>
+       - 
+      <span>Returns a string containing all of the arguments combined into a complete path.</span>
+    </li>
+  </ul>
+  <h2 id="General">General</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/general/date">$Date</a>
+      <span class="doc-item-arguments">([Format])</span>
+       - 
+      <span>Returns the current date and time of the local timezone in the specified .NET datetime format string, or ISO 8601 format (yyyy-MM-ddThh:mm:ss) if no format is specified.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/general/dateutc">$DateUtc</a>
+      <span class="doc-item-arguments">([Format])</span>
+       - 
+      <span>Returns the current UTC date and time in the specified .NET datetime format string, or ISO 8601 format (yyyy-MM-ddThh:mm:ss) if no format is specified.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/general/eval">Eval</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Performs variable substitution and function evaluation for arbitrary text.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/general/range">@Range</a>
+      <span class="doc-item-arguments">(Start, Count)</span>
+       - 
+      <span>Returns a range of integers starting from a specified value.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/general/serversinenvironment">@ServersInEnvironment</a>
+      <span class="doc-item-arguments">([EnvironmentName], [IncludeInactive])</span>
+       - 
+      <span>Returns a list of all the servers in the specified environment name.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/general/serversinrole">@ServersInRole</a>
+      <span class="doc-item-arguments">([RoleName], [IncludeInactive])</span>
+       - 
+      <span>Returns a list of servers in the specified role.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/general/serversinroleandenvironment">@ServersInRoleAndEnvironment</a>
+      <span class="doc-item-arguments">([RoleName], [EnvironmentName], [IncludeInactive])</span>
+       - 
+      <span>Returns a list of all the servers in the specified role and environment name.</span>
+    </li>
+  </ul>
+  <h2 id="Lists">Lists</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/lists/listcount">$ListCount</a>
+      <span class="doc-item-arguments">(List)</span>
+       - 
+      <span>Count the number of elements in a list.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/lists/listindexof">$ListIndexOf</a>
+      <span class="doc-item-arguments">(List, Item)</span>
+       - 
+      <span>Finds the index of an item in a list.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/lists/listinsert">@ListInsert</a>
+      <span class="doc-item-arguments">(List, Item, [Index])</span>
+       - 
+      <span>Inserts an item into a list.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/lists/listitem">ListItem</a>
+      <span class="doc-item-arguments">(List, Index)</span>
+       - 
+      <span>Gets an item from a list.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/lists/listremove">@ListRemove</a>
+      <span class="doc-item-arguments">(List, Index)</span>
+       - 
+      <span>Removes an item from a list.</span>
+    </li>
+  </ul>
+  <h2 id="Maps">Maps</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/maps/mapadd">MapAdd</a>
+      <span class="doc-item-arguments">(Map, Key, Value)</span>
+       - 
+      <span>Adds a key-value pair to a map.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/maps/mapitem">MapItem</a>
+      <span class="doc-item-arguments">(Map, Key)</span>
+       - 
+      <span>Gets an item from a map.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/maps/mapkeys">@MapKeys</a>
+      <span class="doc-item-arguments">(Map)</span>
+       - 
+      <span>Lists the keys of a map.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/maps/mapremove">MapRemove</a>
+      <span class="doc-item-arguments">(Map, Key)</span>
+       - 
+      <span>Removes a key from a map.</span>
+    </li>
+  </ul>
+  <h2 id="Math">Math</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/math/decrement">$Decrement</a>
+      <span class="doc-item-arguments">(value, [amount])</span>
+       - 
+      <span>Returns a string that contains the result of decrementing a value.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/math/increment">$Increment</a>
+      <span class="doc-item-arguments">(value, [amount])</span>
+       - 
+      <span>Returns a string that contains the result of incrementing a value.</span>
+    </li>
+  </ul>
+  <h2 id="Packages">Packages</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/packages/artifactpath">$ArtifactPath</a>
+      <span class="doc-item-arguments">(ArtifactName, [packageNum], [releaseNum], [appName])</span>
+       - 
+      <span>gets the path within the internal disk store for the specified artifact</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/packages/artifactsinpackage">@ArtifactsInPackage</a>
+      <span class="doc-item-arguments">([packageNum], [releaseNum], [appName])</span>
+       - 
+      <span>list of all the artifacts in the current or specified package</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/packages/packagenumber">$PackageNumber</a>
+      <span class="doc-item-arguments">([releaseNum], [furthestOrLatest], [appName])</span>
+       - 
+      <span>package number of the current or specified release</span>
+    </li>
+  </ul>
+  <h2 id="Pipelines">Pipelines</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/pipelines/pipelinename">$PipelineName</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>name of the pipeline in context</span>
+    </li>
+  </ul>
+  <h2 id="PowerShell">PowerShell</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/powershell/pscredential">$PSCredential</a>
+      <span class="doc-item-arguments">(UserName, Password)</span>
+       - 
+      <span>Returns a PSCredential object that can be passed to PowerShell scripts.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/powershell/pseval">PSEval</a>
+      <span class="doc-item-arguments">(ScriptText)</span>
+       - 
+      <span>Returns the result of a PowerShell script.</span>
+    </li>
+  </ul>
+  <h2 id="Releases">Releases</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/releases/comparereleasesequence">$CompareReleaseSequence</a>
+      <span class="doc-item-arguments">(operator, releaseNum1, [releaseNum2])</span>
+       - 
+      <span>compares the release number of the current application with a specified release number</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/releases/previousreleasenumber">$PreviousReleaseNumber</a>
+      <span class="doc-item-arguments">([ReleaseNumber], [ApplicationName])</span>
+       - 
+      <span>release number of the last deployed release, relative to the specified or current release</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/releases/releasename">$ReleaseName</a>
+      <span class="doc-item-arguments">([ReleaseNumber], [ApplicationName])</span>
+       - 
+      <span>name of the current or specified release</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/releases/releasenumber">$ReleaseNumber</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>release number of the current release</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/releases/releasenumberpart">$ReleaseNumberPart</a>
+      <span class="doc-item-arguments">(Part, [ReleaseNumber])</span>
+       - 
+      <span>a part (major, minor, revision) of the current or specified release number</span>
+    </li>
+  </ul>
+  <h2 id="Server">Server</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/server/msbuildtoolspath">$MSBuildToolsPath</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>The directory of the MSBuild tools, typically in &#39;C:\Program Files (x86)\MSBuild\{ToolsVersion}\Bin&#39;; if empty, the MSBuildToolsPath registry value under SOFTWARE\Microsoft\MSBuild\ToolsVersions will be used.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/server/signtoolpath">$SignToolPath</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>The full path to signtool.exe; if empty will attempt to resolve the path automatically.</span>
+    </li>
+  </ul>
+  <h2 id="Servers">Servers</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/servers/acquiredservers">@AcquiredServers</a>
+      <span class="doc-item-arguments">(Role)</span>
+       - 
+      <span>list of all of the servers acquired for a specified role</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/servers/allenvironments">@AllEnvironments</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>Returns a list of all environments.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/servers/allroles">@AllRoles</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>Returns a list of all server roles.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/servers/allservers">@AllServers</a>
+      <span class="doc-item-arguments">([IncludeInactive])</span>
+       - 
+      <span>Returns a list of all servers.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/servers/environmentvariable">$EnvironmentVariable</a>
+      <span class="doc-item-arguments">(EnvironmentVariableName)</span>
+       - 
+      <span>Returns the value of the specified environment variable on the current server.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/servers/rolename">$RoleName</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>name of the current server role in context</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/servers/servername">$ServerName</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>name of the current server in context</span>
+    </li>
+  </ul>
+  <h2 id="Strings">Strings</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/strings/htmlencode">$HtmlEncode</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Encodes a string for use in HTML.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/join">$Join</a>
+      <span class="doc-item-arguments">(Separator, Values)</span>
+       - 
+      <span>Concatenates all elements of a list into a string using a specified separator.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/jsencode">$JSEncode</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Encodes a string for use as a JavaScript literal.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/matchesregex">$MatchesRegex</a>
+      <span class="doc-item-arguments">(Text, RegexPattern)</span>
+       - 
+      <span>Returns true when the specified text matches the specified pattern; otherwise returns false.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/newline">$NewLine</a>
+      <span class="doc-item-arguments">([WindowsOrLinux])</span>
+       - 
+      <span>newline string for either the operating system of the current server in context or specifically Windows or Linux</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/replace">$Replace</a>
+      <span class="doc-item-arguments">(Text, Value, ReplaceWith, [IgnoreCase])</span>
+       - 
+      <span>Searches for and replaces text in a string.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/split">@Split</a>
+      <span class="doc-item-arguments">(Text, Separator, [Count])</span>
+       - 
+      <span>Splits a string into substrings based on a specified separator.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/substring">$Substring</a>
+      <span class="doc-item-arguments">(Text, Offset, [Length])</span>
+       - 
+      <span>Returns a segment of another string.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/tolower">$ToLower</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Returns a string with all letters converted to lowercase.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/toupper">$ToUpper</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Returns a string with all letters converted to uppercase.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/trim">$Trim</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Returns a string with all leading and trailing whitespace characters removed, or optionally a set of specified characters.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/trimend">$TrimEnd</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Returns a string with all trailing whitespace characters removed, or optionally a set of specified characters.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/trimstart">$TrimStart</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Returns a string with all leading whitespace characters removed, or optionally a set of specified characters.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/urlencode">$UrlEncode</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Escapes a string for use in a URL.</span>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

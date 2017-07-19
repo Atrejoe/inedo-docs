@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>iis - Recycle App Pool</title>
+  <meta name="keywords" content="otter, operations, iis,application-pools" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Recycle App Pool</h2>
+  <p>Recycles an application pool.</p>
+  <h4>Operation type:</h4>
+  <p>Executing - this operation will perform a specified action or actions on a remote server.</p>
+  <h4>Script usage:</h4><pre>IIS::Recycle-AppPool &lt;text&gt;;
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Name</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>The name of the application pool to operate on.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# stops the BuildMaster application pool 
+IIS::Stop-AppPool BuildMasterAppPool;
+
+# starts the BuildMaster application pool 
+IIS::Start-AppPool BuildMasterAppPool;
+
+# recycles the BuildMaster application pool 
+IIS::Recycle-AppPool BuildMasterAppPool;
+</pre>
+</div>
+</body>
+</html>

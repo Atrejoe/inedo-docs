@@ -1,0 +1,65 @@
+﻿<html>
+  <head>
+    <title>Extensions</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter" />
+      <meta name="subtitle" content="Otter Extensions" />
+  </head>
+  <body>
+      <p>
+          Although you can already do <em>anything</em> in Otter with <a href="../core-concepts/assets#scripts">script assets</a>
+          and the other tightly-integrated <a href="../modeling-infrastructure/powershell">PowerShell features</a>, you can also 
+          build an  <em>Otter Extension</em> to add additional components and functionality into your Otter Installation.
+      </p>
+      <p>
+          A lot of Otter's functionality is delivered through built-in extensions, and you can add several types of
+          components by simply <a href="/support/tutorials/writing-a-simple-operation-using-the-otter-sdk">creating an extension</a>
+          that's built against the <a href="/support/sdk-reference/otter">Otter SDK</a>. Here's what you can extend:
+      </p>
+      <ul>
+          <li><b>Configurations</b> - information collected from a server, or a template for desired configuration </li>
+          <li><b>Operations</b> - be it a simple Execute operation, or a Ensure operation</li>
+          <li><b>Raft Repositories</b> - backing store for plans and assets</li>
+          <li><b>Resource Credentials</b> - a secret</li>
+          <li><b>User Directories</b> - authentication and privileges</li>
+          <li><b>Variable Functions</b> - used in plans to provide or manipulate values</li>
+      </ul>
+
+      <h3 id="installing-managing">Installing and Managing Extensions</h3>
+      <p>
+          See the <a href="/support/tutorials/writing-a-simple-operation-using-the-otter-sdk">Otter Extension Tutorial</a> for
+          instructions on installing extensions; we plan to ship with a <a href="/buildmaster">BuildMaster</a>-style extension gallery
+          that will make installing custom extensions much easier in 1.2. 
+      </p>
+
+      <h3 id="script-assets-custom">Script Assets vs Custom Extensions</h3>
+      <p>
+          Scripts are significantly easier to develop and manage: just write, test, then upload (or commit), and your script 
+          will be available for execution in a plan as any other operation. For most things you'd need to do in a plan, 
+          that's perfectly adequate.
+      </p>
+      <p>
+          Extensions are a bit more involved, but allow you to build components other than operations, and provide maximum 
+          flexibility for building operations. You can also incorporate third-party libraries into your extension, and use
+          the powerful libraries already built-in to the Otter SDK.
+      </p>
+      <ul>
+          <li>
+            <b>Direct Agent Access</b> - with components from <a href="/support/sdk-reference/otter/Inedo.Agents">Inedo.Agents</a>,
+              you can build Operations that will be faster and scale better than using scripting runtime
+          </li>
+          <li>
+              <b>Rich Descriptions</b> - the <a href="/support/sdk-reference/otter/Inedo.Documentation">Inedo.Documentation</a> 
+              components enable you to describe Operations in a plan using a consistent, visually-rich description so that anyone
+              reading it will see, at a glance, what it's configured to do
+          </li>
+          <li>
+              <b>Strongly-typed Database Access</b> - data access components in 
+              <a href="/support/sdk-reference/otter/Inedo.Otter.Data">Inedo.Otter.Data</a> 
+              provide direct -- and safe -- access to the data you persist in Otter's database from the Web Application
+              without needing to use the API; use it to query or manipulate data with <a href="/support/sdk-reference/otter/Inedo.Otter.Data/DB">DB::Methods</a>
+          </li>
+      </ul>
+      <p>Additionally, extensions may be easier to unit test and mock using the testing framework of your choice.</p>
+  </body>
+</html>

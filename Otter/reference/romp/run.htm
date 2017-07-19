@@ -1,0 +1,46 @@
+﻿<html>
+<head>
+    <title>Romp Run</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,romp" />
+</head>
+<body>
+	<p>
+		The <b>run</b> command runs an orchestration plan.
+	</p>
+
+	<h2>Usage</h2>
+	<code>romp run &lt;plan.otter&gt; [--simulate]</code>
+	<p>
+		The <b>plan.otter</b> argument specifies the file name of an OtterScript
+		orchestration plan.
+	</p>
+	<p>
+		The <b>--simulate</b> flag instructs Romp to perform the execution
+		in simulation mode.
+	</p>
+
+	<h2>Behavior</h2>
+	<p>
+		Romp will perform the execution against the local machine and log to
+		the console. If the <b>--simulate</b> option is specified, no actual
+		changes will be made to the machine.
+	</p>
+
+	<h2>Examples</h2>
+	<p>
+		Execute the orchestration plan contained in <code>c:\plans\createDevEnvironment.otter</code>:
+	</p>
+	<code>romp run c:\plans\createDevEnvironment.otter</code>
+	<p>
+		Execute the orchestration plan contained in <code>c:\plans\createDevEnvironment.otter</code>,
+		and load templates from <code>c:\templates</code>:
+	</p>
+	<code>romp --lib=c:\templates run c:\plans\createDevEnvironment.otter</code>
+	<p>
+		Execute the orchestration plan contained in <code>c:\plans\createDevEnvironment.otter</code>
+		in simulation mode:
+	</p>
+	<code>romp run c:\plans\ensureWebsites.otter --simulate</code>
+</body>
+</html>

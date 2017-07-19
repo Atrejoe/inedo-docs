@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>iis - Stop Site</title>
+  <meta name="keywords" content="otter, operations, iis,sites" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Stop Site</h2>
+  <p>Stops an IIS Site.</p>
+  <h4>Operation type:</h4>
+  <p>Executing - this operation will perform a specified action or actions on a remote server.</p>
+  <h4>Script usage:</h4><pre>IIS::Stop-Site &lt;text&gt;;
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Site name</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>The name of the IIS site to operate on.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# stops the BuildMaster web site 
+IIS::Stop-Site BuildMaster;
+
+# starts the BuildMaster web site
+IIS::Start-Site BuildMaster;
+</pre>
+</div>
+</body>
+</html>

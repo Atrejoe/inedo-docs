@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iis - Ensure Application</title>
+  <meta name="keywords" content="buildmaster, operations, iis,sites" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Ensure Application</h2>
+  <p>Ensures the existence of an application within an IIS site.</p>
+  <h4>Script usage:</h4><pre>IIS::Ensure-Application(
+	Site: &lt;text&gt;,
+	Path: &lt;text&gt;,
+	[PhysicalPath: &lt;text&gt;],
+	[LogonMethod: &lt;integer&gt;],
+	[Credentials: &lt;text&gt;],
+	[UserName: &lt;text&gt;],
+	[Password: &lt;text&gt;],
+	[Exists: &lt;true/false&gt;]
+);
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Site name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Site</pre>
+      </td>
+      <td>
+        <span>The name of this site where the application would exist</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Application path</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Path</pre>
+      </td>
+      <td>
+        <span>The relative URL of the path, such as /hdars</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Physical path</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>PhysicalPath</pre>
+      </td>
+      <td>
+        <span>Physical path to the content for the application, such as c:\hdars.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Logon method</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>LogonMethod</pre>
+      </td>
+      <td>
+        <span>Specifies the type of the logon operation to perform when calling LogonUser to acquire the user token impersonated to access the physical path for the application.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Otter credentials</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Credentials</pre>
+      </td>
+      <td>
+        <span>The Otter credential name to be impersonated when accessing the physical path for the application. If a credential name is specified, the username and password fields will be ignored.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>User name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>UserName</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Password</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Password</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exists</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Exists</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <div class="see-also">
+    <h4>See also:</h4>
+    <ul>
+      <li>
+        <a href="../iis/ensure-site">Ensure Site</a>
+      </li>
+      <li>
+        <a href="../iis/ensure-virtual-directory">Ensure Virtual Directory</a>
+      </li>
+    </ul>
+  </div>
+  <h4>Example:</h4><pre>
+# ensures that the hdars application is present on the web server
+IIS::Ensure-Application(
+    Site: Hdars,
+    Path: /hdars,
+    PhysicalPath: C:\hdars
+);
+</pre>
+</div>
+</body>
+</html>

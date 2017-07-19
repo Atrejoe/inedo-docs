@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>iis - Ensure Site</title>
+  <meta name="keywords" content="otter, operations, iis,sites" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Ensure Site</h2>
+  <p>Ensures the existence of a site on a server.</p>
+  <h4>Operation type:</h4>
+  <p>Ensuring - this operation will ensure a specified configuration exists on a remote server after comparing its current state to the desired state.</p>
+  <h4>Script usage:</h4><pre>IIS::Ensure-Site(
+	Name: &lt;text&gt;,
+	[AppPool: &lt;text&gt;],
+	[Path: &lt;text&gt;],
+	[Protocol: &lt;text&gt;],
+	[Binding: &lt;text&gt;],
+	[Exists: &lt;true/false&gt;]
+);
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>&#128273; </span>
+        <span>☆ </span>
+        <span>Name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>The unique name of the IIS site or application pool.</span>
+        <span> This argument is the unique key for this operation, which means it must uniquely identify the target of the operation.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Application pool</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>AppPool</pre>
+      </td>
+      <td>
+        <span>The name of the application pool assigned to the site.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Virtual directory physical path</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Path</pre>
+      </td>
+      <td>
+        <span>The path to the web site files on disk.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Protocol</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Protocol</pre>
+      </td>
+      <td>
+        <span>The HTTP protocol used by the site. Valid values are "http" or "https".</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Binding</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Binding</pre>
+      </td>
+      <td>
+        <span>The value of this property is a colon-delimited string of the format: «IPAddress»:«Port»:«HostName» - You may leave the host name blank. You can set the IP address to "*" to indicate that the site is bound to all IP addresses. A port number is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exists</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Exists</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <div class="see-also">
+    <h4>See also:</h4>
+    <ul>
+      <li>
+        <a href="../iis/ensure-app-pool">Ensure App Pool</a>
+      </li>
+    </ul>
+  </div>
+  <h4>Example:</h4><pre>
+# ensures that the Otter web site is present on the web server, and binds the site to the single IP address 192.0.2.100 on port 80 and hostname &quot;example.com&quot;
+IIS::Ensure-Site(
+    Name: Otter,
+    AppPool: OtterAppPool,
+    Path: E:\Websites\Otter,
+    Protocol: http,
+    Binding: 192.0.2.100:80:example.com 
+);
+
+# ensures that the Default Web Site is removed from the web server
+IIS::Ensure-Site(
+    Name: Default Web Site,
+    Exists: false
+);
+</pre>
+</div>
+</body>
+</html>

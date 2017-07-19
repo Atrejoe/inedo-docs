@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Files - Delete Files</title>
+  <meta name="keywords" content="buildmaster, operations, files" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Delete Files</h2>
+  <p>Deletes files on a server.</p>
+  <h4>Script usage:</h4><pre>Delete-Files(
+	Include: &lt;@(text)&gt;,
+	[Exclude: &lt;@(text)&gt;],
+	[Directory: &lt;text&gt;],
+	[Verbose: &lt;true/false&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Files::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Include</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Include</pre>
+      </td>
+      <td>
+        <span>See <a href="http://inedo.com/support/kb/1119" target="_blank">KB#1119</a> to learn more about masking syntax.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Exclude</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Exclude</pre>
+      </td>
+      <td>
+        <span>See <a href="http://inedo.com/support/kb/1119" target="_blank">KB#1119</a> to learn more about masking syntax.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Directory</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Verbose</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Verbose</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <p class="info">
+    <b>Note: </b>This operation will delete files one-by-one. To clear large directories, a PowerShell script may be more performant.</p>
+  <h4>Example:</h4><pre>
+# delete all .config files in the working directory except web.config
+Delete-Files(
+    Include: *.config,
+    Exlude: web.config
+);
+</pre>
+</div>
+</body>
+</html>

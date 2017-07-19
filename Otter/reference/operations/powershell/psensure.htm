@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>powershell - PSEnsure</title>
+  <meta name="keywords" content="otter, operations, powershell" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>PSEnsure</h2>
+  <p>Uses two PowerShell scripts to Collect, and then Ensure a configuration about a server.</p>
+  <h4>Operation type:</h4>
+  <p>Ensuring - this operation will ensure a specified configuration exists on a remote server after comparing its current state to the desired state.</p>
+  <h4>Script usage:</h4><pre>PSEnsure(
+	Key: &lt;text&gt;,
+	Value: &lt;text&gt;,
+	[Collect: &lt;text&gt;],
+	[Configure: &lt;text&gt;],
+	[CollectScript: &lt;text&gt;],
+	[ConfigureScript: &lt;text&gt;],
+	[UseExitCode: &lt;true/false&gt;],
+	[Debug: &lt;true/false&gt;],
+	[Verbose: &lt;true/false&gt;],
+	[CollectScriptParams: &lt;%(key1: value1, ...)&gt;],
+	[ConfigureScriptParams: &lt;%(key1: value1, ...)&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>PowerShell::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Configuration key</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Key</pre>
+      </td>
+      <td>
+        <span>The configuration key name represented by the ensuring operation.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Expected value</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Value</pre>
+      </td>
+      <td>
+        <span>The expected value used by the ensuring operation that causes the Configure operation to run if it does not match the value returned from the Collect phase.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Collection script</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Collect</pre>
+      </td>
+      <td>
+        <span>The output of this PowerShell script will be used to collect the current configuration of the server.</span>
+        <span> Variables are not expanded within the contents of this property.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Configure script</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Configure</pre>
+      </td>
+      <td>
+        <span>This PowerShell script is executed if the configuration gathered using the collection script does not match the stored configuration.</span>
+        <span> Variables are not expanded within the contents of this property.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Collection script asset</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>CollectScript</pre>
+      </td>
+      <td>
+        <span>The name of a PowerShell script asset to use for collection. The output of this PowerShell script will be used to collect the current configuration of the server.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Configuration script asset</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>ConfigureScript</pre>
+      </td>
+      <td>
+        <span>The name of a PowerShell script asset to use for configuration. This script is executed if the configuration gathered using the collection script does not match the stored configuration.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Use exit code</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>UseExitCode</pre>
+      </td>
+      <td>
+        <span>When set, the exit/return code of the script will be used instead of the output stream for collection.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Debug</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Debug</pre>
+      </td>
+      <td>
+        <span>Captures the PowerShell Write-Debug stream into Otter's execution debug log.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Verbose</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>Verbose</pre>
+      </td>
+      <td>
+        <span>Captures the PowerShell Write-Verbose stream into Otter's execution debug log.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Collection script parameters</span>
+      </td>
+      <td><pre>%(key1: value1, ...)</pre>
+      </td>
+      <td><pre>CollectScriptParams</pre>
+      </td>
+      <td>
+        <span>Map containing named arguments to pass to the PowerShell collect script.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Configure script parameters</span>
+      </td>
+      <td><pre>%(key1: value1, ...)</pre>
+      </td>
+      <td><pre>ConfigureScriptParams</pre>
+      </td>
+      <td>
+        <span>Map containing named arguments to pass to the PowerShell configure script.</span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# ensures the BuildMaster Agent service exists on the remote server
+PSEnsure(
+    Key: BuildMasterAgentInstalled,
+    # returns the count of INEDOBMAGT services installed
+    Collect: @(Get-Service | Where-Object {$_.Name -eq &quot;INEDOBMAGT&quot;}).Count,
+    # expected value is 1
+    Value: 1,
+    # if the returned value is 0 instead of 1, the installer will run
+    Configure: &amp; &#39;\\filesrv1000\$e\Resources\BuildMasterAgentSetup.exe&#39; /S /AgentType=TCP /Port=8080,
+    Debug: true,
+    Verbose: true
+);
+
+# ensures the BuildMaster Agent service exists on the remote server, using a
+# PowerShell script asset to perform the configuration
+PSEnsure(
+    Key: BuildMasterAgentInstalled,
+    # returns the count of INEDOBMAGT services installed
+    Collect: @(Get-Service | Where-Object {$_.Name -eq &quot;INEDOBMAGT&quot;}).Count,
+    # expected value is 1
+    Value: 1,
+    # use script stored in InstallBmAgent asset
+    ConfigureScript: InstallBmAgent,
+    ConfigureScriptParams: %(
+        AgentType: TCP,
+        Port: 1000),
+    Debug: true,
+    Verbose: true
+);
+</pre>
+</div>
+</body>
+</html>

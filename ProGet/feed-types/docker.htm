@@ -1,0 +1,35 @@
+﻿<html>
+  <head>
+    <title>Docker</title>
+      <meta name="subtitle" content="Docker" />
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+      <meta name="keywords" content="proget,feeds,docker" />
+      <meta name="sequence" content="150" />
+  </head>
+  <body>
+	<p>
+		A Docker feed in ProGet acts as a private registry for an organization's internal Docker images.
+	</p>
+
+	<h2>Docker Feed Limitations</h2>
+	<p>
+		Docker feeds are fundamentally different from other ProGet feed types. Docker feeds do not have
+		any concept of <em>packages</em>. Instead, Docker works with repositories and images. A Docker
+		feed contains multiple repositories, and each repository can contain one or more images. Images
+		themselves are identified either by a hash, or a more friendly tag.
+	</p>
+	<p>
+		Docker feeds also are not intended for use with anything except the Docker client. Images cannot
+		be manually created or uploaded, although they can be deleted, and some metadata can be edited
+		from within ProGet.
+	</p>
+	<p>
+		Connectors cannot be used with Docker feeds. Since the Docker client uses the server name
+		itself as its mechanism for identifiying when to use a private registry, there is no meaningful
+		way to allow the transparent use of connectors as in other ProGet feed types.
+	</p>
+	<p>
+		To learn more about Docker feeds, please visit this <a href="/support/kb/1131/docker-feed-limitations">Knowledge Base article</a>.
+	</p>
+  </body>
+</html>

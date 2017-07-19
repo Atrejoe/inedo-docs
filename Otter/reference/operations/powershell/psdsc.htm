@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>powershell - PSDsc</title>
+  <meta name="keywords" content="otter, operations, powershell" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of Otter 1.6, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your Otter instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>PSDsc</h2>
+  <p>Ensures the configuration of a specified DSC Resource.</p>
+  <h4>Operation type:</h4>
+  <p>Ensuring - this operation will ensure a specified configuration exists on a remote server after comparing its current state to the desired state.</p>
+  <h4>Script usage:</h4><pre>PSDsc [DefaultArgument] (
+	[Arg1: Arg1Value],
+	[Arg2: Arg2Value],
+	[OutputArgument => $CustomVariable]
+);
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>PowerShell::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <p class="info">
+    <b>Default Argument: ResourceName: </b>The default argument for this operation is the DSC Resource Name and should follow the format: &quot;ModuleName::ResourceName&quot;. If &quot;ModuleName::&quot; is omitted, the PSDesiredStateConfiguration module will be used.</p>
+  <p class="info">
+    <b>Configuration Key: </b>By default, Otter will use the Name property of the DSC Resource as the configuration key. If there is no Name property or you would like to override the default configuration key name, specify a property named &quot;Otter_ConfigurationKey&quot; with the value containing a string (or list of strings) indicating the name of the property (or properties) to be used as the unique configuration key.</p>
+  <p class="info">
+    <b>Strings and Values: </b>All properties will be treated as strings, unless they can be parsed as a decimal, or appear to be a boolean (true, $true, false, $false), array literal (@(...)), or hash literal (@{...}).</p>
+  <h4>Example:</h4><pre>
+# ensures the existence of a file on the server
+PSDsc File (
+  Otter_ConfigurationKey: DestinationPath,
+  DestinationPath: C:\hdars\1000.txt,
+  Contents: test file ensured
+);
+
+# runs a custom resource
+PSDsc cHdarsResource::cHdars (
+  Otter_ConfigurationKey: LocalServer,
+  MaximumSessionLength: 1000,
+  PortsToListen: &quot;`@(3322,4431,1123)&quot;,
+  Enabled: true
+);</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<html>
+<head>
+    <title>NuGet (.NET)</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget,feeds,nuget," />
+    <meta name="subtitle" content= "NuGet Feeds in ProGet" />
+    <meta name="sequence" content="100" />
+</head>
+<body>
+	<p>
+		A NuGet feed in ProGet acts as a repository for NuGet packages.
+		Typically, these packages are consumed from Visual Studio or a command-line client such as NuGet.exe. 
+		They can also be browsed and managed from ProGet's web application
+	</p>
+
+	<h2>NuGet-Specific Feed Configuration</h2>
+    <h3 id="nuget-api-key">NuGet API Key</h3>
+    <p>
+        If set, specifies the NuGet API key that is required to be supplied for pushing packages to
+        this feed using the NuGet client. See the <a href="/support/documentation/proget/feeds/nuget/api-keys">NuGet API Keys</a> section
+        for additional information about how the API key relates to authentication.
+    </p>
+
+    <h3 id="enable">Enable Symbol and Source Server</h3>
+    <p>
+        When set, ProGet will scan NuGet packages for .pdb files and make them available
+        as a symbol server at the /symbols/[FeedName] URL. See the <a href="/support/documentation/proget/feed-types/nuget/symbol-and-source-server">Symbol Server</a>
+        section for additional information.
+    </p>
+
+    <h3 id="strip">Automatically Strip PDB files</h3>
+    <p>
+        When set, ProGet will not include .pdb files when packages are downloaded. This
+        setting is ignored when the symbol server is disabled.
+    </p>
+</body>
+</html>

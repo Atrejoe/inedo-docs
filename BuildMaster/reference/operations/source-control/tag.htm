@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Source Control - Tag</title>
+  <meta name="keywords" content="buildmaster, operations, source-control" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Tag</h2>
+  <p>Copies a path in Source Control to a tag.</p>
+  <h4>Script usage:</h4><pre>Tag-Path(
+	Provider: &lt;text&gt;,
+	SourcePath: &lt;text&gt;,
+	To: &lt;text&gt;,
+	[Comment: &lt;text&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Core::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Provider name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Provider</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Source path</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>SourcePath</pre>
+      </td>
+      <td>
+        <span>The path in source control to branch/tag from. This path is a provider-specific string that may include additional information like branch name, etc. See the documentation on <a target="blank" href="//inedo.com/buildmaster/extensions">inedo.com</a> regarding the specific source control system in use.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Tag/branch path</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>To</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Comment</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Comment</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+# tags files &quot;rel-0.1.4&quot; under MarketingPortal from the provider named Mercurial2, using the remote URL supplied in the 
+# HdarsRepo repository on the master branch 
+Tag-Path(
+    Provider: MySvn,
+    From: /myapp/trunk,
+    To: /myapp/branches/$ReleaseNumber
+);
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>BuildMaster API Endpoints &amp; Methods</title>
+    <meta name="subtitle" content="BuildMaster API Reference" />
+    <meta name="keywords" content="buildmaster,api" />
+    <meta name="sequence" content="100" />
+    <style type="text/css">
+        th {
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <a href="/buildmaster">BuildMaster</a> helps you automate configuration and deployment of <em>other</em> software on your servers.
+        To help you automate and configure BuildMaster, there are various API endpoints you can use to programmatically query or configure
+        BuildMaster instances.
+    </p>
+    <p>
+        There are several different API endpoints available:
+    </p>
+    <ul>
+        <li>
+            <b><a href="api/infrastructure">Infrastructure Management</a></b> - a simple mechanism for querying, creating, and updating
+            <a href="../administration/agents">server</a>, <a href="../core-concepts/environments">environment</a>, and
+            <a href="../administration/agents">server role</a> entries; they are intended to automate the set-up and
+            management of an BuildMaster instance.
+        </li>
+        <li>
+            <b><a href="api/variables">Variables Management</a></b> - view, create, update, and delete <a href="../global-components/configuration-variables">configuration variables</a>
+        </li>
+        <li>
+            <b><a href="api/release-and-package">Release &amp; Package Deployment</a></b> - create and deploy releases and release packages
+        </li>
+        <li>
+            <b><a href="api/native">Native API Methods</a></b> - callable through JSON, SOAP, or even SQL directly, these offer full control of an BuildMaster instance
+            and can be used to do anything that a user may do from the web interface; these may change between minor versions (which are always
+            documented in the release notes), and are almost always backwards-compatible.
+        </li>
+    </ul>
+    <p>
+        There are also <b>Release Package Triggers</b>, which allow you to create a release package by simply visiting a URL with a GET or POST; this is mostly useful when you want third-party tools to trigger release package creation within BuildMaster,
+        and can be created under Application Settings &gt; Release Package Triggers
+    </p>
+
+
+
+
+</body>
+</html>

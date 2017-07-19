@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Email - Send Email</title>
+  <meta name="keywords" content="buildmaster, operations, email" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Send Email</h2>
+  <p>Sends an email message.</p>
+  <h4>Script usage:</h4><pre>InedoCore::Send-Email(
+	To: &lt;@(text)&gt;,
+	[Subject: &lt;text&gt;],
+	[Text: &lt;text&gt;],
+	[Html: &lt;text&gt;],
+	[Attachments: &lt;@(text)&gt;],
+	[AttachmentDirectory: &lt;text&gt;],
+	[CC: &lt;@(text)&gt;],
+	[Bcc: &lt;@(text)&gt;]
+);
+
+</pre>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>To address(es)</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>To</pre>
+      </td>
+      <td>
+        <span>A single email address may be used, or a list variable containing multiple email addresses.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Subject</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Subject</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Plain-text body</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Text</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>HTML body</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Html</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Attachments</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Attachments</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>From directory</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>AttachmentDirectory</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>CC address(es)</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>CC</pre>
+      </td>
+      <td>
+        <span>A single email address may be used, or a list variable containing multiple email addresses.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>BCC address(es)</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>Bcc</pre>
+      </td>
+      <td>
+        <span>A single email address may be used, or a list variable containing multiple email addresses.</span>
+      </td>
+    </tr>
+  </table>
+  <p class="info">
+    <b>Note: </b>If the Html property is specified, then the Text property will be ignored.</p>
+  <h4>Example:</h4><pre>
+Send-Email (
+    To: @(someone@example.org, someone-else@example.org),
+    Subject: Howdy!,
+    Text: &gt;&gt;Hello there!
+
+This email was sent from BuildMaster on $Date.&gt;&gt;
+);
+</pre>
+</div>
+</body>
+</html>

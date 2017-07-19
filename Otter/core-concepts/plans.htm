@@ -1,0 +1,151 @@
+﻿<html>
+<head>
+    <title>Plans</title>
+    <meta name="subtitle" content="Plans in Otter" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,plans,operations" />
+    <meta name="sequence" content="200" />
+</head>
+<body>
+    <p>
+        Plans are a key component of Otter's automation, and are used to direct the <a href="/support/documentation/otter/execution-engine/overview">Execution Engine</a>. 
+        They provide an easy-to-understand, visual representation of configuration and orchestration while also being the 
+        "code" behind your <a href="https://en.wikipedia.org/wiki/Infrastructure_as_Code">Infrastructure as Code</a>. 
+	</p>
+    <p>
+        From simple, single server configurations to complex orchestrations spanning 1000's of system critical servers, plans help 
+        bring visibility to the entire development and operations teams, not just those fluent in scripting.
+    </p>
+	<p>
+        There are two types of plans: 
+    </p>
+    <ul>
+        <li><b><a href="#configuration">Configuration Plans</a></b> - 
+            <em>describe</em> configuration of <a href="servers">Servers</a> and <a href="../modeling-infrastructure/server-roles">Server Roles</a>, 
+            and are continuously run to monitor and (optionally) remediate <a href="/support/documentation/otter/core-concepts/servers#drift">Configuration Drift</a></li>
+        <li><b><a href="#orchestration">Orchestration Plans</a></b> - <em>deploy</em> changes to servers, interact with cloud services, 
+        provision virtual machines, etc., they run when scheduled or on a recurring basis</li>
+    </ul>
+    <p>
+        The main difference between these types of plans is the <em>context</em> in which they are used. Both type of plans are created and edited in the 
+        same manner. Either in the drag-and-drop Visual Mode, or in Text Mode using <a href="../execution-engine/otter-script">OtterScript</a> -- and they both 
+        essentially describe a series of steps (i.e. <a href="/support/documentation/otter/reference/operations">Operations</a>) that could be executed on servers.
+    </p>
+    <p>
+        Plans are made up of a series of <a href="../execution-engine/statements-and-blocks">Statements and Blocks</a>. Blocks group statements and other 
+        blocks together and are run by the execution engine in the order you specify. There is full parity between the
+        Visual and Text modes, and you can switch back-and-forth anytime for maximum flexibility when creating elaborate configurations.
+    </p>
+    <p>
+        For example, here's a <a href="../execution-engine/statements-and-blocks/general-blocks">General Block</a> with several statements 
+        that <b>declare</b> the desired state of configuration for an "Accounts" application server.
+    </p>
+    <inedo:tab-block>
+        <tab name="Visual Mode">
+            <img class="screenshot" src="/resources/documentation/otter/plan-blocks.png" alt="An IIS Plan Block (Visual Mode)" />
+        </tab>
+        <tab name="Text Mode (OtterScript)">
+            <img class="screenshot" src="/resources/documentation/otter/plan-block-text.png" alt="An IIS Plan Block (Text Mode)" />
+        </tab>
+    </inedo:tab-block>
+
+    <h2 id="configuration">Configuration Plans</h2>
+	<p>
+		Configuration plans collect the <em>actual</em> configuration of a server as it relates to your plan. For example, if the above block
+        were placed in a configuration plan for a server (or on one of the server's server roles),
+        then that server's configuration would look like this:
+	</p>
+    <p>
+         <img class="screenshot" src="/resources/documentation/otter/plan-iis-config.png" alt="An IIS Plan Collected Configuration" />
+    </p>
+    <p>
+        Configuration plans are run routinely, and Otter would run the above plan in the following manner:
+    </p>
+    <ol>
+        <li>Read the <code>HOSTS</code> file and collect the value of the <code>accounts.local</code> entry</li>
+        <li>Resolve the <code>$WebsitesRoot</code> variable, which could be a <a href="../execution-engine/runtime-variables">Runtime</a> 
+        or <a href="../global-components/configuration-variables">Configuration variable</a>
+        whether set on the role, server, <a href="/support/documentation/otter/modeling-infrastructure/environments">Environment</a>, etc</li>
+        <li>Read the <code>web.config</code> file, and collect the value of the <code>ConnectionString</code> entry</li>
+        <li>Read the <code>Runtime</code> and <code>Pipeline</code> values of the <code>AccountsAppPool</code></li>
+        <li>Read the <code>AppPool</code>, <code>Path</code>, <code>Protocol</code>, and <code>Biding</code> values of the <code>Accounts</code> site</li>
+        <li>Store the collected configuration in the database</li>
+        <li>Compare the collected configuration against the declared configuration</li>
+        <li>
+            If there is configuration drift, and the server is configured to <em>automatically remediate drift</em>:
+              <ul>
+                <li>Create or update the actual configuration based on the plan</li>
+                <li>Store the new configuration in the database</li>
+            </ul>
+        </li>
+    </ol>   
+	
+    <h3>Real-world Configuration</h3>
+    <p>
+        Of course, the idea of automatic change is not exactly palatable to many organizations, which is why servers do not automatically
+        remediate configuration drift unless you have explicitly configured them to do so. By default, you will instead remediate drift through a scheduled or on-demand <a href="jobs">Job</a>.
+        You can even <a href="jobs#simulation">Simulate</a> the execution, just to see exactly what would happen.
+    </p>
+    <p>
+        Also, the real world rarely works declaratively, and configuration plans often need a mix of declarative statements 
+        (like ensure a file is in a specific location) and imperative or procedural operations (like starting or stopping a service). 
+    </p>
+	<p>
+	    Otter bridges the gap between the “real” and “ideal” worlds. Otter allows for the modeling of grand infrastructure plans across multiple platforms 
+        and 1000s of servers, while maintaining the granular control to define a single change on one server. Common configurations can be stored using a 
+        <a href="assets#templates">Template</a> and used over and over for easily scalable infrastructure.  
+	</p>
+
+    <h2 id="orchestration">Orchestration Plans</h2>
+    <p>
+        Orchestration plans are quite a bit simpler: they just use the same, advanced execution engine to 
+        execute operations and scripts on servers.
+
+        Unlike configuration plans, orchestration plans don't run continuously. Instead, you scheduled them to run (either in the future, or on a
+        recurring basis) using an <a href="jobs#orchestration">Orchestration Job</a>. 
+    </p>
+
+    <p>This simplicity also makes them hard to describe in detail, because they can be used to do just about anything:</p>
+   
+    <ul>
+        <li>Installing patches or other changes to 1000’s of servers</li>
+        <li>Spinning up and configuring multiple virtual servers</li>
+        <li>Execute existing scripts in a controlled and visible manner</li>
+        <li>Provisioning bare-metal hardware</li>
+        <li>Deploying <a href="/proget">ProGet</a> packages</li>
+    </ul>
+	
+	<!--
+    <p>
+        The real power of orchestration plans is in using Otter's advanced <a href="../execution-engine">execution engine</a>; it tightly integrates with configurations 
+        and variables
+        already set-up within Otter, understands servers and virtual hosts, and makes even running your existing scripts a whole lot easier.
+    </p>
+    
+        <p>
+            An <b>operation</b> is a basic unit of configuration that either
+            <em>declares</em> a desired state of configuration or <em>executes</em> a specific command.
+        </p>
+        <ul>
+            <li><b>Collect</b> - gathers and stores certain information about a server in the Otter database</li>
+            <li><b>Execute</b> - runs a certain command, or otherwise changes configuration on a server</li>
+            <li><b>Ensure</b> - defines a desired configuration, collects certain information from a server, then executes the desired configuration if the server does not already match</li>
+        </ul>
+        <p>
+            All operations are run on a server via an agent.
+        </p>
+        <p>
+            A <b>plan</b> is a grouping of operations that Otter will run. Depending on the operations,
+            and the way in which the operations are grouped, a plan can be used to <em>declare</em> a
+            desired state of configuration, <em>execute</em> a series of commands, or a combination of the
+            two. There are
+        </p>
+        <ul>
+            <li><b>Server</b> - a plan associated with a specific server</li>
+            <li><b>Role</b> -  a plan associated with a specific role (which are then associated with servers)</li>
+            <li><b>System</b> - a plan that can be run as a job (which will target servers)</li>
+            <li><b>Library</b> - a plan that contains templates that other plans can use</li>
+        </ul>
+    -->
+</body>
+</html>

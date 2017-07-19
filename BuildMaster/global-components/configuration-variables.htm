@@ -1,0 +1,69 @@
+﻿<html>
+<head>
+    <title>Configuration Variables </title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster,variables,executions" />
+</head>
+<body>
+    <p>
+       <a href="/support/documentation/buildmaster/execution-engine/runtime-variables"> Variables</a> allow for extreme flexibility when modeling your deployment plans, and
+        configuration variables allow you to have the same plan run differently across different servers and <a href="/support/documentation/buildmaster/core-concepts/environments">environments</a>.
+    </p>
+
+    <p>
+        You can define configuration variables at different scopes (release, server, environment, global, etc), and then reference those variables in your plan when using
+        Operations, <a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/if-else">If/Else Blocks</a>, 
+        <a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/loop">Loop Blocks</a>, etc.
+        You can also create a <a href="../execution-engine/runtime-variables">runtime variable</a> in a plan itself.
+	</p>
+
+	<h2 id="cascading">Cascading Variables</h2>
+    <p>
+        Configuration Variables cascade, which means that you can define a variable of the same name in multiple places,
+        and the correct value will be resolved at runtime. For example, if you define a variable named <code>$HDarsPath</code>
+        on the <code>Testing</code> environment, when a plan runs against a server in the
+        <code>Testing</code> environment, that variable will resolve at runtime.
+    </p>
+    <p>
+        If you also defined <code>$HDarsPath</code> on a single server in the <code>Testing</code> environment, than <em>that</em>
+        value would be used instead.
+	</p>
+    <p>
+        This allows for reusing Plans and Templates without having to change local variables. There are times when it 
+        may be appropriate for variables to have different values when they are used different places, and BuildMaster allows for 
+        this. 
+    </p>
+    <h3 id="resolution-rules">Resolution Rules</h3>
+    <p>The variable definition that's the "closest" match to the current context is used. This is determined as follows.</p>
+    <ul>
+        <li>Execution</li>
+        <li>Promotion</li>
+        <li>Package</li>
+        <li>Release</li>
+        <li>Application</li>
+        <li>Application Group</li>
+        <li>Server</li>
+        <li>Environment</li>
+        <li>Global</li>
+
+    </ul>
+    <h3 id="multiple-scopes">Multiple Scopes</h3>
+    <p>
+        You can also assign multiple scopes to a configuration variable; for example, you could define a variable that's associated
+        with <em>both</em> the <code>Testing</code> environment and the <code>hdars-web</code> role. A multi-scope variable simply
+        adds precedence to the highest-scope (Promotion is still "closer" than a Environment + Application).
+    </p>
+    <p>
+        However, this get can get a bit tricky as the resolution rules are simply not intuitive, so we generally discourage this
+        use. You can create multi-scoped variables from only the Administration section, and they are visible (but not editable)
+        on servers, server roles, etc., they are associated with.
+    </p>
+    
+    <h2 id="legacy">Legacy Configuration and Release Variables</h2>
+    <p>
+        If you used configuration variables prior to BuildMaster 5.2 and earlier, see 
+        <a href="/support/kb/1129">KB#1129: Legacy Configuration and Release Variables</a>
+        for more information on how legacy and non-legacy variables interact.
+    </p>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>BuildMaster - Manual Operation</title>
+  <meta name="keywords" content="buildmaster, operations, buildmaster,general" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Manual Operation</h2>
+  <p>Halts the execution until an individual or group completes a specified task.</p>
+  <h4>Script usage:</h4><pre>Perform-ManualOperation(
+	Name: &lt;text&gt;,
+	[Description: &lt;text&gt;],
+	AssignedTo: &lt;text&gt;,
+	[SendEmail: &lt;true/false&gt;],
+	[CC: &lt;@(text)&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Core::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Task name</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>The name of the task that uniquely identifies it in the UI.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Task description</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Description</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Assigned to</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>AssignedTo</pre>
+      </td>
+      <td>
+        <span>The user or group who is responsible to complete the specified task.</span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Send email to assignees</span>
+      </td>
+      <td><pre>true/false</pre>
+      </td>
+      <td><pre>SendEmail</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>CC email addresses</span>
+      </td>
+      <td><pre>@(text)</pre>
+      </td>
+      <td><pre>CC</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

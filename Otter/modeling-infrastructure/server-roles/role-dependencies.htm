@@ -1,0 +1,59 @@
+﻿<html>
+<head>
+    <title>Role Dependencies</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,server-roles" />
+    <meta name="sequence" content="300" />
+</head>
+<body>
+    <p>
+       Added in Otter 1.6, role dependencies allow you to model complex server and application configurations through hierarchical sets of simple roles with dependencies. This makes it much easier to share common configuration and define smaller-but-related roles.  
+	</p>
+	<h2 id="example-accounts">Example: Accounts</h2>
+    <p>
+        In order to configure a server to have AccountsWeb, a web-based front-end for the Accounts application, that server must have IIS installed and configured. In Otter, you could represent this using two separate roles (accounts-web role and iis-server) and, using role dependencies, configure the accounts-web role to depend upon the iis-server role. This way, when you assign the accounts-web role to a server, the iis-server role will also be used to configure the server without needing to explicitly assign it to the server.
+    </p>
+    <p>
+        Expanding on the Accounts example further, we can define each application component as a separate role (accounts-db, accounts-svc, accounts-api, and accounts-web), and further separate out the non-accounts specific configuration into their own roles.
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/otter/role-dependencies-ex.png" alt="Role Dependencies Example in Otter" />
+    </p>
+    <p>
+        We could create a “placeholder” role (accounts-full) that simply depends on the four component roles, and would allow the entire account stack to be installed on a single server. Or, different servers could be assigned different Account roles. 
+    </p>
+    <h2 id="modeling-role-hierarchy">Modeling Role Hierarchy</h2>
+    <p>
+        You can edit a role’s dependencies (i.e. the roles which it require) or its dependents (i.e. other roles that depend on the role) by going to the role’s detail page and clicking the appropriate edit button.
+    </p>
+    <p>
+        <img class="screenshot" src="/resources/documentation/otter/modeling-role-hierarchy.png" alt="Modeling Role Hierarchy in Otter" />
+    </p>
+    <p>
+        Note that indirect dependencies are visualized with a faded color, but cannot be edited; they’re simply provided for visualization purposes.
+    </p>
+    <h2 id="config-runtime-behavior">Configuration Runtime Behavior</h2>
+    <p>
+        When a configuration job is run against a server, Otter will assemble the server’s and its roles’ configuration plans into a single plan, and then execute it. Note that:
+    </p>
+    <p>
+        <ul>
+            <li>
+                Dependencies run first; when assembling the plan, each role’s dependencies (and each dependency’s dependencies) are run first to ensure required configuration happens before the rest.
+            </li>
+            <li>
+                Circular dependencies result in runtime errors
+            </li>
+        </ul>
+    </p>
+    <p>
+        Otherwise, the configuration jobs will run as if all roles were added to the server directly.
+    </p>
+
+
+
+    
+
+ 
+</body>
+</html>

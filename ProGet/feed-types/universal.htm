@@ -1,0 +1,87 @@
+﻿<html>
+<head>
+    <title>Universal (Application/Platform)</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="600" />
+    <meta name="keywords" content="proget,feeds,universal" />
+    <meta name="subtitle" content="Universal Feeds in ProGet" />
+</head>
+<body>
+	<p>
+		Super simple package management that's <em>actually</em> meant for your applications!
+	</p>
+
+	<p>
+		Previously, this was done by shoehorning your builds into packages designed for .NET libraries or Maven projects, and using
+		the often-awkward clients .
+		Now, ProGet's Universal Feeds and Packages give you all the same value and control of package managers for your application. 
+		You’re able to manage your applications as simply as you develop them. 
+	</p>
+
+	<p>
+		Universal Packages already support most of the metadata that most organizations need for application packaging, but they allow you to
+		add as much additional metadata as needed. And because they're hosted in a ProGet feed, you can use <a href="../core-concepts/connectors">connectors</a>
+		and <a href="../administration/retention-policies">retention policies</a> as you would with any other feed.
+	</p>
+
+	<h2 id="platform">Universal Feeds as a Platform</h2>
+	<p>
+		In addition to serving as a repository for your application, Universal Feeds and Packages can be easily extended to serve for
+		more specific packaging needs. 
+	</p>
+
+	<h3 id="auto-install">Example: Auto-Installing Packages</h3>
+	<p>
+		Although <a href="chocolatey">Chocolatey</a> packages are already designed as machine packages, its specific behavior may not be desired by all organizations.
+		Instead of forking and modifying Chocolatey's source code, it may be a lot easier to simply build a platform on top of Universal Packages.
+	</p>
+	<p>
+		The <a href="../reference/universal-feed-api-and-package-format">package format</a> allows any additional metadata or meta-files (such as scripts) in a package,
+		meaning nothing special on the ProGet Universal Feed would need to change. The packages could be manually created or built with a script using another tool.
+	</p>
+	<p>
+		The installer client could be built with any language, and would use the <a href="../reference/universal-feed-api-and-package-format">Universal Feed API</a> to download packages 
+		(and, optionally, their dependencies), unzip them, and run a built-in installation script.
+	</p>
+
+	<h3 id="example">Example: Extensions &amp; Plug-ins</h3>
+	<p>
+		As an application release automation tool, <a href="/buildmaster">BuildMaster</a> has a <a href="/buildmaster/integrations">lot of integrations</a> with 
+		Continuous Integration servers, Issue Trackers, and more. These are actually delivered as a ProGet Universal Feed:
+	</p>
+	<table>
+		<thead>
+			<tr>
+				<th width="50%">Built-in Metadata</th>
+				<th width="50%">Extended Metadata</th>
+			</tr>
+		</thead>
+	<tbody>
+			<tr>
+				<td>
+					<ul>
+						<li>Name</li>
+						<li>Version</li>
+						<li>Title</li>
+						<li>Icon Url</li>
+						<li>Description</li>
+						<li>Download Count</li>
+						<li>Dependencies</li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li>Compatible SDK Version</li>
+						<li>Extension Source Code URL</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		Because Universal Feeds allow extended metadata, these two missing metadata elements were trivially simple to add as properties.
+		Additionally, BuildMaster customers are able to set up a Universal Feed in their own ProGet server
+		(perhaps with a <a href="../core-concepts/connectors">connector</a> to Inedo's feed), and then have BuildMaster point to that instead.
+	</p>
+</body>
+</html>

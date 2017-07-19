@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Directories </title>
+    <meta name="subtitle" content="Asset Directory in ProGet" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="300" />
+    <meta name="keywords" content="proget,assets" />
+</head>
+<body>
+    <p>
+        Coming in ProGet 4.8, an <em>Asset Directory</em> is a uniquely-named Root Directory in ProGet that contains sub-directories and files.
+        Similar to <a href="/support/documentation/proget/core-concepts/feeds">feeds</a>, Asset Directories can have their own specific configuration including scoped security privileges.
+    </p>
+    <h2>
+        Asset Directories
+    </h2>
+    <p>
+        Asset Directories in ProGet allow for arbitrary file storage with easy access via a web browser and a <a href="/support/documentation/proget/reference/asset-directories-api">RESTful API</a>.
+        <a href="/support/documentation/proget/feed-types/universal">Universal Packages</a> in ProGet are great for storing self-contained versioned artifacts with medtadata and dependencies, but not everything fits this package format. Sometimes a file is simply just a file, and this is where Asset Directories come in.
+    </p>
+    <p>
+        An Asset Directory is a container for any number of subdirectories and files. These files are stored using the same extensible mechanism used by ProGet's feeds,
+        which allows for the use of default disk/network share storage or <a href="/support/documentation/proget/storage/cloud-storage">S3 and Azure blob storage</a>.
+    </p>
+    <div>
+        <img style="border: 1px solid #808080;" src="/proget/4.8/assets.png" />
+    </div>
+    <h3>
+        For Example:
+    </h3>
+    <p>
+        An installer may be used by a configuration script for setting up a workstation. The installer is already a self-contained package, so packaging it further would be redundant;
+        it just needs to be downloaded and executed. It could simply be stored in an Asset Directory, and referenced using a well-known URL.
+    </p>
+    <p>
+        Alternatively, Asset Directories could be used to host a simple internal static web site, or sharing a picture with your organization without emailing or uploading
+        it to a cloud service. You could even configure a <a href="/support/documentation/proget/storage/retention-policies">Retention Policy</a> to automatically clean up old or unused files.
+    </p>
+    <p>
+        Asset Directories provide the versatility of a file share, and the added benefit of all the security and stability features ProGet offers,
+        such as <a href="/support/documentation/proget/administration/security">scoped privileges</a>, retention policies, and automatic failover.
+    </p>
+    <h2>
+        Files
+    </h2>
+    <p>
+        Files, similar to packages, can be added to a Directory in a number of ways. You can:
+    </p>
+    <ul>
+        <li>Upload a single file using a browser</li>
+        <li>Import multiple files at once contained in a .zip or a .tar.gz</li>
+        <li>Upload files using the API</li>
+    </ul>
+    <div>
+        <img style="border: 1px solid #808080;" src="/proget/4.8/adding-asset.png" />
+    </div>
+    <h2>
+        Configuring Asset Directories
+    </h2>
+    <p>
+        Asset Directories are now top-level concepts in ProGet, along with Feeds and Packages. The Assets link at the top of the page will take you to the Asset Directory
+        overview, which will display every Directory in ProGet. From here, you can create a new directory, modify an existing
+        directory, delete a directory, or browse a directory.
+    </p>
+    <p>
+        When creating a new Directory, the only required field is its name. Like Feeds, Asset Directories must be uniquely named, and should be names that can be
+        easily represented in a URL (in other words, avoid characters like /, :, or spaces). As soon as you have named the new Directory, you can start uploading files to it.
+    </p>
+    <p class="announcement">
+        Internally, Asset Directories are represented as Feeds, which means the Asset Directory name must also not be the same as any Feed name. This also means
+        that Feed-scoped privileges can also be applied to Asset Directories.
+    </p>
+    <p>
+        Retention policies for Asset Directories work just like they do for Package Feeds, except that any rules relating to version numbers are not applicable since
+        Asset Directories store simple unversioned files.
+    </p>
+    <h2>
+        Accessing Files
+    </h2>
+    <p>
+        You can browse the contents of an Asset Directory from your browser. The directory is displayed as a standard hierarchy of folders and files; individual
+        files can be selected and downloaded or viewed. Files in an Asset Directory can also be accessed as if they are hosted on a web server by navigating to
+        the REST API URL for the file <a href="/support/documentation/proget/reference/asset-directories-api">(see API documentation)</a>.
+    </p>
+</body>
+</html>

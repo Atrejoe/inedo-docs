@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Databases - Execute Database Statement</title>
+  <meta name="keywords" content="buildmaster, operations, databases" />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Execute Database Statement</h2>
+  <p>Executes a statement against a database.</p>
+  <h4>Script usage:</h4><pre>Execute-DatabaseStatement(
+	Connection: &lt;text&gt;,
+	Statement: &lt;text&gt;
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Core::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Database connection</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Connection</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>SQL Statement</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Statement</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+  </table>
+  <h4>Example:</h4><pre>
+Execute-DatabaseStatement (
+    Statement: &gt;&gt;
+    print &#39;Executing BuildMaster statement...&#39;
+
+    select * from sys.databases
+    where owner_sid &gt; 1
+    order by name
+
+    print &#39;Execution complete.&#39;
+&gt;&gt;,
+    Connection: SqlServerTesting
+);
+</pre>
+</div>
+</body>
+</html>
