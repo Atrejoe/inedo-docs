@@ -7,7 +7,7 @@
 </head>
 <body>
     <p class="info">
-        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        This is generated from the built-in components of BuildMaster 5.8.1, and may be different than what you have installed (especially if you have extensions);
         go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
     </p>
 
@@ -68,6 +68,15 @@
       <span class="doc-item-arguments">(credential, property)</span>
        - 
       <span>the value of a specified credentials property</span>
+    </li>
+  </ul>
+  <h2 id="Databases">Databases</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/databases/databaseconnectionsinenvironment">@DatabaseConnectionsInEnvironment</a>
+      <span class="doc-item-arguments">([environmentName])</span>
+       - 
+      <span>list of database connections for the current application which belong to the specified environment</span>
     </li>
   </ul>
   <h2 id="Deployables">Deployables</h2>
@@ -258,6 +267,27 @@
       <span class="doc-item-arguments">([RoleName], [EnvironmentName], [IncludeInactive])</span>
        - 
       <span>Returns a list of all the servers in the specified role and environment name.</span>
+    </li>
+  </ul>
+  <h2 id="Json">Json</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/json/fromjson">FromJson</a>
+      <span class="doc-item-arguments">(json)</span>
+       - 
+      <span>Converts JSON to an OtterScript value.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/json/jsencode">$JSEncode</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Encodes a string for use in a JavaScript string literal.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/json/tojson">$ToJson</a>
+      <span class="doc-item-arguments">(data)</span>
+       - 
+      <span>Converts an OtterScript value to JSON.</span>
     </li>
   </ul>
   <h2 id="Lists">Lists</h2>
@@ -484,6 +514,13 @@
   <h2 id="Strings">Strings</h2>
   <ul>
     <li>
+      <a class="doc-item-link" href="functions/strings/coalesce">$Coalesce</a>
+      <span class="doc-item-arguments">
+      </span>
+       - 
+      <span>Returns the first argument which does not contain only whitespace.</span>
+    </li>
+    <li>
       <a class="doc-item-link" href="functions/strings/htmlencode">$HtmlEncode</a>
       <span class="doc-item-arguments">(Text)</span>
        - 
@@ -512,6 +549,18 @@
       <span class="doc-item-arguments">([WindowsOrLinux])</span>
        - 
       <span>newline string for either the operating system of the current server in context or specifically Windows or Linux</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/padleft">$PadLeft</a>
+      <span class="doc-item-arguments">(Text, Length, [PadCharacter])</span>
+       - 
+      <span>Returns a new string that right-aligns the characters in this instance by padding them on the left with a specified character, for a specified total length.</span>
+    </li>
+    <li>
+      <a class="doc-item-link" href="functions/strings/padright">$PadRight</a>
+      <span class="doc-item-arguments">(Text, Length, [PadCharacter])</span>
+       - 
+      <span>Returns a new string that left-aligns the characters in this instance by padding them on the left with a specified character, for a specified total length.</span>
     </li>
     <li>
       <a class="doc-item-link" href="functions/strings/replace">$Replace</a>
@@ -566,6 +615,15 @@
       <span class="doc-item-arguments">(Text)</span>
        - 
       <span>Escapes a string for use in a URL.</span>
+    </li>
+  </ul>
+  <h2 id="Xml">Xml</h2>
+  <ul>
+    <li>
+      <a class="doc-item-link" href="functions/xml/xmlencode">$XmlEncode</a>
+      <span class="doc-item-arguments">(Text)</span>
+       - 
+      <span>Encodes a string for use in an XML element.</span>
     </li>
   </ul>
 </div>

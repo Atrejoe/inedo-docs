@@ -9,7 +9,7 @@
 </head>
 <body>
     <p>
-        Coming in ProGet 4.8, an <em>Asset Directory</em> is a uniquely-named Root Directory in ProGet that contains sub-directories and files.
+        Starting in ProGet 4.8, an <em>Asset Directory</em> is a uniquely-named Root Directory in ProGet that contains sub-directories and files.
         Similar to <a href="/support/documentation/proget/core-concepts/feeds">feeds</a>, Asset Directories can have their own specific configuration including scoped security privileges.
     </p>
     <h2>
@@ -41,9 +41,7 @@
         Asset Directories provide the versatility of a file share, and the added benefit of all the security and stability features ProGet offers,
         such as <a href="/support/documentation/proget/administration/security">scoped privileges</a>, retention policies, and automatic failover.
     </p>
-    <h2>
-        Files
-    </h2>
+    <h2 id="files">Files</h2>
     <p>
         Files, similar to packages, can be added to a Directory in a number of ways. You can:
     </p>
@@ -52,6 +50,11 @@
         <li>Import multiple files at once contained in a .zip or a .tar.gz</li>
         <li>Upload files using the API</li>
     </ul>
+    <p class="info">
+        Multiple or large (1GB+) files may be uploaded by dragging &amp; dropping files using the multiple files option. 
+        Note however that this functionality is only available for feeds whose underlying package store is is backed
+        by a directory, and will not be available for asset directories backed by Amazon S3, Azure, etc.
+    </p>
     <div>
         <img style="border: 1px solid #808080;" src="/proget/4.8/adding-asset.png" />
     </div>

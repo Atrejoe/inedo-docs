@@ -31,5 +31,64 @@
 	<p>
 		To learn more about Docker feeds, please visit this <a href="/support/kb/1131/docker-feed-limitations">Knowledge Base article</a>.
 	</p>
+
+      <h2 id="guide">Adding a Docker Feed</h2>
+      <p>
+          Starting with ProGet 4.3, you can now add <i>Docker</i> feeds,
+          which are each effectively a private Docker registry.
+      </p>
+      
+      <p class="info">
+          Note that Docker requires an SSL connection, so you will need to configure ProGet to use IIS
+          rather than its integrated web server, and configure the web site to use SSL (https). See <a href="https://docs.docker.com/registry/insecure/">testing an insecure registry</a>
+          in the Docker documentation for some help on configuring Docker to use a self-signed certificate.
+      </p>
+
+     <p>
+          Click on the <i>Feeds</i> tab in the navigation bar, and you will see a list of feeds in the system.
+      </p>
+      
+      <p>
+          Click on the <b>Create New Feed</b> button and select <b>Docker</b>.
+      </p>
+      <p>
+          Supply a value for the <i>Feed name</i> field. This will be the name of
+          your private Docker registry, and should contain characters that can be
+          easily typed in a URL. For example, you could use <b>DMC</b>.
+      </p>
+
+      <p>
+          Click on the <b>Create Feed</b> button, and you should be automatically directed to the newly-created registry.
+      </p>
+      
+      <h2 id="setup-docker">Setting up Docker</h2>
+      <p>
+          First, you will need to log in to Docker. To do this, use the following command,
+          where <i>proget</i> is the name of your ProGet server:
+      </p>
+      <pre>[~]$ sudo docker login proget</pre>
+      <p>
+          As mentioned previously, Docker needs an SSL connection, so this operation will fail
+          if ProGet is only accessible via http.
+      </p>
+
+      <h2 id="publish-image">Publishing an Image</h2>
+      <p>
+          To publish a Docker image to ProGet, you first need to <b>tag</b> the image using
+          Docker in a special format. For example, if we have an image locally called <code>ubuntu:trusty</code>,
+          we need to retag it as follows:
+      </p>
+      <pre>[~]$ sudo docker tag ubuntu:trusty proget:443/dmc/ubuntu:trusty</pre>
+      <p>
+          Or, more generally, the format is: <i>server/feed/image:tag</i>.
+      </p>
+      <p>
+          Once tagged, the image can now be pushed to ProGet:
+      </p>
+      <pre>[~]$ sudo docker push proget:443/dmc/ubuntu:trusty</pre>
+      <p>
+          You can then pull the image in the same fashion:
+      </p>
+      <pre>[~]$ sudo docker pull proget:443/dmc/ubuntu:trusty</pre>
   </body>
 </html>

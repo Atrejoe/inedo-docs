@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Executing PowerShell Scripts</title>
+    <meta name="subtitle" content="Adding and Executing PowerShell scripts" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines" />
+    <meta name="sequence" content="200" />
+
+</head>
+
+<body>
+ 
+   
+
+    <p>BuildMaster makes it incredibly easy to use your current scripts to automate your application deployments by parsing through them and using their existing documentation to enrich the UI. Though your script will likely include all of the conventional documentation headers, BuildMaster will use only two of them: SYNOPSIS (a brief explanation of what the script or function does) and PARAMETER (an explanation of a specific parameter). But see <a href="https://technet.microsoft.com/en-us/magazine/ff458353.aspx">this article</a> for more information on documentation headers.</p>
+    
+ <p>PowerShell scripts can be added as an Asset and then called as an operation in a plan, both of which are essentially just files.</p>
+
+    <p><h3 id="adding">Adding PowerShell Script in Assets</h3></p>
+
+
+    <p>Click <i>Assets</i> > Click <i>Create PowerShell Script</i> > Enter script name > Click <i>Save</i> > Edit script > Click <i>Save</i></p> 
+    <p>(Note that you could also add a script in the Admin/global section by clicking <u>Administration</u> and then <u>Script Assets</u> under “Global Components”)</p>
+    <p>
+        <inedo:tab-block>
+            <tab name="Visual">
+<pre><img class="screenshot" src="\resources\tutorials\bm-ps\bmaddps.png" /></pre>
+            </tab>
+            <tab name="Text">
+                <pre> &lt;# 
+.SYNOPSIS 
+Creates users in Active Directory
+.DESCRIPTION
+This will create multiple user accounts in Active Directory
+.EXAMPLE
+$params = @{$FirstName="Ahmad";$Initials="AH";$LastName="Hamad";$ModifiedFullName="HamadAhmad";UserLogonName="ahamad";$Password="password1"} 
+&amp; “.\create-active-directory-users .ps1” @params
+.PARAMETER $FirstName
+.PARAMETER $Initials
+.PARAMETER $LastName 
+.PARAMETER $ModifiedFullName
+Modify Full name to add initials or reverse the order of first and last names
+.PARAMETER $UserLogonName 
+.PARAMETER $Password
+#&gt;
+param($FirstName,$Initials,$LastName,$ModifiedFullName,$UserLogonName,$Password)
+"Creating user $UserLogonName..."
+  
+</pre>
+            </tab>
+        </inedo:tab-block>
+    </p>
+    
+    <p><h3 id="create-edit">Creating/Editing a Plan</h3></p>
+    Click <i>Plans</i> > Click <i>Create Plan</i> > Enter plan name > Click <i>Create Plan</i> > <i>Save</i> > Click plan name to edit
+
+    <p><h3 id="calling">Calling the Script in a Plan</h3></p>
+    <p>After writing our script and saving it as an asset, we can now invoke it by dragging and dropping a PS Call operation into the plan editor. The first thing you’ll notice in the UI is that a PS Call operation is created for our script by name, and the operation description (or Synopsis) inputted is displayed, as well.</p>
+
+    <p>
+        
+    </p>
+   
+     <p>And after dropping a PS Call operation into the plan editor, you can also see that BuildMaster has automatically created inputs for the Parameters we’ve set earlier. These changes in the UI precisely reflect the documentation and parameters we've added to our script, thus guiding us through the use of PS scripts in an easy and intuitive way. For our example, we're able to create user accounts in Active Directory directly with and from our plan.</p>
+   
+</body>
+</html>

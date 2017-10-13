@@ -6,7 +6,7 @@
 </head>
 <body>
     <p class="info">
-        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        This is generated from the built-in components of BuildMaster 5.8.1, and may be different than what you have installed (especially if you have extensions);
         go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
     </p>
 
@@ -16,6 +16,7 @@
   <h4>Script usage:</h4><pre>IIS::Ensure-Application(
 	Site: &lt;text&gt;,
 	Path: &lt;text&gt;,
+	[AppPool: &lt;text&gt;],
 	[PhysicalPath: &lt;text&gt;],
 	[LogonMethod: &lt;integer&gt;],
 	[Credentials: &lt;text&gt;],
@@ -59,6 +60,18 @@
       <td>
         <span>The relative URL of the path, such as /hdars</span>
         <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Application pool</span>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>AppPool</pre>
+      </td>
+      <td>
+        <span>The name of the application pool assigned to the application.</span>
       </td>
     </tr>
     <tr>

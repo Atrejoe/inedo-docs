@@ -1,0 +1,40 @@
+﻿<html>
+<head>
+    <title>Installation &amp; Configuration Script</title>
+    <meta name="subtitle" content="Installation &amp; Configuration Script" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, installation, configuration" />
+    <meta name="sequence" content="20" />
+</head>
+<body>
+    <style>
+        .info.romp {
+            border-color: #98002E;
+            color: #98002E;
+        }
+    </style>
+    <div style="margin-top: 25px;" class="info romp">
+        <div>
+            <b>Romp Documentation Note - This documentation is incomplete.</b> <br /><br />As we continue working on Romp, the documentation will be updated.
+        </div>
+    </div>
+    <p>
+        A romp package must contain an <code>install.otter</code> file.
+    </p>
+    <p>The <code>install.otter</code> file in the package root contains the OtterScript of the plan that will be executed when the <a href="/support/documentation/romp/command-line/command-overview/installation#install">install command</a> is invoked.</p>
+
+    <h2>Basic Package File Installation</h2>
+
+    <p>If your package contains only content files, then only a trivially simple <code>install.otter</code> script is needed.</p>
+
+    <pre>Romp::Deploy-Contents</pre>
+
+    <p>This will invoke the Deploy-Content operation, which simply copies the contents of the package to the <code>$WorkingDirectory</code>. This is generally a commandline argument passed in to romp.</p>
+
+    <h2>Infrastructure Configuration-only Installation</h2>
+
+    <p>A package need not deploy any files; it can simply define configuration. This can be especially useful for sharing common configuration across packages using dependencies.</p>
+
+    
+</body>
+</html>

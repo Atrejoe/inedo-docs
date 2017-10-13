@@ -1,15 +1,17 @@
 ﻿<html>
   <head>
-    <title>LDAP and Active Directory</title>
+    <title>Legacy - LDAP and Active Directory</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta name="sequence" content="500" />
       <meta name="keywords" content="proget,packages,chocolatey" />
   </head>
   <body>
+      <p class="info">
+          Note that this was written for ProGet 4.7 and below; in ProGet 4.8 and above, there is a <a href="/support/documentation/proget/administration/ldap">slightly different LDAP and Active Directory integration</a>.
+      </p>
       <h2 id="integrated">Integrated Authentication</h2>
       <p>
-          When using either the LDAP
-          or Domain Forest 
+          When using either the LDAP or Domain Forest 
           user directories, ProGet allows the use of Windows Integrated Authentication. This allows
           users to implicitly use their domain user profile to log in without
           seeing a login prompt in ProGet. Certain tools such as nuget.exe also

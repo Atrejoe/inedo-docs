@@ -17,6 +17,13 @@
         Like feeds, asset directories expose their APIs through the URL /endpoints/&laquo;AssetDirectoryName&raquo;/...
     </p>
 
+    <div class="info">
+        <p>
+            Asset Directories are represented internally in ProGet as Feeds, so <a href="/support/documentation/proget/administration/security#api-keys">Feed API keys</a>
+            can also be used to authenticate for Asset Directories.
+        </p>
+    </div>
+
     <h2>Content API</h2>
     <p>
         The Asset Content API is accessible under /endpoints/&laquo;AssetDirectoryName&raquo;/content/..., and provides the primary
@@ -217,5 +224,57 @@
         If the specified directory does not exist, it will be created.
         This endpoint returns a status of 200 (success), 400 (invalid format), 401 (auth required), 403 (access denied).
     </p>
+
+    <h3 id="multipart-upload">Multipart Asset Upload</h3>
+    <p>
+        For very large assets, an upload can be performed using multiple requests using the multipart upload API. This endpoint functions
+        in the same way as the standard <a href="#post-asset">Create Asset Endpoint</a>, except requires some additional query string arguments.
+        A multipart upload consists of one or more chunk uploads followed by a final POST to indicate that the upload is complete.
+    </p>
+    <p>
+        <b>Note:</b> Due to technical limitations, multipart uploads are currently not supported for cloud-based package stores. ProGet may extend support for
+        multipart uploads to these in a later version, but currently any attempt to initiate a multipart upload with an S3/Azure backed package store will result
+        in an HTTP 400 error.
+    </p>
+
+    <h4>Multipart Upload: Upload Chunk</h4>
+    <p class="info">POST <span style="opacity: 0.5;">.../content/&laquo;path_to_asset&raquo;</span>?multipart=upload&amp;id=&laquo;uuid&raquo;&amp;index=&laquo;partIndex&raquo;&amp;offset=&laquo;byteOffset&raquo;&amp;totalSize=&laquo;byteSize&raquo;&amp;partSize=&laquo;partSize&raquo;&amp;totalParts=&laquo;partCount&raquo;</p>
+    <p>
+        Initiates a new multipart upload or uploads the next part in a previously started multipart upload.
+        All arguments are required:
+    </p>
+    <ul>
+        <li><b>id</b> - Unique identifier for the upload. It is the client's responsibility to generate this. It does not need to be a GUID, though a GUID is perfectly valid.</li>
+        <li><b>index</b> - Zero-based index of the part being uploaded.</li>
+        <li><b>offset</b> - Zero-based byte offset of the part being uploaded.</li>
+        <li><b>totalSize</b> - Size of the entire asset being uploaded in bytes. This must be exactly the sum of all individual uploaded part sizes.</li>
+        <li><b>partSize</b> - Size of the part being uploaded.</li>
+        <li><b>totalParts</b> - Total number of parts that will be uploaded for the entire asset.</li>
+    </ul>
+    <p>
+        This endpoint returns a status of 200 (success), 401 (auth required), 403 (access denied), 400 (invalid arguments such as index/offset out of range, overlapping parts, invalid size).
+    </p>
+    <h4>Multipart Upload: Complete Upload</h4>
+    <p class="info">POST <span style="opacity: 0.5;">.../content/&laquo;path_to_asset&raquo;</span>?multipart=complete&amp;id=&laquo;uuid&raquo;</p>
+    <p>
+        Completes a multipart upload after all individual parts have been uploaded. The asset will not be added to the asset directory until the upload
+        has been marked as complete with this endpoint.
+    </p>
+    <p>
+        This endpoint returns a status of 200 (success), 401 (auth required), 403 (access denied), 400 (invalid arguments such as index/offset out of range, overlapping parts, invalid size).
+    </p>
+    <p>
+        On success, the asset is saved to the asset directory.
+    </p>
+    <p>
+        <b>Note:</b> Orphaned parts will be deleted during the Feed Cleanup scheduled task. Orphaned parts can occur when a client uploads one or more parts but never completes the upload.
+    </p>
+
+    <h4>Multipart Upload: PowerShell Script</h4>
+    <p>
+        This PowerShell script can be used to automatically perform a multipart upload if necessary. Feel free to use it as-is, or as a starting point
+        for your own solution:
+    </p>
+    <script src="https://gist.github.com/inedo-builds/cbee07725b3e227b0b566d028d4d3d07.js"></script>
 </body>
 </html>

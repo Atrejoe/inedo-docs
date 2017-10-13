@@ -1,0 +1,177 @@
+﻿<html>
+  <head>
+    <title>Configuration Parameters</title>
+    <meta name="subtitle" content="Romp Configuration Parameters" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp, configuration parameters" />
+    <meta name="sequence" content="20" />
+  </head>
+  <body>
+      <style>
+          .info.romp {
+              border-color: #98002E;
+              color: #98002E;
+          }
+          pre {
+              background-color: #f7f5f5;
+              padding: 12px 16px;
+          }
+      </style>
+      <div style="margin-top: 25px;" class="info romp">
+          <div>
+              <b>Romp Documentation Note - This documentation is incomplete.</b> <br /><br />As we continue working on Romp, the documentation will be updated.
+          </div>
+      </div>
+
+      <p>In addition to command-line arguments, Romp uses a json-based configuration file to define runtime behavior. See below for all the items you can configure.</p>
+
+      <p>
+          You can control the behavior of the Romp client through the use of configuration parameters. These can be specified in both a <code>romp.json</code> configuration file or as a command-line argument. 
+      </p>
+      <p>
+          Because parameters can be defined in multiple places, the values cascade, and is resolved in the following order:
+      </p>
+      <ol>
+          <li>&nbsp;&nbsp;Command-line argument</li>
+          <li>&nbsp;&nbsp;<code>romp.json</code> file in current working directory</li>
+          <li>&nbsp;&nbsp;<code>romp.json</code> file in local data store</li>
+          <li>&nbsp;&nbsp;<code>romp.json</code> file stored in same directory as <code>romp.exe</code></li>
+      </ol>
+      <p>
+          This means the command-line argument will override all levels below it, and so on.
+      </p>
+      <h2>Cascading Example:</h2>
+      <p>
+          Romp defaults to machine-level installation with machine-level packages.  Let's assume you kept this configuration, but also defined a custom package and local datastore. That means your primary <code>romp.json</code> file will look like this:
+      </p>
+      <pre>
+%programfiles%\romp\romp.config
+{
+   "localDataStore": "f:\\romp\data",
+   "localPackageRegistry": "f:\\romp\packages"
+}
+</pre>
+      <p>
+          However, if you'd like to install a certain set of packages at the user-level, then you can simply create a <code>romp.json</code> file in your working directory with the <code>userMode</code> property defined as true while nulling-out the other properties.
+      </p>
+      <pre>
+c:\ablast\romp.config
+{
+   "localDataStore": null,
+   "localPackageRegistry": null,
+   "userMode": true
+}
+</pre>
+      <p>
+          When you run romp from the <code>C:\ablast</code> directory, then romp will operate at the user-level instead. 
+      </p>
+      <p>
+          You can also specify other configuration parameters at the command line as well. For example, if you didn't want to store the logs for a few test package installs, then you could specify that as follows.
+      </p>
+      <pre>
+c:\ablast\romp.config
+> romp install somePackage --storeLogs=false
+
+</pre>
+      <h2>
+          Preventing Configuration Parameter Cascading
+      </h2>
+      <p>
+          The <code>lockedParameters</code> "meta parameter" can be used to prevent cascading of configuration parameters. If you attempt to override a parameter in another configuration file or on the commandline, Romp will raise a runtime error.
+      </p>
+      <p>
+          This can be especially useful if you want to prevent accidental usage of certain behaviors.
+      </p>
+      <div class="upcoming">
+          <h2>Configuration Reference</h2>
+         <!-- <p>
+              Once the JSON file is set, we'll move the fields from the JSON file below into a table. We will keep the <code>.json</code> file published, somewhere.
+          </p>-->
+      </div>
+      <h2>JSON File Reference</h2> <!--Maybe remove this from docs and make downloadable on Inedo.com somewhere.-->
+      <pre>
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Romp Configuration file Schema",
+  "type": "object",
+  "properties": {
+    "lockedParameters": {
+      "type": "array",
+      "default": [],
+      "description": "Property names in this array do not cascade, nor may they be edited using the configure command. This is a meta paramter, and may not be specified as a commandline argument."
+    },
+
+    "cachePackages": {
+      "type": "boolean",
+      "default": true,
+      "description": "Packages will be cached."
+    },
+
+
+    "userMode": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, the local datastore will default to %user%\.romp and the local package registry will default as a user-package registry."
+    },
+    "localDataStore": {
+      "type": "string",
+      "default": null,
+      "description": "When set, the specified value will be used as the local data store instead of the default value."
+    },
+    "localPackageRegistry": {
+      "type": "string",
+      "default": null,
+      "description": "When set, the specified value will be used to create a custom package store instead of a machine or user store. "
+    },
+    "packageSource": {
+      "type": "string",
+      "default": null,
+      "description": "When set, the specified value will be used to determine which package source is used when none is specified. "
+    },
+
+
+    "secureCredentials": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, credentials must be entered interactively when using the \"store\" command and may not be displayed with \"display\" command."
+    },
+    "storeConfiguration": {
+      "type": "boolean",
+      "default": true,
+      "description": "When true, collected configuration is stored in a local database."
+    },
+    "storeLogs": {
+      "type": "boolean",
+      "default": true,
+      "description": "When true, execution logs are stored in a local database."
+    },
+    "extensionsPath": {
+      "type": "string",
+      "description": "The full path of a directory containing .otterx extensions to load. Default is &lsaquo;localDataStore&rsaquo;\extensions"
+    },
+    "extensionsTempPath": {
+      "type": "string",
+      "description": "The full path of a directory which contains unpacked cached extensions. Default is &lsaquo;localDataStore&rsaquo;\temp\extensions"
+    },
+    "proxy": {
+      "type": "string",
+      "description": "URL of a proxy server to use for any HTTP requests."
+    },
+    "rafts": {
+      "type": "object",
+      "description": "A map of file system rafts that Romp has access to.",
+      "patternProperties": {
+        "^[A-Za-z0-9_\\-]+$": {
+          "type": "string",
+          "description": "A directory containing a file system or zip file raft that Romp will use."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
+
+</pre>
+
+  </body>
+</html>

@@ -6,7 +6,7 @@
 </head>
 <body>
     <p class="info">
-        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        This is generated from the built-in components of BuildMaster 5.8.1, and may be different than what you have installed (especially if you have extensions);
         go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
     </p>
 
@@ -105,28 +105,7 @@
       <td><pre>Bindings</pre>
       </td>
       <td>
-        <span>Bindings are entered as a list of maps, e.g.:<br />
-<pre>
-@(
-    %(
-        IPAddress: 192.0.2.100, 
-        Port: 80, 
-        HostName: example.com, 
-        Protocol: http
-    ),
-    %(
-        IPAddress: 192.0.2.101, 
-        Port: 443, 
-        HostName: secure.example.com,
-        Protocol: https,
-        CertificateStoreName: WebHosting,
-        CertificateHash: 51599BF2909EA984793481F0DF946C57E4FD5DEA,
-        ServerNameIndication: true,
-        UseCentralizedStore: false
-    )
-)
-</pre>
-</span>
+        <span>Bindings are entered as a list of maps, e.g.:<br/><pre style="white-space: pre-wrap;">@(%(IPAddress: 192.0.2.100, Port: 80, HostName: example.com, Protocol: http), %(IPAddress: 192.0.2.101, Port: 443, HostName: secure.example.com, Protocol: https, CertificateStoreName: WebHosting, CertificateHash: 51599BF2909EA984793481F0DF946C57E4FD5DEA, ServerNameIndication: true, UseCentralizedStore: false))</pre></span>
       </td>
     </tr>
     <tr>
@@ -157,14 +136,7 @@ IIS::Ensure-Site(
     Name: Otter,
     AppPool: OtterAppPool,
     Path: E:\Websites\Otter,
-    Bindings: @(
-        %(
-            IPAddress: 192.0.2.100, 
-            Port: 80, 
-            HostName: example.com, 
-            Protocol: http
-        )
-    )
+    Bindings: @(%(IPAddress: 192.0.2.100, Port: 80, HostName: example.com, Protocol: http))
 );
 
 # ensures that the Default Web Site is removed from the web server

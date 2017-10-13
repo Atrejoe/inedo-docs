@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Extensions</title>
+    <meta name="subtitle" content="Creating Custom Extensions" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, pipelines" />
+    <meta name="sequence" content="100" />
+
+</head>
+
+<body>
+   <p>
+			The quickest way to create a custom extension is by using the <i>Create Auto-Deploying Extension Application</i> feature in BuildMaster (v5.3 and higher). The feature will quickly allow you to point it toward your custom extenion source code, and then auto create a build and deployment plan in BuildMaster so that it will act as any other <a href="/den">standard extension</a>.
+		</p>
+
+		<h2 id="resource-cred">Creating Resource Credentials for Source Control</h2>
+		<p>
+			Creating resource credentials in BuildMaster will allow you to pull source code directly from the repository housing your extension code. For this example we'll use GitHub as our repo, and we'll be creating an extension for Amazon.
+		</p>
+			<p class="info">BuildMaster, of course, has an extension for Amazon, but the steps for your own custom extension would be the same.</p>
+	
+		<p>
+			To create resource credentials go to the Administration page, and click on "Resource Credentials" under "Global Components" then click "Create Credential". You'll need to make sure you already have your provider extension installed in BuildMaster. As mentioned in this case it's GitHub.
+		</p>
+		
+		<p>
+			Once you've selected the credential type, fill in the necessary fields to connect to the repository and click "Save Credential".
+		</p>
+
+		<h2 id="import-build">Importing and Building the Extension</h2>
+		<p>
+			At the bottom of the BuildMaster extension section there is a button labeled "Create Auto-Deploying Extension Application".
+		</p>
+		<img class="screenshot" alt="" src="/resources/tutorials/custom-extension/extension-button.png" />
+		<p>
+			Clicking this button will allow you to set the fields with your source control type and credentials, the name of your extension, and optionally a repository URL if it's not the same as the one in the credentials.
+		</p>
+		<p>
+			After clicking "Create" BuildMaster will create a new application for that extension with preset plans to build and deploy that extension to BuildMaster.
+		</p>
+		<p>
+			From the new application overview page click "Releases" > "Create Release" > "Create Release" > "Create Package". BuildMaster will import and build the extension.
+		</p>
+		<img class="screenshot" alt="" src="/resources/tutorials/custom-extension/built-extension.png" />
+		<p>
+			The extension can now be deployed. BuildMaster will deploy the extension to itself and treat it as any other extension that is installed. This will also trigger a restart of the BuildMaster service.
+		</p>
+		<img class="screenshot" alt="" src="/resources/tutorials/custom-extension/deployed.png" />
+
+		<hr />
+		<h2>Next Steps</h2>
+		<p>
+			Now that you've successfully automated the deployment of your extension, updating it is as simple as checking in a code change and creating a new build within BuildMaster then deploying it to BuildMaster!
+		</p>
+   
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+    <title>The Inedo Agent</title>
+    <meta name="subtitle" content="The Inedo Agent" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="inedo, inedo agent, architecture" />
+    <meta name="sequence" content="10" />
+</head>
+<body>
+    
+    <p>The Inedo Agent is a lightweight Windows service that allows a server to be orchestrated using a connected instance of BuildMaster or Otter. Orchestration includes:</p>
+
+    <ul style="margin-left: 30px;">
+        <li>File system access &ndash; ability to read and write files/directories</li>
+        <li>Remote code execution &ndash; methods in .NET assemblies can be invoked in a remote context</li>
+        <li>Remote process execution &ndash; executables can be launched with output streamed back</li>
+    </ul>
+
+    <h2 id="arch">General Architecture</h2>
+
+    <p>The Inedo Agent follows a standard client-server architecture, although the terminology may seem a bit counterintuitive at first, because the Inedo Agent is actually operating as a server: it services multiple requests simultaneously from one or more clients.</p>
+
+    <p>BuildMaster and Otter products are the clients; using their service and web application, the products connect to an Inedo Agent installed on a server.</p>
+
+
+</body>
+</html>

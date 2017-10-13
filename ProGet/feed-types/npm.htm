@@ -3,7 +3,7 @@
     <title>npm (Node.js)</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta name="sequence" content="300" />
-      <meta name="keywords" content="proget,feeds,npm" />
+      <meta name="keywords" content="proget, feeds, npm, connectors" />
       <meta name="subtitle" content="npm Feeds in ProGet" />
   </head>
   <body>
@@ -28,5 +28,85 @@
 		web site in IIS for ProGet with Windows Authentication disabled without acquiring
 		a separate license.
 	</p>
+
+      <h2 id="getting-started">Creating an npm Feed</h2>
+<p>
+          Click on the <i>Feeds</i> tab in the navigation bar, and you will see a list of feeds in the system.
+          
+      </p>
+     
+      <p>
+          Click on the <i>Create New Feed</i> button and select <i>npm</i>.
+      </p>
+
+    
+      <p>
+          Supply a value for the <b>Feed name</b> field. This will be the name of
+          your private npm registry, and should contain characters that can be
+          easily typed in a URL. For instance, you could use <b>private-npm</b>.
+      </p>
+      <p>
+          Click the <b>Create Feed</b> button, and you should be automatically directed to the newly-created registry.
+      </p>
+
+      <p>
+          If your ProGet server has access to the Internet, you should see a listing
+          of packages from npmjs.org. These are called <i>connector packages</i>,
+          and are not hosted on your ProGet instance, but are transparently proxied
+          from another server. After you create the npm feed, you can
+          add a connector for <i>npmjs.org</i> directly within your feed or by clicking on
+          the <b>Connectors</b> tab at the top of the page. This way you can have access to that
+          rich library of packages in addition to your private ones. Connectors also
+          allow filtering, if you would like to include only a subset of external
+          packages; however, no filtering is performed by default. For more information
+          about connectors, see the <a href="/support/documentation/proget/core-concepts/connectors">documentation</a>.
+      </p>
+     
+      <h2 id="set-up-npm">Setting up npm</h2>
+      <p>
+          First, you will need to tell npm where to look for its registry; by default
+          it will be configured for <i>npmjs.org</i>. Use the following command, substituting
+          <b>proget</b> for the name name/port of your ProGet server, and
+          <b>private-npm</b> for the name of the npm feed you created above.
+      </p>
+      <pre>
+          [~]$ npm config set registry http://proget/npm/private-npm
+      </pre>
+      <p>
+      </p>
+
+      <h2 id=" step-four">Publishing a Package</h2>
+      <p>
+          You can also publish packages to ProGet using npm. First, use the <b>adduser</b>
+          command to log in as ProGet's default Admin account, and when prompted for
+          a password, use the same one that you used to log in to ProGet (default is Admin).
+      </p>
+      <pre>
+          [~]$ npm adduser<br />
+          [~]$ npm publish package.tgz
+      </pre>
+      <p>
+      </p>
+
+      <h4><strong>Caching, Privileges, and More</strong></h4>
+      <p>
+          With connectors, you don't need to switch your client
+          to a different registry; ProGet will aggregate all of them for you. You may
+          want to explore some additional features such as:
+      </p>
+      <ul>
+          <li>
+              <b><a href="/support/documentation/proget/core-concepts/connectors#connector-caching">Caching</a></b> - Feeds are created with caching enabled by default; that is,
+              whenever a connector package is first downloaded, ProGet will save a copy
+              that will be used later instead. For large packages, this can save
+              time if you have a slow connection to the Internet.
+          </li>
+          <li>
+              <b><a href="/support/documentation/proget/administration/security">Privileges</a></b> - ProGet has granular task-based privileges that
+              can be scoped to a particular feed. If your organization utilizes
+              Active Directory/LDAP, you may be interested in ProGet Enterprise,
+              which lets you use those credentials with ProGet.
+          </li>
+      </ul>
 </body>
 </html>

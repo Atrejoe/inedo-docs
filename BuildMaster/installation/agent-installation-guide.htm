@@ -1,106 +1,33 @@
 ﻿<html>
   <head>
-    <title>Agent Installation Guide</title>
+    <title>Agent Installation Reference</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta name="keywords" content="buildmaster,agent" />
       <meta name="sequence" content="200" />
   </head>
   <body>
-      
+      <style>
+          .info.buildmaster {
+              border-color: #F15A24;
+              color: #F15A24;
+          }
+      </style>
       
       
 
       <p>
          To facilitate communication between BuildMaster and the Windows servers you want to deploy to and orchestrate, BuidMaster
           uses a lightweight agent with a highly-optimized and resilient protocol. Installing agents is even easier than
-          installing BuildMaster, and this guide will provide a step-by-step guide, as well provide some detail as to what's
+          installing BuildMaster, and the <a href="/support/documentation/various/inedo-agent/installation">Agent Installation Guide</a> will provide step-by-step instructions, as well as provide some detail as to what's
           happening behind the scenes.
       </p>
 
-      <h2 id="pre-install">1. Pre-Installation Check List</h2>
-      <p>
-          BuildMaster agents don't have any intense server requirements, and support all modern version of Windows (7+/2008+).
-          Before installing, consider the following:
-      </p>
-      <ul>
-          <li>
-              <strong>.NET Framework 4.5</strong> – BuildMaster requires .NET 4.5 or later; this is already installed on
-              Windows Server 2012, and you can <a href="https://www.microsoft.com/en-us/download/details.aspx?id=30653">download it from Microsoft</a> on
-              earlier servers
-          </li>
-          <li>
-              <strong>Firewall (Inbound)</strong> – the agent will listen on the port of your choosing (default is <b>46336</b>) 
-          </li>
-      </ul>
-
-      <h2 id="download-agent">2. Download BuildMaster Agent</h2>
-      <p>
-          When you click the "Create Server" button on the Servers page in your BuildMaster installation, you'll be given a direct link 
-          to the file with the correct version. You can also find it on the <a href="/buildmaster/versions">all BuildMaster downloads</a> 
-          page. Make sure to select the version that corresponds with your version of BuildMaster, which can be found in the bottom-right
-          corner in your web browser.
-      </p>
-
-
-      <h2 id="target">3. Target Directory</h2>
-      <p>
-          Although you may install wherever you like, it is recommended to
-          keep the temporary directory short to avoid potential issues with tools that
-          have problems with long paths.
-      </p>
-      <div> <img alt="Agent Target Directory" src="/resources/documentation/otter-installation/target-directory-otteragent.png" /> </div>
-
-      <h2 id="user-account">4. User Account</h2>
-      <p>
-          By default, the agent service will run as <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms677973(v=vs.85).aspx">LocalSystem</a>, which is an administrative service account.
-          While not required, administrator-level privileges are strongly recommended as it will eliminate any
-          difficulty or confusion with moving files and running different operations.
-
-      </p>
-      <div>
-          <img alt="Agent User Info" src="/resources/documentation/otter-installation/user-account-otteragent.png" />
+      <div class="info buildmaster">
+          <div>
+              <b>Shared Documentation Note</b> - we've kept the <a href="/support/documentation/various/inedo-agent/installation">Agent Installation details</a> in the Various Documentation, see <i>Adding the Server to BuildMaster</i> below:
+          </div>
       </div>
 
-      <h2 id="network">5. Network</h2>
-      <p>
-          We recommend using the default port (46336), as that's Inedo's
-          <a target="_blank" href="http://iana.org/assignments/port-numbers">officially designated port</a>.
-          Make sure that the selected port is not blocked by a firewall.
-      </p>
-      <div>
-          <img alt="Agent Port" src="/resources/documentation/otter-installation/network-otteragent.png" />
-      </div>
-      <p>
-          You can change this later by editing the configuration file in the installation directory, and restarting the
-          service.
-      </p>
-
-      <h2 id="encryption">6. Encryption</h2>
-      <p>
-          Inedo's agents use a FIPS-compliant symmetric AES encryption scheme by default, and the installer will
-          automatically generate a secure, 32-digit key for you. You can use that key, or another one of your choosing.
-      </p>
-      <p>
-          If you select SSL instead of built-in AES, then you will need to have a valid certificate installed on the server
-          (see <a href="/support/kb/1040">KB#1040</a>).
-      </p>
-      <p class="announcement">
-          <b>No Encryption</b> is also an option, but we don't recommend using it. The primary reason we have this is so
-          that you can use a tool like <a href="https://www.wireshark.org/" target="_parent">Wireshark</a> to inspect
-          the individual packages, either as directed by our support engineers or because you really like studying
-          binary TCP protocols.
-      </p>
-      <p>
-          You can change this later by editing the configuration file in the installation directory, and restarting the
-          service.
-      </p>
-
-      <h2 id="summary">7. Summary</h2>
-      <p>Verify that the information here is correct and then click Install.</p>
-      <div>
-          <img alt="Agent Summary" src="/resources/documentation/otter-installation/summary-otteragent.png" />
-      </div>
-      
       <h2 id="adding-server">Adding the Server to BuildMaster</h2>
       <p>
           Once the agent has been installed, the server must be added to BuildMaster.

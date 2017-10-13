@@ -1,0 +1,53 @@
+﻿<html>
+  <head>
+    <title>Romp Overview</title>
+    <meta name="subtitle" content="Romp Overview" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp" />
+    <meta name="sequence" content="710" />
+  </head>
+  <body>
+      <style>
+          .info.romp {
+              border-color: #98002E;
+              color: #98002E;
+          }
+      </style>
+      <div style="margin-top: 25px;" class="info romp">
+          <div>
+              <b>Romp Documentation Note - This documentation is incomplete.</b> <br/><br/>As we continue working on Romp, the documentation will be updated.
+          </div>
+      </div>
+    <p>
+        Romp helps developers package application components together with infrastructure configuration, thereby keeping machine configuration code, application code, and deployment code in lock-step in the same version control repository. Operations can easily inspect these packages, and then deploy them in a simple, but controlled manner.
+	</p>
+      <p>
+          Romp's powerful CLI embeds Inedo's advanced execution engine, and interacts with Universal Feeds to build and deploy Romp packages, all while using open specifications that allow others tool to easily interact with Romp and leverage as part of your DevOps toolchain.
+      </p>
+
+    <h2>Built for Devs <i>and</i> Ops.</h2>
+      <p>
+          Romp allows developers to specify and automate the environment that an application requires by creating and testing packages on their own workstations, and gives operations visibility and control over that configuration when deployed to servers. 
+		</p>
+		<p>
+            Required and optional variables are built-in to Romp, meaning there’s no guessing as to what developers intended or expected for how their applications are configured. Package installation can also be "simulated", to see exactly what would happen when the install command is run. 
+    </p>
+
+      <h2>It's all in the Packaging.</h2>
+      <p>
+          Romp packages are <a href="/support/documentation/proget/feed-types/universal">universal packages</a>, which means you can easily see which packages are installed on any given server by querying the <a href="/support/documentation/various/universal-packages/universal-package-registry">local package registry</a>. When you use a universal package manager like <a href="/proget">ProGet</a>, you can see where packages have been deployed, and by whom, as well as catalog and organize your packages in different feeds.
+      </p>
+      <p>
+          By using well-established packaging practices, you not only get benefits like semantic versioning, dependencies, and tagging, but you can be very confident that it will scale to far greater than your organization will ever need. NuGet, npm, etc., has tens of millions of packages, and have evolved to handle them quite gracefully.
+      </p>
+      <h2>
+          Keeping simplicity dead simple.
+      </h2>
+      <p>
+          A lot of times, application components and microservice require trivially simple environment configuration (such as a basic Windows service), and nothing more. <strong>Romp lets you define this basic configuration alongside the application</strong>, without demanding the overhead of an entire virtualized operating system in a container.
+      </p>
+      <p>
+          When you do need the runtime isolation and scalability that containers provide, Romp helps you model your applications-specific requirements and configuration through package dependencies, and export a dependency tree as a container image. This helps you separate the concerns of application-specific and general infrastructure configuration.
+      </p>
+  </body>
+</html>

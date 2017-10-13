@@ -1,0 +1,137 @@
+﻿<html>
+<head>
+    <title>UPack Reference Guide</title>
+    <meta name="subtitle" content="UPack Reference Guide" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="proget, romp, upack" />
+    <meta name="sequence" content="30" />
+</head>
+<body>
+    <p>
+        <em>upack.exe</em> is a standalone command-line tool to aide in the creation of universal packages, and is
+        typically used on build servers or in other automation scenarios.
+    </p>
+
+    <h2 id="installation">Installation</h2>
+    <p>
+        The latest UPack is available from <a href="http://cdn.inedo.com/downloads/proget/upack.zip">here</a>
+        as a zip file, or as a package on <a href="https://chocolatey.org">chocolatey.org</a>.
+        To install the chocolatey package, simply type <code>choco install upack</code>.
+    </p>
+
+    <h2 id="usage">Usage</h2>
+    <p>
+        Upack is invoked as follows:
+    </p>
+    <code>upack &laquo;command&raquo;</code>
+
+    <p>The <b>command</b> is one of the following:</p>
+    <ul>
+        <li><a href="#pack"><code>pack</code></a> - Creates a new <a href="/support/documentation/proget/feed-types/universal">ProGet universal package</a> using specified metadata and source directory.</li>
+        <li><a href="#publish"><code>publish</code></a> - Publishes a ProGet universal package to the specified <a href="/support/documentation/proget/core-concepts/feeds">ProGet feed</a>.</li>
+        <li><a href="#unpack"><code>unpack</code></a> - Extracts the contents of a ProGet universal package to a directory.</li>
+        <li><a href="#install"><code>install</code></a> - Downloads the specified ProGet universal package and extracts its contents to a directory.</li>
+    </ul>
+
+    <h3 id="pack">Pack</h3>
+    <p class="info">
+        <code>upack pack &laquo;metadata&raquo; &laquo;source&raquo; [--targetDirectory=&laquo;targetDirectory&raquo;]</code>
+    </p>
+    <ul>
+        <li><code>metadata</code> - Path of a valid upack.json metadata file.</li>
+        <li><code>source</code> - Directory containing files to add to the package.</li>
+        <li><code>targetDirectory</code> - Directory where the .upack file will be created. If not specified, the current working directory is used.</li>
+    </ul>
+
+    <h3 id="publish">Publish</h3>
+    <p class="info">
+        <code>upack publish &laquo;package&raquo; &laquo;target&raquo; [--user=&laquo;authentication&raquo;]</code>
+    </p>
+    <ul>
+        <li><code>package</code> - Path of a valid .upack file.</li>
+        <li><code>target</code> -  URL of a upack API endpoint.</li>
+        <li><code>authentication</code> - User name and password to use for servers that require authentication. Example: <code>username:password</code></li>
+    </ul>
+
+    <h3 id="unpack">Unpack</h3>
+    <p class="info">
+        <code>upack unpack &laquo;package&raquo; &laquo;target&raquo; [--overwrite]</code>
+    </p>
+    <ul>
+        <li><code>package</code> - Path of a valid .upack file.</li>
+        <li><code>target</code> -  Directory where the contents of the package will be extracted.</li>
+        <li><code>overwrite</code> - When specified, overwrite files in the target directory.</li>
+    </ul>
+    <p class="info">
+        <code>upack  [] [version] [options]</code>
+    </p>
+
+<h4>Arguments</h4>
+    <table>
+        <tbody>
+            <tr>
+                <td><code>--packageName</code></td>
+                <td>value</td>
+                <td>
+                    ?
+                </td>
+            </tr>
+            <tr>
+                <td><code>--version</code></td>
+                <td>value</td>
+                <td>
+                    ?
+                </td>
+            </tr>
+            <tr>
+                <td><code>--source</code></td>
+                <td>value</td>
+                <td>
+                    ?
+                </td>
+            </tr>
+            <tr>
+                <td><code>--target</code></td>
+                <td>value</td>
+                <td>
+                    ?
+                </td>
+            </tr>
+            <tr>
+                <td><code>--user</code></td>
+                <td>value</td>
+                <td>
+                    User name and password to use for servers that require authentication. Example: <code>--user=username:password</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>--overwrite</code></td>
+                <td>?</td>
+                <td>
+                    Overwrite files in the target directory.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h3 id="install">Install</h3>
+    <p class="info">
+        <code>
+            upack install &laquo;package&raquo; [&laquo;version&raquo;] --source=&laquo;sourceUrl&raquo;
+            --target=&laquo;targetDirectory&raquo; [--user=&laquo;authentication&raquo;] [--overwrite]
+        </code>
+    </p>
+    <ul>
+        <li><code>package</code> - Package name and group, such as <code>group:name</code></li>
+        <li><code>version</code> -  Package version. If not specified, the latest version is retrieved.</li>
+        <li><code>sourceUrl</code> -  URL of a upack API endpoint.</li>
+        <li><code>targetDirectory</code> -  Directory where the contents of the package will be extracted.</li>
+        <li><code>authentication</code> - User name and password to use for servers that require authentication. Example: <code>username:password</code></li>
+        <li><code>overwrite</code> - When specified, overwrite files in the target directory.</li>
+    </ul>
+
+
+
+</body>
+</html>

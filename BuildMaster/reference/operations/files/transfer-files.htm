@@ -6,7 +6,7 @@
 </head>
 <body>
     <p class="info">
-        This is generated from the built-in components of BuildMaster 5.7.1, and may be different than what you have installed (especially if you have extensions);
+        This is generated from the built-in components of BuildMaster 5.8.1, and may be different than what you have installed (especially if you have extensions);
         go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
     </p>
 
@@ -22,6 +22,7 @@
 	[ToServer: &lt;text&gt;],
 	[DeleteTarget: &lt;true/false&gt;],
 	[SetLastModifiedDate: &lt;true/false&gt;],
+	[BatchSize: &lt;integer&gt;],
 	[Verbose: &lt;true/false&gt;]
 );
 
@@ -137,6 +138,18 @@
       </td>
       <td>
         <span>When true, the modified date on any transferred files will be set to match their source files.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Batch size</span>
+      </td>
+      <td><pre>integer</pre>
+      </td>
+      <td><pre>BatchSize</pre>
+      </td>
+      <td>
+        <span>The number of files to transfer in each batch.</span>
       </td>
     </tr>
     <tr>

@@ -1,0 +1,72 @@
+﻿<html>
+<head>
+    <title>Incorporate PowerShell Scripts into a Plan</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="otter,powershell,scripts" />
+</head>
+<body>
+    <p>
+        PowerShell is the standard for automating configuration on Windows servers. While you definitely don't need to be a scripting guru to use Otter, Otter's seamless integration with PowerShell allows you to easily incorporate scripts into your Otter plans and in turn automate virtually any aspect of Windows.
+    </p>
+    <p>In Otter, PowerShell scripts can be added as an <a href="/support/documentation/otter/core-concepts/assets">Asset</a> and then called as an operation in a <a href="/support/documentation/otter/core-concepts/plans">plan</a>. Plans and assets are essentially files, and Otter uses a <a href="/support/documentation/otter/global-components/rafts">raft</a> to store them. (Note that you can store configurations by either using the database or by <a href="/support/documentation/otter/global-components/rafts/git-rafts">storing and versioning them using Git as a repository</a>)</p>
+
+    <p>Otter simplifies the use of PowerShell scripts by parsing through them and using their existing documentation to enrich the UI. Though your script will likely include all of the conventional documentation headers, Otter will use only two of them: SYNOPSIS (a brief explanation of what the script or function does) and PARAMETER (an explanation of a specific parameter). See <a href="https://technet.microsoft.com/en-us/magazine/ff458353.aspx">this article</a> for more information on documentation headers.</p>
+
+    <p><h3 id="adding">Adding a PowerShell Script in Assets</h3></p>
+    <!--<p> Let's say, for example, we have hundreds of user accounts to import regularly. We're able to do so by using a script which includes all of the primary instructions typically followed to create users in Active Directory manually. This makes the process exceptionally easy and efficient, and will save us a lot of time.</p>
+
+    <p>(Keep in mind that we're using this scenario for purposes of simplicity, and our script is just a placeholder for creating an actual user in AD)</p>
+
+    <p>The first step is to add a PowerShell script called <i>create-users-in-active-directory</i> as an Asset.</p>
+-->
+    <p>Click <i>Add PowerShell Script</i> > Enter script name > Click <i>Save and Edit</i> > Edit script > Click <i>Save Script</i></p>
+    <p>
+        <inedo:tab-block>
+            <tab name="Visual">
+<pre><img class="screenshot" src="\resources\tutorials\otter-ps\addscript2.png" /></pre>
+            </tab>
+            <tab name="Text">
+                <pre> &lt;# 
+.SYNOPSIS 
+Creates users in Active Directory
+.DESCRIPTION
+This will create multiple user accounts in Active Directory
+.EXAMPLE
+$params = @{$FirstName="Ahmad";$Initials="AH";$LastName="Hamad";$ModifiedFullName="HamadAhmad";UserLogonName="ahamad";$Password="password1"} 
+&amp; “.\create-active-directory-users .ps1” @params
+.PARAMETER $FirstName
+.PARAMETER $Initials
+.PARAMETER $LastName 
+.PARAMETER $ModifiedFullName
+Modify Full name to add initials or reverse the order of first and last names
+.PARAMETER $UserLogonName 
+.PARAMETER $Password
+
+#&gt;
+
+param($FirstName,$Initials,$LastName,$ModifiedFullName,$UserLogonName,$Password)
+"Creating user $UserLogonName..."
+
+  
+</pre>
+            </tab>
+        </inedo:tab-block>
+    </p>
+
+    <p><h3 id="create-edit">Creating/Editing Plan</h3></p>
+
+    Click <i>Plans</i> > Click <i>Create Orchestration Plan</i> > Enter plan name > Click <i>Create Plan</i> > Click plan to edit
+
+    <p><h3 id="call">Calling the Script in a Plan</h3></p>
+    <p>After writing a script and saving it as an asset, you can now invoke it by dragging and dropping a PS Call operation into the plan editor. The first thing you’ll notice in the UI is that a PS Call operation is created for our script by name, and the operation description (or Synopsis) inputted is displayed as well.</p>
+
+
+    <p>After dropping a PS Call operation into the plan editor, you can also see that Otter has automatically created inputs for the Parameters set earlier. These changes in the UI precisely reflect the documentation and parameters added to the script, thus guiding you through the use of PS scripts in an easy and intuitive way.</p>
+
+    <p>
+        When we save and run our plan we can see the Log output of the script being called from the assets and being run with the information that we filled in the fields with.
+    </p>
+    
+   
+</body>
+</html>

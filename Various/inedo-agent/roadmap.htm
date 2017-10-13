@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+    <title>Agent Improvement &amp; Roadmap</title>
+    <meta name="subtitle" content="Agent Improvement &amp; Roadmap" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="inedo, inedo agent, roadmap" />
+    <meta name="sequence" content="60" />
+
+</head>
+<body>
+    <p>We have several improvement ideas for the Inedo Agent, and are using this page to document them.</p>
+
+    <p>Note that this used to be a page on our internal wiki, but as part of our <a href="/company/open-initiative">open initiative</a>, we&rsquo;re sharing them here. It&rsquo;s probably not very useful, and you probably won&rsquo;t get much out of reading them.</p>
+
+    <h2>Impersonation</h2>
+
+    <p>Currently, all product host processes are run with the same user context as InedoAgent.exe. We should add the ability to impersonate a different user by extending the Open Session Request message.</p>
+
+    <h2>Multiple Agent Installation</h2>
+
+    <p>It&rsquo;s currently a bit of a pain to install multiple agents; see <a href="/support/kb/1146">KB#1146</a>. It should probably only be supported with the manual install process, not the UI installer.</p>
+
+    <h2>Stability</h2>
+
+    <p>When running for a long time, agent host processes can get stuck, causing all agent activities to appear to hang. This is mitigated by having host processes terminate after a period of inactivity, but in heavy-use environments this can still happen. While the underlying problem is unknown, we can improve diagnostics to find the root cause and, at a minimum, allow InedoAgent.exe to detect this situation and recover.</p>
+
+    <h3>Host Process Health Check</h3>
+
+    <p>InedoAgent.exe can periodically query all host processes to make sure each is still handling messages properly. If a response isn&rsquo;t received in a reasonable amount of time, the process can be forcibly terminated. This will cause all sessions connected to it to fail, but at least it won&rsquo;t stay stuck.</p>
+
+    <h3>Host Process Resource Monitoring</h3>
+
+    <p>Some users have reported extreme memory usage for host processes. We haven&rsquo;t been able to reproduce, and it is entirely possible that it is due to a renegade PowerShell environment, but regardless this would be a good thing to detect and log.</p>
+
+    <h3>Improved Log Reporting</h3>
+
+    <p>A diagnostic log file can already be configured for the InedoAgent, but it would be a lot more useful for troubleshooting if the meta-agent had a command to retrieve these so they are viewable from BuildMaster or Otter.</p>
+
+    <h3>Sentinels/Checksums</h3>
+
+    <p>Messages are just length-prefixed blocks with a simple sanity check on size. While the underlying TCP protocol guarantees correctness, these would be nice to add as an extra layer of protection in case of bugs in the agent protocol itself.</p>
+
+    <h2>Encryption</h2>
+
+    <p>What we have is pretty good, but it certainly could be rounded out a little.</p>
+
+    <h3>AES</h3>
+
+    <p>Application-level symmetric AES encryption is the default mechanism for securing agent communications and verifying identity. Currently, this only allows a 128-bit key. We should use a larger key by default (probably 256-bit, for FIPS compliance).</p>
+
+    <h3>SSL</h3>
+
+    <p>Socket-level encryption has some performance issues. It seems prone to deadlock/freezing, but so far it doesn&rsquo;t seem to have been widely adopted. We don&rsquo;t have a lot of ideas on how to fix it, but maybe improved diagnostics will help? We should either undocument this or fix it.</p>
+
+    <h3>Asymmetric Key Exchange</h3>
+
+    <p>This would be a good alternative to SSL/none. A thumbprint or certificate could be used to establish identity, but the communications would be protected by a symmetric key exchanged during the initial handshake using an asymmetric algorithm. Like SSH, this could still allow connecting without a thumbprint, but would be a warning/error condition. Ultimately this should be the preferred method instead of AES.</p>
+
+    <h2>Remote &amp; Self Configuration</h2>
+
+    <p>Currently the Agent must be configured by editing the configuration files. It might be nice to allow editing this remotely; especially for temporary paths. Changing the listening port remotely seems like a bad idea&hellip;</p>
+
+</body>
+</html>

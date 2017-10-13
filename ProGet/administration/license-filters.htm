@@ -10,7 +10,7 @@
 </head>
 <body>
     <p>
-        License filtering allows users to block or allow package downloads based on license type, this ensures developers aren't violating rights of use by using packages with unapproved licenses.
+        License filtering allows users to block or allow package downloads based on license type. This ensures developers aren't violating rights of use by using packages with unapproved licenses.
 
     </p>
     <p class="info">
@@ -21,18 +21,18 @@
     </h2>
     <p>
         License filtering works by comparing a table of <em>Known Licenses</em> (License URL and License ID) against the license field of a package's metadata.
-        Users can then enable rules to bock or allow download based on license. ProGet is shipped with a table of commonly used license types and users are able to add additional licenses to this table.
+        Users can then enable rules to bock or allow download based on license. ProGet is shipped with a table of commonly used license types, and users are able to add additional licenses to this table.
 
     </p>
     <h2 id="rule-config">
         Rule Configuration
     </h2>
     <p>
-        For example, many technology companies have open-source initiative giving back to the development community. These companies have large teams for proprietary software development and smaller teams that contributes to open-source projects.
+        For example, many technology companies have open-source initiatives to give back to the development community. These companies have large teams for proprietary software development, and smaller teams that contribute to open-source projects.
         They have strict standards on the packages that can be used for proprietary development, but license restrictions for open-source projects are much more lenient.</p>
 
         
-        <p>In ProGet, they configured a global rules to block the download of packages with a GPL3 license. However, packages with GPL3 are perfectly acceptable for open-source project development. Therefore, the individual NuGet feed for the open-source team is configured to allow download of packages with GPL3 license.
+        <p>In ProGet, they configure a global rule to block the download of packages with a GPL3 license. However, packages with GPL3 are perfectly acceptable for open-source project development. Therefore, the individual NuGet feed for the open-source team is configured to allow the download of packages with GPL3 license.
     </p>
     <p>
         <tab-block>
@@ -42,13 +42,13 @@
 
     </p>
     <p>
-        License filtering can be configured on a feed-by-feed basis and at the global level. Feed-level rules override global rules, allowing users to configure rules that fit their specific use. In the example above proprietary software development verse open-source development.
+        License filtering can be configured on a feed-by-feed basis, and at the global level. Feed-level rules override global rules, allowing users to configure rules that fit their specific use. In the example above, you can see proprietary software development vs. open-source development.
     </p>
     <h2 id="third-party">
         Third-Party Integrations
     </h2>
     <p>
-        ProGet integrates with WhiteSource as a license filtering solution. In WhiteSource, users are able to define polices to approve or restrict package download based on license type. When the WhiteSource extension is installed and Package Access Rule have been configured, ProGet will verify with WhiteSource before allowing users to download. 
+        ProGet integrates with <a href="/support/documentation/proget/administration/vulnerability-source/whitesource">WhiteSource</a> as a license filtering solution. In WhiteSource, users are able to define polices to approve or restrict package download based on license type. When the WhiteSource extension is installed, and Package Access Rules have been configured, ProGet will verify with WhiteSource before allowing users to download. 
     </p>
 </body>
 </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSON API</title>
+    <meta name="subtitle" content="JSON API" />
+    <meta name="keywords" content="proget,api" />
+    <style type="text/css">
+        th {
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h2>
+            API Use
+    </h2>
+    <p>
+        Before starting with the API, note that traditional NuGet actions are done via the NuGet API. Some examples of API usage that do not require the ProGet JSON API include:
+    </p>
+    <ul>
+        <li>
+            listing all packages of a feed in JSON format (visit http://proget-server/nuget/{feedName}/Packages?$format=json for this)
+        </li>
+        <li>
+            manually downloading packages from a ProGet feed (visit http://proget-server/api/v2/package/{feedName}/{packageName}/{optional-version} for this)
+        </li>
+        <li>
+            pushing packages to a ProGet feed (either push with nuget.exe/proget.exe or simply copy the .nupkg file to the feed's storage path)
+        </li>
+        <li>
+            ODATA package queries (visit http://proget-server/nuget/{feedName}/Packages?$filter=Id%20eq%20'jQuery' for this)
+        </li>
+        <li>
+            interfacing with the integrated symbol/source server (see our <a href="/support/kb/1036/using-progets-symbol-server">knowledge base article</a> on the subject)
+        </li>
+    </ul>
+    <h2 id="enabling-api">
+        Enabling the API
+    </h2>
+    <p>
+        You must set an API key within ProGet. Simply navigate to <i>"Administration" &gt; "Advanced Settings"</i>.
+        You can set the "ApiKey" value to any string with a length of 1 or greater.
+    </p>
+    <h2 id="connect-json-api">
+        Connecting to the JSON API
+    </h2>
+    <p>
+        The JSON API is accessible at the URL: <strong>http://proget-server/api/json</strong>
+    </p>
+    <p>
+        Visiting the page will describe the list of methods that can be called. The arguments can be passed in one of two ways,
+        either via a GET request with the arguments specified in the query string:
+    </p>
+    <p>
+        http://proget-server/api/json/Method_Name?API_Key=yourKey&amp;Argument_1=value1&amp;Argument_2=value2
+    </p>
+    <p>
+        Or they may be provided via HTTP POST by supplying a JSON object representing the arguments in the request body.
+    </p>
+    <h3>Example:</h3>
+    <p>
+        To get the list of connectors, we will access the <em>Connectors_GetConnectors</em> method (which according to the overview, does not require any arguments) by browsing to the URL: <br />http://proget-server/api/json/Connectors_GetConnectors?API_Key=myApiKey .
+    </p>
+    <p>
+        The data returned from this test instance with a single connector and single connector filter yields the following data:
+    </p>
+    <pre>
+    {
+    "Connectors_Extended": 
+    [
+    { "Connector_Id": 1003, "Connector_Name": "NuGet official package source", "Connector_Url": "https://nuget.org/api/v2", "Feed_Id": 1, "Feed_Name": "Default"}
+    ],
+    "ConnectorFilters": 
+    [
+    { "Connector_Id": 1003, "Filter_Sequence": 1, "Allow_Indicator": "Y", "Rule_Text": "*", "Connector_Id1": 1003, "Connector_Name": "NuGet official package source", "Connector_Url": "https://nuget.org/api/v2", "Feed_Id": 1}
+    ]
+    }
+    </pre>
+</body>
+</html>

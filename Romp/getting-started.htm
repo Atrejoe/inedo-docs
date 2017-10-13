@@ -1,0 +1,238 @@
+﻿<html>
+  <head>
+    <title>Getting Started with Romp</title>
+    <meta name="subtitle" content="Getting Started Guide" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="romp" />
+    <meta name="sequence" content="720" />
+  </head>
+  <body>
+      <style>
+          .info.romp {
+              border-color: #98002E;
+              color: #98002E;
+          }
+          pre {
+              background-color: #f7f5f5;
+              padding: 12px 16px;
+          }
+      </style>
+      <div style="margin-top: 25px;" class="info romp">
+          <div>
+              <b>Romp Documentation Note - This documentation is incomplete.</b> <br /><br />As we continue working on Romp, the documentation will be updated.
+          </div>
+      </div>
+    <p>
+        Romp is a command-line tool, which means that you'll primarily be using the command-line in this guide. You can use a regular command prompt or PowerShell, but for example purposes we'll use the regular one.
+    </p>
+      <h2 id="step-one">
+          Step 1: Install Romp
+      </h2>
+   <p>
+       If you haven't already, you can just <a href="/romp/download">download and run the installer</a> or follow the <a href="/support/documentation/romp/installation/installation-guide">installation guide</a> for more instructions.
+   </p>
+      <h2 id="step-two">
+          Step 2: Create Package Working Directory
+      </h2>
+      <p>
+          A romp package is a zip file that contains a directory of files. Before creating this package file, you'll want to create a working directory.  It can be any directory you'd like, but for this guide we'll use <code>c:\romp-tutorial\accounts-1.0.0</code> as our working directory.
+      </p>
+      <pre>
+ md c:\romp-tutorial\accounts-1.0.0
+ cd c:\romp-tutorial\accounts-1.0.0
+</pre>
+      <p>
+          Within this directory, we'll want to create directory to store the package directory content. By the <a href="/support/documentation/various/universal-packages/universal-package-registry#specification">universal package specification</a>, this directory name is package.
+      </p>
+      <pre> md package</pre>
+      <h2 id="step-three">
+          Step 3: Download Package Contents
+      </h2>
+      <p>
+          A romp package typically contains <i>content</i> (i.e. the application files themselves) and <i>configuration</i> (i.e. infrastructure settings required to run the application).
+      </p>
+      <p>
+          For this tutorial, we'll be using a very simple web application called Accounts as the content. 
+      </p>
+      <p>
+          You can <a href="http://cdn.inedo.com/downloads/otter/Accounts.zip">download Accounts.zip here</a>, and extract the contents of this zip file to c:\romp-tutorial\accounts-1.0.0\package. After you've done that, verify that the files are in the package directory.
+      </p>
+      <pre> dir package</pre>
+      <p>
+          You should see something like this.
+      </p>
+      <pre>
+08/02/2017  08:33 PM    &lsaquo;DIR&rsaquo;          bin
+08/02/2017  08:33 PM             1,631 Default.aspx
+08/02/2017  08:33 PM    &lsaquo;DIR&rsaquo;          Resources
+08/02/2017  08:33 PM             3,676 Site.Master
+08/02/2017  08:33 PM               447 Web.config
+</pre>
+      <h2 id="step-four">
+          Step 4: Create Variables File
+      </h2>
+      <pre>notepad packageVariables.json</pre>
+      <p>
+          In notepad, enter the following:
+      </p>
+      <pre>
+{
+    "WebsiteRoot": "C:\\Website\\Accounts"
+}
+</pre>
+      <h2 id="step-five">Step 5: Create Installation Script</h2>
+      <pre>notepad install.otter</pre>
+      <p>
+          In notepad, enter the following:
+      </p>
+      <pre>
+Ensure-Directory $WebsiteRoot;
+
+IIS::Ensure-AppPool Accounts
+(
+	Runtime: v4.0
+);
+
+IIS::Ensure-Site Accounts
+(
+    AppPool: Accounts,
+    Path: $WebsiteRoot,
+    Bindings: %(
+        IPAddress: *, 
+        Port: 1000, 
+        Protocol: http
+    )
+);
+
+Romp::Deploy-Contents $WebsiteRoot;
+
+IIS::Start-AppPool Accounts;
+
+IIS::Start-Site Accounts;
+</pre>
+      <h2 id="step-six">Step 6: Create Package Metadata File</h2>
+      <pre>notepad packageVariables.json</pre>
+      <p>
+          In notepad, enter the following:
+      </p>
+      <pre>
+{
+    "group": "demos",
+    "name": "accounts",
+    "version": "1.0.0",
+    "description": "Website for the Inedo Accounts demo."
+}
+</pre>
+      <h2 id="step-seven">Step 7: Build Package</h2>
+      <p>
+          Let's build the package.
+      </p>
+      <pre>
+ cd c:\romp-tutorial\accounts-1.0.0
+romp pack accounts-1.0.0
+</pre>
+      <p>
+          Normally, you'd use the <a href="/support/documentation/romp/command-line/command-overview/creating-publishing#push">push</a> command to publish to a package server, but we can skip that step.
+      </p>
+      <h2 id="step-eight">Step 8: Inspect and Install Package</h2>
+      <p>
+          Usually, you'd use romp to install a package from a package server. But if you specify a file name instead, romp will simply install that package file and not attempt to download to the connected repository.
+      </p>
+      <p>
+          Before installing a package, it's always good to inspect it first.
+      </p>
+      <pre>
+ romp inspect accounts-1.0.0.upack
+
+Name: demos/accounts
+Version: 1.0.0
+
+Variables:
+ WebsiteRoot=C:\Websites\Accounts
+
+install.otter: no errors
+</pre>
+     
+      <p>
+          Just to be safe, you can run a simulated installation. Note that a package author could go out of their way to cause a side-effect on installation through an improperly-authored extension or script - this is why you should always inspect first.
+      </p>
+     
+<pre>
+ romp install accounts-1.0.0.upack --simulate
+Extracting package...
+
+Job #1 completed successfully.
+
+Cleaning up...
+</pre>
+     
+      <p>Now let's install the package:</p>
+<pre>
+ romp install accounts-1.0.0.upack
+Extracting package...
+
+Job #2 completed successfully.
+
+Cleaning up...
+</pre>
+      <p>To view the full logs of the package installation, you can use the logs command:</p>
+      <pre>
+ romp jobs logs
+
+          ** (unnamed scope) **
+ DEBUG: Skipping collection run; execute only.
+ DEBUG: Cleaning up temporary files on Local Server...
+  INFO: Collection run succeeded.
+ DEBUG: Beginning execution run...
+
+** (unnamed scope) **
+ ** Ensure directory $WebsiteRoot  **
+  DEBUG: Looking for C:\Websites\Accounts...
+  DEBUG: Directory does not exist, creating...
+   INFO: Directory C:\Websites\Accounts configured.
+
+ ** Ensure Accounts Application Pool with .NET CLR v4.0 **
+  DEBUG: Looking for Application Pool "Accounts"...
+  DEBUG: Does not exist. Creating...
+   INFO: Application Pool "Accounts" added.
+  DEBUG: Reloading configuration...
+  DEBUG: Applying configuration...
+  DEBUG: Committing configuration...
+   INFO: Application Pool "Accounts" configured.
+
+ ** Ensure IIS Site: Accounts application pool Accounts; virtual directory path:
+ $WebsiteRoot **
+  DEBUG: Looking for Site "Accounts"...
+  DEBUG: Does not exist. Creating...
+   INFO: Site "Accounts" added.
+  DEBUG: Reloading configuration...
+  DEBUG: Applying configuration...
+  DEBUG: Clearing bindings...
+  DEBUG: Setting bindings...
+  DEBUG: Committing configuration...
+   INFO: Site "Accounts" configured.
+
+ ** Deploy package to $WebsiteRoot **
+  DEBUG: Deploying C:\Websites\Accounts\Default.aspx...
+  DEBUG: Deploying C:\Websites\Accounts\Site.Master...
+  DEBUG: Deploying C:\Websites\Accounts\Web.config...
+  DEBUG: Deploying C:\Websites\Accounts\bin\Accounts.BLL.dll...
+  DEBUG: Deploying C:\Websites\Accounts\bin\Accounts.Web.dll...
+  DEBUG: Deploying C:\Websites\Accounts\Resources\Images\calc.jpg...
+  DEBUG: Deploying C:\Websites\Accounts\Resources\Images\img01.jpg...
+  DEBUG: Deploying C:\Websites\Accounts\Resources\Images\img07.jpg...
+  DEBUG: Deploying C:\Websites\Accounts\Resources\Styles\default.css...
+  DEBUG: Deploying C:\Websites\Accounts\Resources\Styles\main.css...
+
+ ** Start Accounts App Pool **
+   INFO: Application pool Accounts is already Started.
+
+ ** Start Accounts IIS Site **
+   INFO: Site Accounts is already Started.
+
+ DEBUG: Cleaning up temporary files on Local Server...
+ DEBUG: Execution run complete.
+  INFO: Execution run succeeded.
+</pre>
+  </body>
+</html>

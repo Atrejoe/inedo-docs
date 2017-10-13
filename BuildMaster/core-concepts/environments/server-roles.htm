@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Server Roles</title>
+    <meta name="subtitle" content="Server Roles" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, environments, servers" />
+    <meta name="sequence" content="200" />
+
+</head>
+
+<body>
+
+    <p>
+      Server Roles help model the real-world overlap of servers, and provide the visualization necessary to easily understand your infrastructure. 
+    </p>
+    <p>
+        They provide the advantage of not needing to update every plan when a server is added to or removed from a role. Adding a new web server or removing a retired database server can be done by updating the role,
+        and future deployments will automatically use the new list of servers when executing.
+    </p>
+    <p>
+        Once you have created a server role, it can be used in plans and pipelines to refer to all servers in that role.
+    </p>
+   
+    <h2 id="using-roles">
+       Using server roles 
+    </h2>
+  
+   <p>
+       Server Roles can be used to deploy the same set of files to multiple servers. Refer to the <a href="/support/tutorials/buildmaster/deployments/deploying-the-same-set-of-files-to-multiple-servers-using-server-roles-in-buildmaster">tutorial</a> to learn how to accomplish this task in BuildMaster.
+   </p>
+   
+
+    <h2 id="server-roles-plans">Server Roles in a Plan</h2>
+    <p>
+      One of the ways server roles can be used in plans is a <a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/loop">Loop</a> block.
+      Loop blocks run the same section of a plan repeatedly, once for each item in a list.
+      Inside the loop block, you can use any operations and statements you would normally use in a plan.
+    </p>
+    <p>
+      Loops normally operate sequentially, with each item in the list waiting to start until all previous items are completed.
+      However, we can use a <a href="/support/documentation/buildmaster/execution-engine/statements-and-blocks/general-blocks">General</a> block with <b>Asynchronously execute</b> enabled to run the deployment on all the servers at the same time.
+    </p>
+   
+    
+
+   
+   
+</body>
+</html>

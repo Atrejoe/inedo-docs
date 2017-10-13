@@ -1,0 +1,99 @@
+﻿<html>
+<head>
+    <title>ProGet SDK</title>
+    <meta name="subtitle" content="ProGet SDK" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="sequence" content="100" />
+    <meta name="keywords" content="proget,sdk" />
+</head>
+<body>
+
+    <p>
+        The ProGet SDK allows you to create your own custom extensions using .NET code. There are 2 ways to get started with the ProGet SDK:
+    </p>
+    <ul>
+        <li>
+            Reference the <a href="http://nuget.org/packages/Inedo.ProGet.SDK" target="_blank">Inedo.ProGet.SDK NuGet package</a>
+            available on nuget.org
+        </li>
+        <li>Download the assemblies and reference them manually in your .NET project</li>
+    </ul>
+
+    <p>For a complete type reference of the SDK, please visit the <a href="/support/sdk-reference/proget">ProGet SDK Reference</a>.</p>
+
+    <h2 id="tutorial">Extending ProGet</h2>
+    <p>
+        ProGet supports custom behavior to extend certain aspects of the software.
+        This document will cover the steps needed to compile and deploy a custom
+        ProGet extension.
+    </p>
+    <div>
+        ProGet currently has the following extensibility points:
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Base Class</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Package Store</td>
+                    <td><code><a href="/support/sdk-reference/proget/Inedo.ProGet.Extensibility.PackageStores/PackageStore">PackageStore</a></code></td>
+                    <td>
+                        Used by ProGet to access the underlying storage medium for package data. The default
+                        implementation uses a directory on disk.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Package Filter</td>
+                    <td><code><a href="/support/sdk-reference/proget/Inedo.ProGet.Extensibility.PackageFilters/PackageFilter">PackageFilter</a></code></td>
+                    <td>
+                        Allows all locally-stored ProGet packages to be filtered by additional user-supplied logic.
+                    </td>
+                </tr>
+                <tr>
+                    <td>User Directory</td>
+                    <td><code><a href="/support/sdk-reference/proget/Inedo.ProGet.Extensibility.UserDirectories/UserDirectoryBase">UserDirectoryBase</a></code></td>
+                    <td>
+                        Responsible for authenticating users and groups in ProGet. The default implementation
+                        uses users and groups stored in the ProGet database, and ProGet also includes user
+                        directories for LDAP and Active Directory.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 id="step-one">Step 1: Setup</h2>
+    <p>
+        Create a class library project and reference the Inedo ProGet SDK NuGet package.
+        Add the appropriate classes that inherit from the appropriate exensibility point in the
+        table above, and make sure that the class is decorated with the <code>DisplayName</code>
+        and <code>Description</code> attributes.
+    </p>
+    <p>
+        See the <a href="https://github.com/Inedo/SampleProGetExtension">Sample ProGet Extension</a>
+        project on GitHub for sample code for each of these extensibility points.
+    </p>
+
+    <h2 id="step-two">Step 2: Deployment</h2>
+    <p>
+        ProGet extensions are contained in progetx files, which are standard zip files that
+        contain the extension assembly as well as any supporting assemblies and files. Simply
+        add the compiled extension .dll to a zip file and rename the zip file extension to <i>.progetx</i>.
+        Copy this file to the Extensions directory of your ProGet installation, and it will
+        be loaded the next time ProGet starts.
+    </p>
+    <p>
+        <b>Note:</b> The <i>.progetx</i> file must have the same file name as the primary
+        assembly it contains; for example, MyExtension.progetx must contain MyExtension.dll.
+    </p>
+    <p>
+        Verify that your extension has loaded correctly by viewing the Extensions
+        Overview page from within the ProGet Administration section. From there you will
+        see all of the extensions that are loaded in ProGet and the services they provide.
+    </p>
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Debugging</title>
+    <meta name="subtitle" content="Debugging an Extension" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, extension" />
+    <meta name="sequence" content="300" />
+
+</head>
+
+<body>
+    <p>
+        Below are the step for debugging a custom extension that was created using the BuildMaster SDK. 
+    </p>
+    <h2 id="setup">Setup for Remote Debugging</h2>
+   <p>
+      In order to debug a BuildMaster extension you must have the ability to remotely attach a debugger to your BuildMaster server.
+      The easiest way is to set up the Visual Studio Remote Debugger on the BuildMaster server. The
+      remote debugger must be running with administrator privileges on the server and the correct firewall ports must be open on
+      the server. If you configure the remote dubugger to use the default Windows Authentication your login must also have at least
+      user privileges on the remote server. Your account must also have permissions set within the debugger to allow remote debugging.
+   </p>
+   
+   <p>
+      You will need to deploy a debug build of your extension. It is also helpful to include the
+      debug symbols (PDB file) in the BuildMaster extension archive (.BMX file).
+   </p>
+
+   <h2 id="build-deploy">Build and Deploy Extension to BuildMaster Instance</h2>
+   <p>
+      You will obtain the best debugging results if you use the exact same version of the source code that was used to build the
+      extension. You should also use the same symbol file (PDB) for debugging that is in the BuildMaster extension. 
+   </p>
+   
+   <h2 id="debug">Debug</h2>
+   <p>
+      Now that I have the latest version of my extension active on my BuildMaster server and the correct version of the
+      source code and PDB file locally, it is time for me to debug my extension. I load up my source code in Visual Studio
+      and from the <strong>Debug</strong> menu I select <strong>Attach to Process...</strong>
+   </p>
+   
+   <p>
+      In the <strong>Attach to Process</strong> window I must enter the name of my remote server as the
+      <strong>Qualifier</strong> and make sure the <strong>Show processes from all users</strong> checkbox is checked.
+      Then select either the bmservice.exe process for a self hosted BuildMaster installation or the correct w3wp process
+      for an IIS hosted installation.
+   </p>
+   <p><img class="screenshot" src="/resources/tutorials/remote-debug-attach.png" alt="Debug Menu" /></p>
+   <p>
+      Now that the Visual Studio debugger is attached to the remote process you can set breakpoints in your code, add
+      watches and anything else you may need to do to debug your extension.
+   </p>
+   <p>
+      If you encounter an issue where the breakpoints will not be hit because Visual Studio is unable to load the symbols,
+      you can resolve this by manually setting the symbol location for your module.
+   </p>
+  <h2 id="setting-location">Setting Symbol Location</h2>
+   <p>
+      To set the symbol location you need to have the debugger attached, then from the <strong>Debug</strong> menu select
+      <strong>Windows > Modules</strong>. Find the name of the extension module, right click on it and select
+      <strong>Load Symbols From > Symbol Path</strong>. You may need to browse to the directory where your symbol file (PDB)
+      is located on the local workstation. Once the symbols are loaded your debugger will stop on breakpoints.
+   </p>
+  
+   <p>
+      Now that the symbols are loaded and our breakpoints will be hit we can step through our code, examine the values
+      of variables and do everything we need to do to debug our extension. The only remaining task is to cause our
+      extension to execute. For our example we are debugging the BuildMaster Amazon CloudFormation Extension and we are
+      debugging into the Deploy Template action. We have created a a deployment plan that has a Deploy Template action,
+      and executing that action would result in the breakpoint being hit.
+   </p>
+   <p>
+      As our workflow executes in BuildMaster we can watch its execution in the debugger on the local machine.
+      When our action is called, the breakpoint that we set will be hit, and we can step into our code as it executes
+      on the BuildMaster server. We now have the full power of the Visual Studio debugger, including setting watches,
+      modifying values in the Immediate window, and any debugger visualizers we have installed locally to help us debug 
+      our extension.
+   </p>
+   
+</body>
+</html>

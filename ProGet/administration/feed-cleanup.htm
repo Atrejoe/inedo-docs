@@ -8,19 +8,7 @@
   <body>
       <h2 id="feed-cleanup">Feed Cleanup</h2>
       <p>
-          Repository packages/artifacts are generally stored on disk, while much of
-          their metadata is stored in a database for quick access. If there is a mismatch
-          between the metadata the actual package (for example, if someone deletes
-          a file from the storage directory), then undefined behavior can result.
-      </p>
-      <p>
-          To help prevent issues with incorrect metadata, ProGet verifies the package
-          metadata during a <i>feed cleanup</i> task. By default, these cleanup tasks
-          run in the background once a day, but they can also be invoked directly
-          from the web application.
-      </p>
-      <p>
-          ProGet also runs a feed's <a href="/support/documentation/proget/administration/retention-policies">retention rules</a>
+          ProGet runs a feed's <a href="/support/documentation/proget/administration/retention-policies">retention rules</a>
           during cleanup.
       </p>
       <h3 id="scheduled-tasks">Scheduled Tasks</h3>

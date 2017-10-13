@@ -3,7 +3,7 @@
     <title>Security and Privileges</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta name="sequence" content="400" />
-      <meta name="keywords" content="proget,packages,chocolatey" />
+    <meta name="keywords" content="proget,packages,chocolatey" />
   </head>
   <body>
      
@@ -58,15 +58,15 @@
       <img class="screenshot" src="/resources/documentation/proget/create-task.png" alt="Creating a Task in ProGet" />
       <p>
           Administrators can assign restrictions and permissions based on a group and individual users. 
-          It’s important to note that permissions are additive and restrictions override permission when they’re at the same level; 
+          It's important to note that permissions are additive and restrictions override permission when they’re at the same level; 
           the more specific personnel (One user vs. Group) or a more defined scope (Specific Feed vs. All Feeds) always override.
       </p>
       <h3 id="example">
           Examples
       </h3>
       <p>
-          By associating users with a group you’re able to assign alike users the same permissions and restrictions.
-          For example everyone in the “Managers” group has access to manage feeds except the private-npm feed, only Bob who is also part of the managers groups has the permission to manage the npm feed. 
+          By associating users with a group you're able to assign alike users the same permissions and restrictions.
+          For example everyone in the "Managers" group has access to manage feeds except the private-npm feed, only Bob who is also part of the managers groups has the permission to manage the npm feed. 
       </p>
       <img class="screenshot" src="/resources/documentation/proget/group-security.png" alt="Permissions and restrictions in ProGet" />
       <h2 id="api-keys">API Access &amp; API Keys</h2>
@@ -79,11 +79,12 @@
          <img class="screenshot" src="/resources/documentation/proget/api-key.png" alt="API Keys in ProGet" /> 
       </p>
       <p>
-          To assist with debugging API usage, the request/response is logged whenever an API endpoint is accessed with a key. These logs are not retained indefinitely,
-          but are automatically purged.
+          To assist with debugging API usage, the request/response is logged whenever an API endpoint is accessed with a key. These logs are not retained indefinitely -
+          they are automatically purged after a period of time.
       </p>
+      <h3>Using API Keys</h3>
       <p>
-          An API key may be passed to an endpoint in one of four ways, depending on the content type of the expected request:
+          An API key may be passed to any endpoint (<b>except</b> Feed API endpoints - see below) in one of four ways, depending on the content type of the expected request:
       </p>
       <ul>
           <li>Request header (<code>X-ApiKey</code>) - all content types</li>
@@ -91,5 +92,15 @@
           <li>Form value (<code>key</code>) - only <code>application/x-www-form-urlencoded</code> content type</li>
           <li>JSON property (<code>API_Key</code>) on root object - only <code>application/json</code> content type</li>
       </ul>
+      <h3>Using Feed API Keys</h3>
+      <p>
+          Feed APIs work a little differently since they are designed to integrated seemlessly with drastically different client tools.
+          For this reason, Feed API key authentication is performed using HTTP basic authentication. To authenticate using a Feed API key,
+          supply "api" for the user name and the API key for the password.
+      </p>
+      <p>
+          If a Feed API user is specified, then the Feed API key will effectively authenticate as the specified user and have all of
+          that user's privileges. If no Feed API user is specified, the Feed API key will have permission to perform any feed-scoped privilege.
+      </p>
   </body>
 </html>

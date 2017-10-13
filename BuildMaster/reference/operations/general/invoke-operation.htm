@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>General - Invoke Operation</title>
+  <meta name="keywords" content="buildmaster, operations, " />
+</head>
+<body>
+    <p class="info">
+        This is generated from the built-in components of BuildMaster 5.8.1, and may be different than what you have installed (especially if you have extensions);
+        go to [User Icon] &gt; Documentation within your BuildMaster instance to see exactly what operations are available.
+    </p>
+
+<div>
+  <h2>Invoke Operation</h2>
+  <p>Invokes a specified operation by its script alias.</p>
+  <h4>Script usage:</h4><pre>Invoke-Operation(
+	Name: &lt;text&gt;,
+	[Arguments: &lt;%(key1: value1, ...)&gt;]
+);
+
+</pre>
+  <p>
+    This operation may be prefixed with 
+    <code>Core::</code>, although this is a built-in namespace and isn&#39;t really necessary.</p>
+  <h4>Arguments:</h4>
+  <table class="styled-table">
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+      <th>Script Usage</th>
+      <th>Usage Notes</th>
+    </tr>
+    <tr>
+      <td>
+        <span>☆ </span>
+        <span>Operation name</span>
+        <i> (default)</i>
+      </td>
+      <td><pre>text</pre>
+      </td>
+      <td><pre>Name</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+        <span> This argument is required.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>Arguments</span>
+      </td>
+      <td><pre>%(key1: value1, ...)</pre>
+      </td>
+      <td><pre>Arguments</pre>
+      </td>
+      <td>
+        <span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <p class="info">
+    <b>Note: </b>This operation should only be used when the specific operation type is unknown until runtime. If the operation&#39;s script alias is already known when writing the plan, that operation should be used directly.</p>
+  <h4>Example:</h4><pre>
+Invoke-Operation
+(
+  Name: Send-Email,
+  Arguments: %(To: $ToEmail, Subject: Important BuildMaster Email $AdditionalSubject, Text: This email was sent via the Invoke-Operation operation.)
+);
+</pre>
+</div>
+</body>
+</html>

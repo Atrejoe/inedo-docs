@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloning and Patching </title>
+    <meta name="subtitle" content="Cloning and Patching an Inedo Extension " />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="keywords" content="buildmaster, extension" />
+    <meta name="sequence" content="200" />
+
+</head>
+
+<body>
+<p>
+    There are dozens of BuildMaster Extensions available designed to help you integrate with third party tools. Sometimes, the integration doesn’t work exactly the way you’d like it to, or there’s an additional parameter or option that you’d like added to the extension. This is accomplished through cloning and pataching an extension.
+</p>
+      
+    <h2 id="fork">Fork the Extension Code on GitHub</h2>
+    <p>The source code to all of our extensions are hosted on GitHub. You can browse the repositories at <a href="http://github.com/inedo">http://github.com/inedo</a>, or find the repository link on the extension’s overview page. For this tutorial, we'll pick the <a href="/den/buildmaster/amazon">Amazon Web Services</a> extension. </p>
+    <p>First, navigate to the repository (in this case, <a title="https://github.com/Inedo/bmx-amazon" href="https://github.com/Inedo/bmx-amazon">https://github.com/Inedo/bmx-amazon</a>), and then click the Fork button in the top right. You may be prompted to create a GitHub account, which you’ll need to do if you don’t have one already.</p>
+    <p>
+      <img class="screenshot" alt="" src="/resources/knowledgebase/7a939c30d5d8_C211_image_4.png" />
+    </p>
+    <p>This will create a personal copy (a “Fork”) of the repository, which you can then access and modify as needed. From here, you’ll need to use a Git client (<a href="https://windows.github.com/">GitHub for Windows</a>, <a href="http://www.git-scm.com/downloads">git</a>, etc.) to access the code and modify on your local workstation. How to use a Git client is out of the scope of this tutorial, but there are plenty of resources available online for that.</p>
+    
+    <h2 id="github">Adding GitHub as a Source Control Provider</h2>
+    <p>The <a href="/den/buildmaster/github">GitHub Extension</a> is the easiest way to access GitHub (if you don't already have the GitHub extension installed you will need to install it first). </p>
+    <ol>
+      <li>Go to the Admin menu (hover on the gear icon in top right)</li>
+      <li>Click <em>Source Control Providers</em></li>
+      <li>Click <em>Create New Source Control Provider</em></li>
+      <li>Click <em>GitHub icon</em></li>
+     
+    </ol>
+    
+    <p>When the connection is successful, you can click <em>Save Provider</em>.</p>
+    
+
+    <h2 id="building-extension">Building the Extension in BuildMaster</h2>
+    <p>Once you’ve forked the repository, you can use the “Create your own extension” function to create an application that builds and deploys the extension to BuildMaster. To do this,</p>
+    <ol>
+      <li>Go to the Admin menu (hove on the gear icon in top right)</li>
+      <li>Click <em>BuildMaster Extensions</em></li>
+      <li>Click <em>Create Auto-Deploying Extension Application</em> at the bottom</li>
+    </ol>
+      <img class="screenshot" alt="" src="/resources/tutorials/clone-extension/create-new.png" />
+
+    <p>
+        This will bring up the <em>Custom Extension Application</em> form which will prompt you to set a name, provider, and path.
+    </p>
+
+
+    <p>
+            Click the <em>"Create"</em> button, and BuildMaster will create a new application, with pre-populated build plans and pipeline meant for custom and modified extensions.
+      </p>
+      <p>
+         Click on <em>"Releases"</em> > <em>"Create Release"</em> > <em>"Create Release"</em> > <em>"Create Package"</em> to start a build of the custom extension. 
+        </p>
+   
+    <p>After a successful build the extension can be deployed which will install the customized  extension to your BuildMaster instance, and trigger a restart in BuildMaster. See the <a href="/support/tutorials/buildmaster/sdk/creating-an-auto-deploying-custom-extension-application">Creating an Auto-Deploying Custom Extension Application</a> tutorial to learn more about how this application works.</p>
+    
+      
+    <h2 id="modifying">Modifying the Extension on Your Workstation</h2>
+    <p>
+      After creating an application that can build and deploy the extension it can be modified as needed.
+    </p>
+      <p>
+         All of the extensions are built using Visual Studio 2012 Professional, though you should be able to use any edition of Visual Studio 2010, 2012, 2013, or later. So long as the NuGet Visual Studio Extension is installed, you should be able to just open the solution file and build it. For complicated modifications, you may want to install BuildMaster on your workstation and create a post-build step in the project file that zips the output and copies it to your BuildMaster extensions folder.
+      </p>
+    <p>Note that Visual Studio is only needed if you want to compile the code; assuming it’s  relatively simple change, you could just use a text editor to modify the codefiles and hope that it compiles inside of BuildMaster.</p>
+    
+    <h2 id=" build-deploy-test">Build, Deploy, and Test the Extension in BuildMaster</h2>
+    <p>The application should take care of building, packaging, deploying, and restarting BuildMaster. Sometimes the last part (restarting) doesn’t quite work; if not, you may have to just manually restart it. For complicated changes, you may want to take a look at <a href="/support/documentation/buildmaster/administration/extensions/debugging">Debugging BuildMaster Extensions</a>.</p>
+    
+    <h2 id="pull-request">Submitting Pull Requests</h2>
+    <p>After you’ve verified your code changes work, feel free to submit the code changes to Inedo as a pull request on GitHub. To do this, navigate to the “<em>Pull Requests</em>” section on your fork of the repository.</p>
+    <p>
+        <img class=" screenshot" alt="" src="/resources/knowledgebase/7a939c30d5d8_C211_image_18.png" />
+    </p>
+    <p>Then click on the <em>"New pull request"</em> button.</p>
+    <p>
+        <img class=" screenshot" alt="" src="/resources/knowledgebase/7a939c30d5d8_C211_image_20.png" />
+    </p>
+    <p>Depending on the number of commits you’ve made to your repository, the new pull request page will have you select which commits you’d like to send. </p>
+    <p>After selecting the commits, add a comment and submit it to Inedo.  We’ll respond to it as soon as we can!</p>
+    
+    <h2>A Note on Release Numbers</h2>
+    <p>From BuildMaster’s perspective, this extension will be indistinguishable from Inedo’s official extension. This isn’t a problem, although we recommend keeping your version numbers lower than Inedo’s official extension.</p>
+    <p>This way, you will be alerted that a newer version is available, and can check to see if the new version to see if your change has been included.</p>
+      
+   
+   
+</body>
+</html>
