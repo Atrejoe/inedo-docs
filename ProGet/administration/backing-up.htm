@@ -25,7 +25,7 @@
         If you've never worked with Microsoft SQL Server before, not to worry - you won't even know you're working with it. But if you're already familiar with Microsoft SQL Server and know how to back-up and restore databases, you can skip this section. We're not doing anything special, so you are free to use whichever strategy works in your organization. So long as that strategy involves backing-up the database.
     </p>
     <p>
-        If you you installed ProGet with the built-in database, then the installer also installed Microsoft SQL Server 2005 Express Edition with an instance named ProGet. One of the tools installed with SQL Express is the command-line executed osql.exe; it's located in the SQL Server tools directory: C:\Program Files (x86)\Microsoft SQL Server\90\Tools\Binn.
+        If you installed ProGet with the built-in database, then the installer also installed Microsoft SQL Server 2005 Express Edition with an instance named ProGet. One of the tools installed with SQL Express is the command-line executed osql.exe; it's located in the SQL Server tools directory: C:\Program Files (x86)\Microsoft SQL Server\90\Tools\Binn.
     </p>
     <p>
         You can use a single command to back-up the database, which you may need to run as an administrator if you have UAC enabled in Windows.
@@ -38,6 +38,9 @@
     </p>
     <p>
         You can obviously customize the path on disk as needed. To run this command on a regular basis, just set-up a scheduled task using the <a href="http://windows.microsoft.com/en-US/windows-vista/Schedule-a-task">Task Scheduler</a>. Note that you can back-up ProGet at anytime without having to stop any of the services.
+    </p>
+    <p>
+	If you did <em>not</em> choose to use the built-in database, but chose to use another instance of Microsoft SQL Server, please apply your backup strategy to that server.
     </p>
     <h2 id="back-up-packages">Backing-up the Packages</h2>
     <hr />
